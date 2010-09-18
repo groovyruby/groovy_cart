@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe Admin::ProductsController do
-
+  render_views
+  
   def mock_product(stubs={})
     @mock_product ||= mock_model(Product, stubs).as_null_object
   end

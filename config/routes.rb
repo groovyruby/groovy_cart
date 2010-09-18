@@ -1,9 +1,8 @@
 GroovyCart::Application.routes.draw do
+
   get "home/index"
 
   get "dashboard/index"
-
-  resources :products
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -47,6 +46,7 @@ GroovyCart::Application.routes.draw do
 
   # Sample resource route within a namespace:
   namespace :admin do
+    resources :brands
     resources :products
     root :to=>"dashboard#index"
   end

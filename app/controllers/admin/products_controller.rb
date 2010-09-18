@@ -2,7 +2,7 @@ class Admin::ProductsController < AdminController
   # GET /products
   # GET /products.xml
   def index
-    @products = Product.all
+    @products = Product.all :include=>:brand
 
     respond_to do |format|
       format.html # index.html.erb

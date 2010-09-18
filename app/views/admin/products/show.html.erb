@@ -4,7 +4,10 @@
   <b>Name:</b>
   <%= @product.name %>
 </p>
-
+<p>
+  <b>Brand:</b>
+  <%= @product.brand.name unless @product.brand.blank? %>
+</p>
 <p>
   <b>Description:</b>
   <%= @product.description %>
