@@ -41,6 +41,6 @@ module GroovyCart
     
     config.generators do |g|
       g.test_framework :rspec
-    en
+    end
   end
 end
