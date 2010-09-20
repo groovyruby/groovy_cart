@@ -1,5 +1,5 @@
 GroovyCart::Application.routes.draw do
-
+  
   get "home/index"
 
   get "dashboard/index"
@@ -47,6 +47,7 @@ GroovyCart::Application.routes.draw do
   # Sample resource route within a namespace:
   namespace :admin do
     resources :brands
+    resources :categories
     resources :products
     root :to=>"dashboard#index"
   end

@@ -14,6 +14,10 @@
     <%= f.label :description %><br />
     <%= f.select :brand_id, [['']] | Brand.all.map{|b| [b.name, b.id]} %>
   </div>
+  <div class="field">
+    <%= f.label :categories %><br />
+    <%= f.select :category_ids, Category.all.map{|b| [b.name, b.id]}, {}, {:multiple=>true} %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
