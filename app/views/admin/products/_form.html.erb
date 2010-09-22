@@ -11,8 +11,16 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label :brand %><br />
     <%= f.select :brand_id, [['']] | Brand.all.map{|b| [b.name, b.id]} %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :price_promo %><br />
+    <%= f.text_field :proce_promo %>
   </div>
   <div class="field">
     <%= f.label :categories %><br />

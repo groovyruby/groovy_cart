@@ -11,5 +11,21 @@ require 'spec_helper'
 #   end
 # end
 describe ProductsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  it "show correct product price in span" do
+    p = Product.new
+    p.price = 10
+    helper.show_price(p).should == "<span class=\"price\">#{number_to_currency(10)}</span>"
+    p.price_promo = 20
+    helper.show_price(p).should == "<span class=\"price\">#{number_to_currency(20)}</span>"
+  end
+  
+  it "should show both prices" do
+    p = Product.new
+    p.price = 10
+    helper.show_full_price(p).should == "<span class=\"price\">#{number_to_currency(10)}</span>"
+    p.price_promo = 20
+    helper.show_full_price(p).should == "<span class=\"old_price\">#{number_to_currency(10)}</span><span class=\"price_promo\">#{number_to_currency(20)}</span>"
+  end
+  
 end

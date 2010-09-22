@@ -5,6 +5,10 @@
   <%= @product.name %>
 </p>
 <p>
+  <b>Price:</b>
+  <%= show_full_price(@product) %>
+</p>
+<p>
   <b>Brand:</b>
   <%= @product.brand.name unless @product.brand.blank? %>
 </p>
