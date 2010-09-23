@@ -26,6 +26,8 @@ gem 'mysql2'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
-  gem "rspec-rails", ">= 2.0.0.beta.20"
+  gem "rspec-rails", ">= 2.0.0.beta.22"
   gem "autotest"
+  gem 'factory_girl_rails'
+  
 end
