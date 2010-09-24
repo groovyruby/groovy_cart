@@ -1,0 +1,7 @@
+<h1>Categories</h1>
+
+<ul>
+  <% for c in @categories %>
+    <li><%= link_to c.name, category_path(c) %></li>
+  <% end %>
+</ul>

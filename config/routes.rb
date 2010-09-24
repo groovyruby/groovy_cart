@@ -1,8 +1,10 @@
 GroovyCart::Application.routes.draw do
   
-  get "home/index"
+  resources :products, :only=>[:index, :show]
+  
+  resources :categories, :only=>[:index, :show]
 
-  get "dashboard/index"
+  get "home/index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
