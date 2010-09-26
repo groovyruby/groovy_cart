@@ -1,5 +1,7 @@
 GroovyCart::Application.routes.draw do
   
+  resources :brands, :only=>[:index, :show]
+  
   resources :products, :only=>[:index, :show]
   
   resources :categories, :only=>[:index, :show]

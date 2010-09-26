@@ -1,0 +1,7 @@
+<h1>Brands</h1>
+
+<ul>
+  <% for b in @brands %>
+    <li><%= link_to b.name, brand_path(b) %></li>
+  <% end %>
+</ul>
