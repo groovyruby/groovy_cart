@@ -1,0 +1,9 @@
+<div class="setting textfield" id="setting=<%= setting.id %>">
+	<p>
+		<strong><%= label_tag "settings[#{setting.id}]", h(setting.label) %></strong><br />
+		<small><%=h setting.description %></small>
+	</p>
+	<p>
+		<%= text_field_tag("settings[#{setting.id}]", setting.value.to_i, :size => 40 ) %>
+	</p>
+</div>

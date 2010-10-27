@@ -1,0 +1,30 @@
+
+s_string:
+  field_type: string
+  label: string
+  identifier: string
+  value: foo
+
+s_integer:
+  field_type: integer
+  label: integer
+  identifier: integer
+  value: 123
+
+s_float:
+  field_type: float
+  label: float
+  identifier: float
+  value: 12.3
+
+s_boolean:
+  field_type: boolean
+  label: boolean
+  identifier: boolean
+  value: t
+
+s_text:
+  field_type: text
+  label: text
+  identifier: text
+  value: 'lorem ipsum'

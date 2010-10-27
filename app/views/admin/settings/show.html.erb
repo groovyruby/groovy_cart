@@ -1,0 +1,16 @@
+<h1>Settings</h1>
+<%= form_tag admin_setting_path, :method => :put do %>
+  <% sc = nil%>
+  <% @settings.group_by(&:scope).each do |scope, settings| %>
+    <%= raw "<h2>#{scope}</h2>" %>
+    <% for setting in settings %>
+      <%= settings_field(setting) %>
+    <% end %>
+  <% end %>
+  
+
+  <div id="submitbutton">
+    <p><%= submit_tag 'Zapisz ustawienia' %></p>
+  </div>
+
+<% end %>

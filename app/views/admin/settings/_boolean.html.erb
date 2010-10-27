@@ -1,0 +1,10 @@
+<div class="setting textfield" id="setting=<%= setting.id %>">
+  <p>
+    <%= hidden_field_tag "settings[#{setting.id}]", 0, :id => nil %>
+    <%= check_box_tag("settings[#{setting.id}]", 1, (setting.value == "t" ? true : false) ) %>
+    <strong><%= label_tag "settings[#{setting.id}]", h(setting.label) %></strong><br />
+    <% unless setting.description.blank? %>
+      <small><%= setting.description %></small>
+    <% end %>
+  </p>
+</div>
