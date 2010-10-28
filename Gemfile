@@ -18,5 +18,5 @@ group :development, :test do
   gem "rspec-rails", ">= 2.0.0.beta.22"
   gem "autotest"
   gem 'factory_girl_rails'
-  
+  gem 'web-app-theme', '>= 0.6.2'
 end
