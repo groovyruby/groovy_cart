@@ -6,3 +6,5 @@ db/schema.rb
 .idea
 Gemfile.lock
 config/database.yml
+.idea/
+

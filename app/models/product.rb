@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
-  
+  has_friendly_id :name, :use_slug => true
+
   belongs_to :brand
   has_and_belongs_to_many :categories
   has_many :cart_items

@@ -15,8 +15,8 @@
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.admin_category.slug", :default => t("activerecord.labels.slug", :default => "Slug")) %>:</b>
-          <%= @category.slug %>
+          <b><%= t("activerecord.attributes.admin_category.cached_slug", :default => t("activerecord.labels.slug", :default => "Slug")) %>:</b>
+          <%= @category.cached_slug %>
         </p>
       <div class="wat-cf">
         <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_admin_category_path(@category), :class => "button" %> 

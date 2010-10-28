@@ -1,5 +1,7 @@
 GroovyCart::Application.routes.draw do
   
+  
+
   resources :brands, :only=>[:index, :show]
   
   resources :products, :only=>[:index, :show]
@@ -52,6 +54,7 @@ GroovyCart::Application.routes.draw do
   namespace :admin do
     resources :brands
     resources :categories
+    resources :product_types
     resources :products
     root :to=>"dashboard#index"
   end
