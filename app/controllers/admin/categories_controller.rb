@@ -1,4 +1,6 @@
 class Admin::CategoriesController < AdminController
+
+  helper :categories 
   # GET /categories
   # GET /categories.xml
   def index

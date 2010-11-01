@@ -8,9 +8,7 @@
   <div class="content">            
     <h2 class="title"><%= t("web-app-theme.new", :default => "New")%>  Category</h2>
     <div class="inner">
-      <%= form_for :category, :url => admin_categories_path, :html => { :class => :form } do |f| -%>
-        <%= render :partial => "form", :locals => {:f => f} %>
-      <% end -%>
+        <%= render :partial => "form"%>
     </div>
   </div>
 </div>

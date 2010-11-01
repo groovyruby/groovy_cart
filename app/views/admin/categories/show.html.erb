@@ -18,6 +18,11 @@
           <b><%= t("activerecord.attributes.admin_category.cached_slug", :default => t("activerecord.labels.slug", :default => "Slug")) %>:</b>
           <%= @category.cached_slug %>
         </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_category.parent", :default => t("activerecord.labels.parent", :default => "Parent")) %>:</b>
+          <%= link_to(@category.parent.name, [:admin, @category.parent]) unless @category.parent.blank? %>
+        </p>
       <div class="wat-cf">
         <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_admin_category_path(@category), :class => "button" %> 
         <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), admin_category_path(@category), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
