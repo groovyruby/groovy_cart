@@ -2,7 +2,7 @@
 begin;seq = seq;rescue;end;seq = seq==nil ? 'new_product_variation' : seq
 %>
 <li class="product_variation">
-  <% if f.object.product and f.object.product.option_groups %>
+  <% if f.object.product and f.object.product.option_groups and f.object.product.option_groups.count > 0 %>
     <%= f.label :price, :class=>"price" %>
     <%= f.text_field :price, :class=>"text_field" %>
     <% for og in f.object.product.option_groups %>
