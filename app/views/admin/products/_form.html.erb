@@ -39,7 +39,7 @@
 
 	<div class="group">
     <%= f.label :categories, :class=>"label" %>
-    <%= f.select :category_ids, Category.all.map{|b| [b.name, b.id]}, {}, {:multiple=>true} %>
+    <%= f.select :category_ids, categories_option_tree, {}, {:multiple=>true} %>
   </div>
 
   <div class="group">
