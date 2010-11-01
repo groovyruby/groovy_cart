@@ -16,20 +16,22 @@
 
   <div class="group">
   	<ul id="property_types_fields" style="clear: both;">
-	    <%= f.fields_for :property_types do |fpt| %>
-	    	<%= render :partial=>"property_type", :locals=>{:f=>fpt}%>
-	    <% end %>
-	  </ul>
-	  <a name="property_type"></a>
-  	<%= link_to '+ Add property type', '#property_type', :class => "add_nested_item", :rel => "property_type" %><br />
-	</div>
-	<br />
+      <%= f.fields_for :property_types do |fpt| %>
+        <%= render :partial=>"property_type", :locals=>{:f=>fpt}%>
+      <% end %>
+    </ul>
+    <br style="clear: both;"/>
+    <a name="property_type" style="clear: both;"></a>
+    <%= link_to '+ Add property type', '#property_type', :class => "add_nested_item", :rel => "property_type" %><br />
+  </div>
+<br />
         
 <div class="group navform wat-cf">
   <button class="button" type="submit">
     <%= image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%= t("web-app-theme.save", :default => "Save") %>
   </button>  
-  <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.cancel", :default => "Cancel")}") + " " + t("web-app-theme.cancel", :default => "Cancel"), admin_product_types_path, :class => "button" %> 
+  <span class="text_button_padding"><%= t("web-app-theme.or", :default => "or") %></span>
+  <%= link_to t("web-app-theme.cancel", :default => "Cancel"), admin_product_types_path, :class => "text_button_padding link_button" %>
 </div>
 
 <% end %>

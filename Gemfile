@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0'
+gem 'rails', '>= 3.0.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -22,5 +22,5 @@ group :development, :test do
 	gem "remarkable_activerecord", '>=4.0.0.alpha4'
   gem "autotest"
   gem 'factory_girl_rails'
-  gem 'web-app-theme', '>= 0.6.2'
+  gem 'web-app-theme', '>= 0.6.2', :git => 'git://github.com/groovyruby/web-app-theme.git'
 end

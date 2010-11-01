@@ -5,6 +5,9 @@ describe Admin::ProductsController do
   
   def mock_product(stubs={})
     @mock_product ||= mock_model(Product, stubs).as_null_object
+    @mock_product.product_type = nil
+    @mock_product.properties = nil
+    @mock_product
   end
 
   describe "GET index" do

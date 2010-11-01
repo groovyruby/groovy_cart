@@ -1,0 +1,35 @@
+<%= form_for [:admin,@option_group], :html => { :class => :form } do |f| -%>
+  <% content_for :head do %>
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+      nested_forms['option'] = "<%= generate_template(f, :options) %>";
+    });
+  </script>
+  <% end %>
+  <div class="group">
+    <%= f.label :name, t("activerecord.attributes.option_group.name", :default => "Name"), :class => :label %>
+    <%= f.text_field :name, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+  <div class="group">
+    <%= f.label :option_group_type, t("activerecord.attributes.option_group.option_group_type", :default => "Option Group Type"), :class=>"label" %>
+    <%= f.select :option_group_type, OptionGroup::OPTION_GROUP_TYPES %><Br />
+  </div>
+  <div class="group">
+  	<ul id="options_fields" style="clear: both;">
+      <%= f.fields_for :options do |fo| %>
+        <%= render :partial=>"option", :locals=>{:f=>fo}%>
+      <% end %>
+    </ul>
+    <a name="option"></a>
+    <%= link_to '+ Add option', '#option', :class => "add_nested_item", :rel => "option" %><br />
+  </div>
+        
+<div class="group navform wat-cf">
+  <button class="button" type="submit">
+    <%= image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%= t("web-app-theme.save", :default => "Save") %>
+  </button>
+  <span class="text_button_padding"><%= t("web-app-theme.or", :default => "or") %></span>
+  <%= link_to t("web-app-theme.cancel", :default => "Cancel"), admin_option_groups_path, :class => "text_button_padding link_button" %>
+</div>
+<% end %>

@@ -1,0 +1,4 @@
+<li>
+  <%= f.label :property_value, f.object.property_type.name, :class=>:label %>
+  <%= render :partial=>"/admin/properties/#{f.object.property_type.field_type}", :locals=>{:f=>f} %>
+</li>

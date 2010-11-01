@@ -1,1 +1,28 @@
 /* Override here any style defined by web-app-theme */
+
+.small_field{
+  width: 30%;
+}
+.small_field text_field{
+}
+.inline_field{
+  padding-right: 10px;
+  float: left;
+}
+
+.text_button_padding{
+  color: #222222;
+  display: block;
+  float: left;
+  font-size: 1em;
+  line-height: 2em;
+  margin: 0 7px 0 0;
+  padding: 5px 0 6px 7px;
+  text-decoration: none;
+}
+.link_button{
+  cursor: pointer;
+}
+.description{
+  display: none;
+}

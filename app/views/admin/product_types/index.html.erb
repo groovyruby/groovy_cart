@@ -29,6 +29,7 @@
             <%= product_type.created_at %>
           </td>
           <td class="last">
+            <%= link_to "new product of type", new_admin_product_path(:product_type=>product_type) %> |
             <%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_product_type_path(product_type) %> |
             <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_admin_product_type_path(product_type) %> |
             <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", admin_product_type_path(product_type), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>

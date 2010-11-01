@@ -25,7 +25,14 @@ class Admin::ProductsController < AdminController
   # GET /products/new.xml
   def new
     @product = Product.new
-
+    unless params[:product_type].blank?
+      @product_type = ProductType.find(params[:product_type])
+      for pt in @product_type.property_types.all
+        p = pt.properties.new
+        p.property_type = pt
+        @product.properties << p
+      end
+    end
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @product }
