@@ -5,7 +5,11 @@ class ApplicationController < ActionController::Base
 
   protected
     def find_cart
-      @cart = Cart.find(session['cart_id']) unless session['cart_id'].blank?
+      unless session['cart_id'].blank?
+        @cart = Cart.find(session['cart_id'])
+      else
+        redirect_to cart_url(:notice=>'groovy_cart.messages.empty_cart')
+      end
     end
 
 end

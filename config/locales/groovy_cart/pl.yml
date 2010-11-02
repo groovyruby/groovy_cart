@@ -7,3 +7,6 @@ pl:
         brand: Marka produktu
         price: Cena produktu
         price_promo: Cena "promocyjna" - pole cena zostanie przekreślone i pokazywana będzie cena promocyjna
+    
+    messages:
+      empty_cart: Koszyk jest pusty
