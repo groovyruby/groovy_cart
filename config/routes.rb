@@ -2,6 +2,13 @@ GroovyCart::Application.routes.draw do
   
   
 
+
+  resource :cart do
+    member do
+      post 'add_product'
+    end
+  end
+
   resources :brands, :only=>[:index, :show]
   
   resources :products, :only=>[:index, :show]
