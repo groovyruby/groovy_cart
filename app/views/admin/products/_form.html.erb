@@ -10,31 +10,31 @@
   <div class="group">
     <%= f.label :name, t("activerecord.attributes.product.name", :default => "Name"), :class => :label %>
     <%= f.text_field :name, :class => 'text_field' %>
-    <span class="description">Ex: a simple text</span>
+    <span class="description"><%= t("groovy_cart.descriptions.product.name") %></span>
   </div>
 
   <div class="group">
     <%= f.label :description, t("activerecord.attributes.product.description", :default => "Description"), :class => :label %>
     <%= f.text_area :description, :class => 'text_area' %>
-    <span class="description">Ex: a simple text</span>
+    <span class="description"><%= t("groovy_cart.descriptions.product.description") %></span>
   </div>
 
   <div class="group">
-    <%= f.label :brand_id, t("activerecord.attributes.product.brand_id", :default => "Brand"), :class => :label %>
+    <%= f.label :brand_id, t("activerecord.attributes.product.brand", :default => "Brand"), :class => :label %>
     <%= f.select :brand_id, [['']] | Brand.all.map{|b| [b.name, b.id]}, :class => 'text_field' %>
-    <span class="description">Ex: a simple text</span>
+    <span class="description"><%= t("groovy_cart.descriptions.product.brand") %></span>
   </div>
 
   <div class="group">
     <%= f.label :price, t("activerecord.attributes.product.price", :default => "Price"), :class => :label %>
     <%= f.text_field :price, :class => 'text_field' %>
-    <span class="description">Ex: a simple text</span>
+    <span class="description"><%= t("groovy_cart.descriptions.product.price") %></span>
   </div>
 
   <div class="group">
     <%= f.label :price_promo, t("activerecord.attributes.product.price_promo", :default => "Price promo"), :class => :label %>
     <%= f.text_field :price_promo, :class => 'text_field' %>
-    <span class="description">Ex: a simple text</span>
+    <span class="description"><%= t("groovy_cart.descriptions.product.price_promo") %></span>
   </div>
 
 	<div class="group">

@@ -1,0 +1,9 @@
+pl:
+  activerecord:
+    attributes:
+      product:
+        name: Nazwa
+        description: Opis
+        brand: Marka
+        price: Cena
+        price_promo: Cena promocyjna

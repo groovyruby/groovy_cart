@@ -1,0 +1,9 @@
+pl:
+  groovy_cart:
+    descriptions:
+      product:
+        name: Pełna nazwa produktu
+        description: Opis produktu, pokazywany na podstronie produktowej
+        brand: Marka produktu
+        price: Cena produktu
+        price_promo: Cena "promocyjna" - pole cena zostanie przekreślone i pokazywana będzie cena promocyjna
