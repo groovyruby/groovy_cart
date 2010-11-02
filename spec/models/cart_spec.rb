@@ -9,5 +9,8 @@ describe Cart do
     c.reload
     c.discounted_value.should == p.get_price
     c.total_value.should == p.get_price
+    c.add_product p
+    c.discounted_value.should == p.get_price * 2
+    c.total_value.should == p.get_price * 2
   end
 end
