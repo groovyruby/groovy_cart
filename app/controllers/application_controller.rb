@@ -1,15 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  
+
   helper :products
 
   protected
     def find_cart
-      unless session['cart_id'].blank?
-        @cart = Cart.find(session['cart_id'])
-      else
-        create_cart
-      end
+      @cart = Cart.where(:id => session['cart_id']).first unless session['cart_id'].blank?
+      create_cart if @cart.blank?
     end
     helper_method :find_cart
 
@@ -20,10 +17,9 @@ class ApplicationController < ActionController::Base
 
   private
     def create_cart
-      if session['cart_id'].blank?
-        c = Cart.create!
-        session['cart_id'] = c.id
-        c
-      end
+      c = Cart.create!
+      session['cart_id'] = c.id
+      @cart = c
+      c
     end
 end
