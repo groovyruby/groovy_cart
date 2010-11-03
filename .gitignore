@@ -8,3 +8,4 @@ Gemfile.lock
 config/database.yml
 .idea/
 .project
+public/system

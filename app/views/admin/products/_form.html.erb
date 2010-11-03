@@ -2,12 +2,15 @@
   <% content_for :head do %>
   <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){
-      <%# product_variation = @product.product_variations.new %>
-      nested_forms['product_variation'] = "<%= generate_template(f, :product_variations) %>";
+      <% product_variation = @product.product_variations.new
+       product_variation.build_photo
+       %>
+      nested_forms['product_variation'] = "<%= generate_template(f, :product_variations, :object=>product_variation) %>";
       nested_forms['photo'] = "<%= generate_template(f, :photos) %>";
     });
   </script>
   <% end %>
+  <%= render :partial=>"/admin/shared/form_errors", :locals=>{:f=>f} %>
   <div class="group">
     <%= f.label :name, t("activerecord.attributes.product.name", :default => "Name"), :class => :label %>
     <%= f.text_field :name, :class => 'text_field' %>

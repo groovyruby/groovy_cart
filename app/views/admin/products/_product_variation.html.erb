@@ -9,7 +9,14 @@ begin;seq = seq;rescue;end;seq = seq==nil ? 'new_product_variation' : seq
       <% sel = f.object.options.where(:option_group_id=>og.id).first %>
       <% sel = sel.id unless sel.blank? %>
       <%= select "product[product_variations_attributes][#{seq}][option_ids]", '', og.options.all.map{|o| [o.name, o.id]}, {:selected=>sel} %>
+    <% end %><br/>
+    <% f.object.build_photo if f.object.photo.blank? %>
+    <%= f.fields_for :photo do |fp| %>
+      <%= image_tag(fp.object.photo.url(:thumb)) unless fp.object.new_record? %>
+      <%= fp.label :photo, :class=>"" %>
+      <%= fp.file_field :photo %>
     <% end %>
+    
   <% else %>
     Brak grup opcji, nie można utworzyc wariantu produktu
   <% end %>
