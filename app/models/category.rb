@@ -6,7 +6,7 @@ class Category < ActiveRecord::Base
   
   validates :name, :presence=>true
 
-  attr_accessible :name, :parent_id
+  attr_accessible :name, :parent_id, :extra_params
 
 
 
