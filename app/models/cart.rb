@@ -22,9 +22,12 @@ class Cart < ActiveRecord::Base
     self.save
   end
   
-  def remove_product(product)
-    ci =self.cart_items.where('product_id=?', product.id).first
+  def remove_product(product, product_variation=nil)
+    ci =self.cart_items.where('product_id=?', product.id)
+    ci = ci.where('product_variation_id=?', product_variation) unless product_variation.blank?
+    ci = ci.first
     ci.destroy
+    self.save
   end
   
   def recalculate
