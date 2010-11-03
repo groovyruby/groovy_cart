@@ -10,14 +10,16 @@
     <div class="inner">
       <table class="table">
         <tr>             
-          <th class="first">ID</th>
-          <th>
-            <%= t("activerecord.attributes.product.name", :default => t("activerecord.labels.name", :default => "Name")) %>
+          <th class="first">
+            <%= sort_link @search, :id %>
           </th>
           <th>
-            <%= t("activerecord.attributes.product.sku", :default => t("activerecord.labels.sku", :default => "SKU")) %>
+            <%= sort_link @search, :name, t("activerecord.attributes.product.name", :default => t("activerecord.labels.name", :default => "Name")) %>
           </th>
-          <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th>
+            <%= sort_link @search, :sku, t("activerecord.attributes.product.sku", :default => t("activerecord.labels.sku", :default => "SKU")) %>
+          </th>
+          <th><%= sort_link @search, :created_at, t("web-app-theme.created_at", :default => "Created at")  %></th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @products.each do |product| -%>
@@ -44,6 +46,10 @@
       </table>
       <div class="actions-bar wat-cf">
         <div class="actions">
+          <div class="pagination">
+            <%= will_paginate @products %>
+          </div>
+
         </div>
         
       </div>

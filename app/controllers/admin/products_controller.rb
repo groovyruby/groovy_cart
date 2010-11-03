@@ -2,7 +2,9 @@ class Admin::ProductsController < AdminController
   # GET /products
   # GET /products.xml
   def index
-    @products = Product.all :include=>:brand
+    @search = Product.search(params[:search])
+    #@products = @search.all   # load all matching records
+    @products = @search.paginate(:page => params[:page]) # Who doesn't love will_paginate
 
     respond_to do |format|
       format.html # index.html.erb

@@ -17,6 +17,10 @@ gem 'ancestry'
 
 gem "transitions", :require => ["transitions", "active_record/transitions"]
 
+gem "meta_search"
+
+gem "will_paginate", "~> 3.0.pre2"
+
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
