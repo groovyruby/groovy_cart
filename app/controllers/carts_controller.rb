@@ -1,5 +1,4 @@
-class CartsController < ApplicationController
-  before_filter :find_cart
+class CartsController < GroovyCartController
   
   def show
   end

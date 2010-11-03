@@ -1,4 +1,5 @@
-class HomeController < ApplicationController
+class HomeController < GroovyCartController
+  
   def index
   end
 

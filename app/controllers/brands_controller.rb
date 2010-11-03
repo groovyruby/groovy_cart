@@ -1,4 +1,5 @@
-class BrandsController < ApplicationController
+class BrandsController < GroovyCartController
+  
   def index
     @brands = Brand.all
   end
