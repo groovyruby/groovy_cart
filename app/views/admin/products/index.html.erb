@@ -11,10 +11,13 @@
       <table class="table">
         <tr>             
           <th class="first">ID</th>
-                    <th>
-            <%= t("activerecord.attributes.admin_product.name", :default => t("activerecord.labels.name", :default => "Name")) %>
+          <th>
+            <%= t("activerecord.attributes.product.name", :default => t("activerecord.labels.name", :default => "Name")) %>
           </th>
-                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th>
+            <%= t("activerecord.attributes.product.sku", :default => t("activerecord.labels.sku", :default => "SKU")) %>
+          </th>
+          <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @products.each do |product| -%>
@@ -22,8 +25,11 @@
           <td>
             <%= product.id %>
           </td>
-                    <td>
+          <td>
             <%= link_to product.name, admin_product_path(product) %>
+          </td>
+          <td>
+            <%= product.sku %>
           </td>
                     <td>
             <%= product.created_at %>

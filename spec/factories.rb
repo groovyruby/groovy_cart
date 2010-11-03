@@ -8,6 +8,7 @@ end
 
 Factory.define :option_group do |og|
   og.name "colors"
+  og.slug "colors"
   og.option_group_type OptionGroup::OPTION_GROUP_TYPES.first
 end
 

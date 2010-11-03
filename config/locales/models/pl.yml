@@ -3,6 +3,7 @@ pl:
     attributes:
       product:
         name: Nazwa
+        sku: SKU
         description: Opis
         brand: Marka
         price: Cena

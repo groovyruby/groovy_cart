@@ -16,6 +16,11 @@
     <%= f.select :option_group_type, OptionGroup::OPTION_GROUP_TYPES %><Br />
   </div>
   <div class="group">
+    <%= f.label :slug, t("activerecord.attributes.option_group.slug", :default => "Slug"), :class => :label %>
+    <%= f.text_field :slug, :class => 'text_field' %>
+    <span class="description"><%= t("groovy_cart.descriptions.option_group.slug") %></span>
+  </div>
+  <div class="group">
   	<ul id="options_fields" style="clear: both;">
       <%= f.fields_for :options do |fo| %>
         <%= render :partial=>"option", :locals=>{:f=>fo}%>
