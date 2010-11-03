@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
+    session['last_category_id'] = @category.id
     @products = @category.products
   end
 

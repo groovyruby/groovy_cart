@@ -12,4 +12,10 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def last_visited_category
+      Category.find(session['last_category_id']) unless session['last_category_id'].blank?
+    end
+
+    helper_method :last_visited_category
+
 end
