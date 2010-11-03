@@ -7,6 +7,9 @@ pl:
         brand: Marka produktu
         price: Cena produktu
         price_promo: Cena "promocyjna" - pole cena zostanie przekreślone i pokazywana będzie cena promocyjna
-    
+      category:
+        name: ""
+        parent: Kategoria nadrzędna względnie obecnej
+        extra_params: Dodatkowe parametry kategorii, mogą byc użyte np. w widokach do ustawiania klas warts
     messages:
       empty_cart: Koszyk jest pusty

@@ -7,3 +7,7 @@ pl:
         brand: Marka
         price: Cena
         price_promo: Cena promocyjna
+      category:
+        name: Nazwa
+        parent: Kategoria nadrzędna
+        extra_params: Dodatkowe parametry
