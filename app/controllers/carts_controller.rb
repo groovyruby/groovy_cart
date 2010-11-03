@@ -1,5 +1,4 @@
 class CartsController < ApplicationController
-  before_filter :create_cart
   before_filter :find_cart
   
   def show
@@ -13,12 +12,6 @@ class CartsController < ApplicationController
     redirect_to cart_url
   end
 
-  private
-    def create_cart
-      if session['cart_id'].blank?
-        c = Cart.create!
-        session['cart_id'] = c.id
-      end
-    end
+
 
 end
