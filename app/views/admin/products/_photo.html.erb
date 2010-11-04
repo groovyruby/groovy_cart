@@ -1,0 +1,7 @@
+<li class="photo">
+  <%= f.hidden_field :id, :class=>"partial_id" %>
+  <%= f.label :photo, :class=>"label" %>
+  <%= f.file_field :photo %>
+  <%= f.label :_destroy %>
+  <%= f.check_box :_destroy, :class=>'destroy_nested', 'data-selector'=>'li.photo' %>
+</li>
