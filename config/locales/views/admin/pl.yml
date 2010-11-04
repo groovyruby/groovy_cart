@@ -1,0 +1,17 @@
+pl:
+  admin:
+    banners:
+      sidebar:
+        banners_options: Opcje bannerów
+    banner_types:
+      sidebar:
+        description: "Typy bannerów to predefiniowane rozmiary, które będą używane w systemie. Po zdefiniowaniu wysokości
+        i wysokości system automatycznie pomniejszy banner do zadanego rozmiaru (o ile będzie to obrazek)."
+    banner_placements:
+      sidebar:
+        description: "Położenia bannerów to predefioniowane identyfikotory, które mogą zostac użyte w systemie (widokach)
+        by umiejscowic banner w zadanym miejscu"
+    option_groups:
+      sidebar:
+        description: "Grupy opcji pozwalają na definiowanie grup atrybutów, w ramach których mogą byc tworzone wariacje
+        produktów"

@@ -1,0 +1,54 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", admin_banners_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_banner_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_banner_path %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">
+      
+        <p>
+          <b><%= t("activerecord.attributes.admin_banner.name", :default => t("activerecord.labels.name", :default => "Name")) %>:</b>
+          <%= @banner.name %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_banner.banner_file_name", :default => t("activerecord.labels.banner_file_name", :default => "Banner file name")) %>:</b>
+          <%= @banner.banner_file_name %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_banner.banner_content_type", :default => t("activerecord.labels.banner_content_type", :default => "Banner content type")) %>:</b>
+          <%= @banner.banner_content_type %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_banner.banner_file_size", :default => t("activerecord.labels.banner_file_size", :default => "Banner file size")) %>:</b>
+          <%= @banner.banner_file_size %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_banner.banner_type_id", :default => t("activerecord.labels.banner_type_id", :default => "Banner type")) %>:</b>
+          <%= @banner.banner_type_id %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_banner.banner_placement_id", :default => t("activerecord.labels.banner_placement_id", :default => "Banner placement")) %>:</b>
+          <%= @banner.banner_placement_id %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_banner.is_active", :default => t("activerecord.labels.is_active", :default => "Is active")) %>:</b>
+          <%= @banner.is_active %>
+        </p>
+      <div class="wat-cf">
+        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_admin_banner_path(@banner), :class => "button" %> 
+        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), admin_banner_path(@banner), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>      
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

@@ -1,7 +1,4 @@
 GroovyCart::Application.routes.draw do
-  
-  
-
 
   resource :cart do
     member do
@@ -59,6 +56,9 @@ GroovyCart::Application.routes.draw do
 
   # Sample resource route within a namespace:
   namespace :admin do
+    resources :banner_types
+    resources :banner_placements
+    resources :banners
     resources :brands
     resources :categories
     resources :option_groups

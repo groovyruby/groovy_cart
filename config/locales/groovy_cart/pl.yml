@@ -17,3 +17,7 @@ pl:
         slug: Identyfikator grupy opcji, może byc przydatny np. designerom odpowiedzialnym za twój sklep. Raz wpisanego lepiej nie zmieniac.
     messages:
       empty_cart: Koszyk jest pusty
+    modules:
+      banner_types: Typy bannerów
+      banner_placements: Położenie bannerów
+      option_groups: Grupy opcji
