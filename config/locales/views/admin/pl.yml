@@ -15,3 +15,6 @@ pl:
       sidebar:
         description: "Grupy opcji pozwalają na definiowanie grup atrybutów, w ramach których mogą byc tworzone wariacje
         produktów"
+    product_types:
+      sidebar:
+        description: "Typy produktów pozwalają na tworzenie predefiniowanych produktów wraz z atrybutami"
