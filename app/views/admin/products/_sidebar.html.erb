@@ -1,13 +1,8 @@
 <div class="block notice">
-  <h3>Simple Block</h3>
-  <div class="content">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-  </div>
-</div>
-<div class="block">
-  <h3>Links</h3>
+  <h3><%= t('.create_new_from_template') %></h3>
   <ul class="navigation">
-    <li><a href="#">Link 1</a></li>
-    <li><a href="#">Link 2</a></li>
+    <% for pt in ProductType.all %>
+      <li><%= link_to pt.name, new_admin_product_path(:product_type=>pt.id) %></li>
+    <% end %>
   </ul>
 </div>

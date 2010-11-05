@@ -18,3 +18,6 @@ pl:
     product_types:
       sidebar:
         description: "Typy produktów pozwalają na tworzenie predefiniowanych produktów wraz z atrybutami"
+    products:
+      sidebar:
+        create_new_from_template: Utwórz nowy produkt z szablonu
