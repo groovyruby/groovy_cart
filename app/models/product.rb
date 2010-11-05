@@ -32,5 +32,13 @@ class Product < ActiveRecord::Base
   def fill_in_sku
     self.sku = self.name.parameterize if self.sku.blank?
   end
+
+  def get_options(identifier)
+    self.option_groups.where('slug=?', identifier).first
+  end
+
+  def get_photo
+    self.photos.first || self.photos.build
+  end
   
 end
