@@ -64,14 +64,16 @@
     <%= link_to '+ Add photo', '#photo', :class => "add_nested_item", :rel => "photo" %><br />
   </div>
 
-  <div class="group">
-    properties
-    <ul>
-    <%= f.fields_for :properties do |fp| %>
-      <%= render :partial=>"property", :locals=>{:f=>fp} %>
-    <% end %>
-    </ul>
-  </div>
+  <% unless @product.properties.empty? %>
+    <div class="group">
+      properties
+      <ul>
+      <%= f.fields_for :properties do |fp| %>
+        <%= render :partial=>"property", :locals=>{:f=>fp} %>
+      <% end %>
+      </ul>
+    </div>
+  <% end  %>
 
   <div class="group">
     option groups
@@ -82,6 +84,7 @@
     <% end %>
     </ul>
   </div>
+  
   <% unless @product.option_groups.empty? %>
     <div class="group">
       <ul id="product_variations_fields" style="clear: both;">

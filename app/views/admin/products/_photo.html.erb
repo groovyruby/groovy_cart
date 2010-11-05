@@ -1,4 +1,5 @@
 <li class="photo">
+  <%= image_tag f.object.photo(:thumb) unless f.object.new_record? %>
   <%= f.hidden_field :id, :class=>"partial_id" %>
   <%= f.label :photo, :class=>"label" %>
   <%= f.file_field :photo %>
