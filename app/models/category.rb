@@ -10,6 +10,9 @@ class Category < ActiveRecord::Base
 
   attr_accessible :name, :parent_id, :extra_params, :is_visible
 
+  def to_s
+    self.name
+  end
 
 
 end

@@ -10,18 +10,28 @@
     <div class="inner">
       
         <p>
-          <b><%= t("activerecord.attributes.admin_category.name", :default => t("activerecord.labels.name", :default => "Name")) %>:</b>
+          <b><%= t("activerecord.attributes.category.name", :default => t("activerecord.labels.name", :default => "Name")) %>:</b>
           <%= @category.name %>
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.admin_category.cached_slug", :default => t("activerecord.labels.slug", :default => "Slug")) %>:</b>
+          <b><%= t("activerecord.attributes.category.cached_slug", :default => t("activerecord.labels.slug", :default => "Slug")) %>:</b>
           <%= @category.cached_slug %>
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.admin_category.parent", :default => t("activerecord.labels.parent", :default => "Parent")) %>:</b>
+          <b><%= t("activerecord.attributes.category.parent", :default => t("activerecord.labels.parent", :default => "Parent")) %>:</b>
           <%= link_to(@category.parent.name, [:admin, @category.parent]) unless @category.parent.blank? %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.category.extra_params", :default => "Extra params") %>:</b>
+          <%= @category.extra_params %>
+        </p>
+
+        <p>
+          <b><%= t("groovy_cart.actions.open_in_shop", :default => "Open in shop") %>:</b>
+          <%= link_to(@category, @category) unless @category.parent.blank? %>
         </p>
       <div class="wat-cf">
         <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_admin_category_path(@category), :class => "button" %> 
