@@ -12,9 +12,8 @@
         <tr>             
           <th class="first">ID</th>
                     <th>
-            <%= t("activerecord.attributes.admin_brand.name", :default => t("activerecord.labels.name", :default => "Name")) %>
+            <%= t("activerecord.attributes.brand.name", :default => t("activerecord.labels.name", :default => "Name")) %>
           </th>
-                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @brands.each do |brand| -%>
@@ -24,9 +23,6 @@
           </td>
                     <td>
             <%= link_to brand.name, admin_brand_path(brand) %>
-          </td>
-                    <td>
-            <%= brand.created_at %>
           </td>
           <td class="last">
             <%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_brand_path(brand) %> |

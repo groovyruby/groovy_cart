@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Web App</title>
+  <title>Groovy Cart</title>
   <%= stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/default/style", "web-app-theme/override", :cache => true %>
   <%= javascript_include_tag 'jquery/jquery.min.js', 'rails', 'application', :cache => true %>
   <%= csrf_meta_tag %>
@@ -10,7 +10,7 @@
 <body>
   <div id="container">
     <div id="header">
-      <h1><a href="/">Web App</a></h1>
+      <h1><a href="/">Groovy Cart</a></h1>
       <div id="user-navigation">
         <ul class="wat-cf">
           <li><a href="#"><%= t("web-app-theme.profile", :default => "Profile") %></a></li>
@@ -42,7 +42,7 @@
         <%= yield %>
         <div id="footer">
           <div class="block">
-            <p>Copyright &copy; <%= Time.now.year %> Web App.</p>
+            <p>Copyright &copy; <%= Time.now.year %> Groovy Cart.</p>
           </div>      
         </div>
       </div>

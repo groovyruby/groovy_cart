@@ -14,7 +14,6 @@
                     <th>
             <%= t("activerecord.attributes.admin_product_type.name", :default => t("activerecord.labels.name", :default => "Name")) %>
           </th>
-                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @product_types.each do |product_type| -%>
@@ -24,9 +23,6 @@
           </td>
                     <td>
             <%= link_to product_type.name, admin_product_type_path(product_type) %>
-          </td>
-                    <td>
-            <%= product_type.created_at %>
           </td>
           <td class="last">
             <%= link_to "new product of type", new_admin_product_path(:product_type=>product_type) %> |

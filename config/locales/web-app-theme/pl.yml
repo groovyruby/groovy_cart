@@ -6,3 +6,5 @@ pl:
     or: lub
     list: Lista
     new: Nowy rekord
+    show: Pokaż
+    created_at: Data utworzenia

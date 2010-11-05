@@ -14,7 +14,6 @@
                     <th>
             <%= t("activerecord.attributes.admin_option_group.name", :default => t("activerecord.labels.name", :default => "Name")) %>
           </th>
-                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @option_groups.each do |option_group| -%>
@@ -24,9 +23,6 @@
           </td>
                     <td>
             <%= link_to option_group.name, admin_option_group_path(option_group) %>
-          </td>
-                    <td>
-            <%= option_group.created_at %>
           </td>
           <td class="last">
             <%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_option_group_path(option_group) %> |

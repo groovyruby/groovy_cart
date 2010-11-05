@@ -19,7 +19,6 @@
           <th>
             <%= sort_link @search, :sku, t("activerecord.attributes.product.sku", :default => t("activerecord.labels.sku", :default => "SKU")) %>
           </th>
-          <th><%= sort_link @search, :created_at, t("web-app-theme.created_at", :default => "Created at")  %></th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @products.each do |product| -%>
@@ -32,9 +31,6 @@
           </td>
           <td>
             <%= product.sku %>
-          </td>
-                    <td>
-            <%= product.created_at %>
           </td>
           <td class="last">
             <%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_product_path(product) %> |

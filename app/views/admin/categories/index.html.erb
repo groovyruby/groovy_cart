@@ -11,10 +11,12 @@
       <table class="table">
         <tr>             
           <th class="first">ID</th>
-                    <th>
-            <%= t("activerecord.attributes.admin_category.name", :default => t("activerecord.labels.name", :default => "Name")) %>
+          <th>
+            <%= t("activerecord.attributes.category.name", :default => t("activerecord.labels.name", :default => "Name")) %>
           </th>
-                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th>
+            <%= t("activerecord.attributes.category.parents_path", :default => t("activerecord.labels.parents_path", :default => "parents_path")) %>
+          </th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @categories.each do |category| -%>
@@ -22,11 +24,11 @@
           <td>
             <%= category.id %>
           </td>
-                    <td>
+          <td>
             <%= link_to category.name, admin_category_path(category) %>
           </td>
-                    <td>
-            <%= category.created_at %>
+          <td>
+            <%= category.ancestors.join(' > ') %>
           </td>
           <td class="last">
             <%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_category_path(category) %> |

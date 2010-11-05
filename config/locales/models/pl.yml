@@ -13,3 +13,11 @@ pl:
         parent: Kategoria nadrzędna
         extra_params: Dodatkowe parametry
         is_visible: Widocznośc
+      brand:
+        name: Nazwa
+      product_type:
+        name: Nazwa
+        
+    labels:
+      name: Nazwa
+      created_at: Data utworzenia
