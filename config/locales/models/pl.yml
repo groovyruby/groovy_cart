@@ -12,3 +12,4 @@ pl:
         name: Nazwa
         parent: Kategoria nadrzędna
         extra_params: Dodatkowe parametry
+        is_visible: Widocznośc

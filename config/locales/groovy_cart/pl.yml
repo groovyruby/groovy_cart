@@ -12,6 +12,7 @@ pl:
         name: ""
         parent: Kategoria nadrzędna względnie obecnej
         extra_params: Dodatkowe parametry kategorii, mogą byc użyte np. w widokach do ustawiania klas warts
+        is_visible: Określa, czy kategoria jest pokazywana publicznie w sklepie
       option_group:
         name: ""
         slug: Identyfikator grupy opcji, może byc przydatny np. designerom odpowiedzialnym za twój sklep. Raz wpisanego lepiej nie zmieniac.

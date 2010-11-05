@@ -13,9 +13,15 @@
   </div>
 
   <div class="group">
-    <%= f.label :parent_id, t("activerecord.attributes.category.extra_params", :default => "Extra params"), :class => :label %>
+    <%= f.label :extra_params, t("activerecord.attributes.category.extra_params", :default => "Extra params"), :class => :label %>
     <%= f.text_field :extra_params, :class => 'text_field' %>
     <span class="description"><%= t("groovy_cart.descriptions.category.extra_params") %></span>
+  </div>
+
+  <div class="group">
+    <%= f.label :is_visible, t("activerecord.attributes.category.is_visible", :default => "Is visible"), :class => :label %>
+    <%= f.check_box :is_visible, :class => 'text_field' %>
+    <span class="description"><%= t("groovy_cart.descriptions.category.is_visible") %></span>
   </div>
 
         
