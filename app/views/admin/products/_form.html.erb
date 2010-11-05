@@ -3,7 +3,6 @@
   <script type="text/javascript" charset="utf-8">
     $(document).ready(function(){
       <% product_variation = @product.product_variations.new
-       product_variation.build_photo
        %>
       nested_forms['product_variation'] = "<%= generate_template(f, :product_variations, :object=>product_variation) %>";
       nested_forms['photo'] = "<%= generate_template(f, :photos) %>";
@@ -25,7 +24,7 @@
 
   <div class="group">
     <%= f.label :description, t("activerecord.attributes.product.description", :default => "Description"), :class => :label %>
-    <%= f.text_area :description, :class => 'text_area' %>
+    <%= f.text_area :description, :class => 'text_area', :size=>"40x10" %>
     <span class="description"><%= t("groovy_cart.descriptions.product.description") %></span>
   </div>
 

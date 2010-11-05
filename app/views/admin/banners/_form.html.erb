@@ -1,4 +1,5 @@
 <%= form_for [:admin, @banner], :html => { :class => :form, :multipart=>true } do |f| -%>
+  <%= render :partial=>"/admin/shared/form_errors", :locals=>{:f=>f} %>
   <div class="group">
     <%= f.label :name, t("activerecord.attributes.banner.name", :default => "Name"), :class => :label %>
     <%= f.text_field :name, :class => 'text_field' %>

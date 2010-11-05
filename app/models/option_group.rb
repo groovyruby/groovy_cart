@@ -14,5 +14,5 @@ class OptionGroup < ActiveRecord::Base
 
   accepts_nested_attributes_for :options, :allow_destroy=>true, :reject_if=>proc {|o| o['name'].blank?}
 
-  attr_accessible :name, :option_group_type, :options_attributes, :slug
+  attr_accessible :name, :option_group_type, :options_attributes, :slug, :should_have_photos
 end

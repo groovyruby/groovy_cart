@@ -1,4 +1,4 @@
-
+  <%= render :partial=>"/admin/shared/form_errors", :locals=>{:f=>f} %>
   <div class="group">
     <%= f.label :name, t("activerecord.attributes.banner_placement.name", :default => "Name"), :class => :label %>
     <%= f.text_field :name, :class => 'text_field' %>
