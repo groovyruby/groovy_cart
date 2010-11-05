@@ -6,6 +6,7 @@
   </div>
 
   <div class="group">
+    <%= image_tag(@banner.banner.url(:target)) unless f.object.new_record? %>
     <%= f.label :banner, t("activerecord.attributes.banner.banner", :default => "Banner"), :class => :label %>
     <%= f.file_field :banner, :class => 'text_field' %>
     <span class="description">Ex: a simple text</span>
