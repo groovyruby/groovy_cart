@@ -1,5 +1,6 @@
 class BannerType < ActiveRecord::Base
-
+  has_many :banners
+  
   validates :name, :presence=>true
   validates :height, :presence=>true, :numericality=>true
   validates :width, :presence=>true, :numericality=>true

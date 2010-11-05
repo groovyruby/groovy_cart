@@ -24,6 +24,12 @@
   </div>
 
   <div class="group">
+    <%= f.label :target_url, t("activerecord.attributes.banner.target_url", :default => "Target url"), :class => :label %>
+    <%= f.text_field :target_url, :class => 'text_field' %>
+    <span class="description">Ex: a simple text</span>
+  </div>
+
+  <div class="group">
     <%= f.label :is_active, t("activerecord.attributes.banner.is_active", :default => "Is active"), :class => :label %>
     <%= f.check_box :is_active, :class => 'check_box' %>
     <span class="description">Ex: a simple text</span>

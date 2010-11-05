@@ -1,5 +1,8 @@
 GroovyCart::Application.routes.draw do
 
+
+  resources :banners
+
   resource :cart do
     member do
       post 'add_product'

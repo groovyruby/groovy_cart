@@ -10,42 +10,38 @@
     <div class="inner">
       
         <p>
-          <b><%= t("activerecord.attributes.admin_banner.name", :default => t("activerecord.labels.name", :default => "Name")) %>:</b>
+          <b><%= t("activerecord.attributes.banner.name", :default => t("activerecord.labels.name", :default => "name")) %>:</b>
           <%= @banner.name %>
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.admin_banner.banner_file_name", :default => t("activerecord.labels.banner_file_name", :default => "Banner file name")) %>:</b>
+          <b><%= t("activerecord.attributes.banner.banner_file_name", :default => t("activerecord.labels.banner_file_name", :default => "banner file name")) %>:</b>
           <%= @banner.banner_file_name %>
         </p>
 
+
         <p>
-          <b><%= t("activerecord.attributes.admin_banner.banner_content_type", :default => t("activerecord.labels.banner_content_type", :default => "Banner content type")) %>:</b>
-          <%= @banner.banner_content_type %>
+          <b><%= t("activerecord.attributes.banner.banner_type_id", :default => t("activerecord.labels.banner_type_id", :default => "banner type")) %>:</b>
+          <%= @banner.banner_type %>
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.admin_banner.banner_file_size", :default => t("activerecord.labels.banner_file_size", :default => "Banner file size")) %>:</b>
-          <%= @banner.banner_file_size %>
+          <b><%= t("activerecord.attributes.banner.banner_placement_id", :default => t("activerecord.labels.banner_placement_id", :default => "banner placement")) %>:</b>
+          <%= @banner.banner_placement %>
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.admin_banner.banner_type_id", :default => t("activerecord.labels.banner_type_id", :default => "Banner type")) %>:</b>
-          <%= @banner.banner_type_id %>
+          <b><%= t("activerecord.attributes.banner.target_url", :default => t("activerecord.labels.target_url", :default => "target url")) %>:</b>
+          <%= @banner.target_url %>
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.admin_banner.banner_placement_id", :default => t("activerecord.labels.banner_placement_id", :default => "Banner placement")) %>:</b>
-          <%= @banner.banner_placement_id %>
-        </p>
-
-        <p>
-          <b><%= t("activerecord.attributes.admin_banner.is_active", :default => t("activerecord.labels.is_active", :default => "Is active")) %>:</b>
+          <b><%= t("activerecord.attributes.admin_banner.is_active", :default => t("activerecord.labels.is_active", :default => "is active")) %>:</b>
           <%= @banner.is_active %>
         </p>
       <div class="wat-cf">
-        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_admin_banner_path(@banner), :class => "button" %> 
-        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), admin_banner_path(@banner), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "edit")}") + " " + t("web-app-theme.edit", :default=> "edit"), edit_admin_banner_path(@banner), :class => "button" %>
+        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "delete")}") + " " + t("web-app-theme.delete", :default => "delete"), admin_banner_path(@banner), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "are you sure?")}" %>
       </div>      
     </div>
   </div>

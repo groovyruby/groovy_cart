@@ -5,7 +5,7 @@ class Photo < ActiveRecord::Base
         :thumb => "50x50>",
         :displayable=>"800x600>",
         :list=>Setting.get('product.list_image_dimenstions'),
-        :show=>Setting.get('product.list_image_dimenstions')
+        :show=>Setting.get('product.show_image_dimenstions')
   }
 
 
