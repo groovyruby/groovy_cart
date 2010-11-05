@@ -11,5 +11,11 @@ require 'spec_helper'
 #   end
 # end
 describe BannersHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "load banner" do
+    it "should properly generate banner code" do
+      b = Factory(:banner)
+      p = b.banner_placement
+      helper.load_banner(p.identifier).should match /<div class=\"banner_wrapper\" id=\"banner_#{b.id}\"><a href=\".*\"><img alt=\".*\" src=\".*\" \/><\/a><\/div>/
+    end
+  end
 end
