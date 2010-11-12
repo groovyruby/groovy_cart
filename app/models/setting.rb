@@ -18,7 +18,7 @@ class Setting < ActiveRecord::Base
   end
   
   # Return the value for a setting
-  def self.get(identifier, create_new=false)
+  def self.get(identifier, new_value=nil)
     Setting.extract_all_to_configatron if configatron.settings_update_time.nil? || configatron.settings_update_time < Time.now - Setting::CACHE_TIME
     ret = configatron.settings[identifier.to_sym]
     return ret unless ret.nil?
@@ -30,10 +30,11 @@ class Setting < ActiveRecord::Base
     end
     
     if setting.nil?
-      if create_new
+      unless new_value.blank?
         s = Setting.new
         s.identifier = identifier
         s.label = identifier
+        s.value = new_value
         s.save!
         s.value
       else
