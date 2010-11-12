@@ -47,15 +47,18 @@
         }
       }
       if(!success){
-        $('form#add_to_cart').submit(submit_blocker);
+        $('form#add_to_cart').bind('submit', submit_blocker);
         $('#product_price').text('<%= t '.variation_not_available' %>');
       }else{
+        $('form#add_to_cart').unbind('submit', submit_blocker);
         $('#product_price').text(price);
       }
-      $('#product_variation_id').val(variation_id);
+      $('#variation_id').val(variation_id);
     }
 
     function apply_variations(event){
+      $('form#add_to_cart').unbind('submit', submit_blocker);
+      
       var v = $(this).val();
       var selects = new Array();
       var previously_selected = new Array();
@@ -103,7 +106,7 @@
       //$('select.variation_select').bind('change', apply_variations);
       $('select.variation_select').bind('change', recalculate_prices);
       //$('select.variation_select:first').change();
-      
+      recalculate_prices();
     });
   </script>
 <% end %>
@@ -113,9 +116,9 @@
 
 
 <h2>Add to cart</h2>
-<form action="" id="add_to_cart" method="post" name="">
-<%= form_tag :url=>add_product_to_cart_path, :html=>{:id=>"add_to_cart"} do %>
-  <%= hidden_field_tag :product_variation_id, ''%>
+<%= form_tag add_product_to_cart_path, :id=>"add_to_cart" do -%>
+  <%= hidden_field_tag :variation_id, ''%>
+  <%= hidden_field_tag :product_id, @product.id%>
   <% for og in @option_groups %>
     <label for="<%= og.slug %>-select"><%= og.name %>:</label>
     <select id="<%= og.slug %>-select" class="variation_select">
@@ -126,6 +129,7 @@
       <% end %>
     </select>
   <% end %>
+  <input type="submit" />
 <% end %>
 
 <h2>Price</h2>

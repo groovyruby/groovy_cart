@@ -14,9 +14,6 @@ class ProductsController < GroovyCartController
         session['last_category_id'] = @product.categories.first
       end
     end
-
-
-
   end
 
 end

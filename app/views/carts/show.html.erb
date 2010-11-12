@@ -1,2 +1,25 @@
-<h1>Carts#show</h1>
-<p>Find me in app/views/carts/show.html.erb</p>
+<h1>Cart</h1>
+
+
+<table>
+  <tr>
+    <th>Product name</th>
+    <th>Quantity</th>
+    <th>Unit Price</th>
+    <th>Total value</th>
+    <th>delete</th>
+  </tr>
+  <% for ci in @cart.cart_items %>
+    <tr>
+      <td><%= link_to ci.product.name, ci.product %> <%= "(#{ci.product_variation.to_s})" unless ci.product_variation.blank? %></td>
+      <td align="right"><%= ci.quantity %></td>
+      <td align="right"><%= ci.item_price %></td>
+      <td align="right"><%=	ci.item_value %></td>
+      <td align="right">[x]</td>
+    </tr>
+  <% end %>
+  <tr>
+    <td colspan="4" align="right">Total value: <%= @cart.total_value %></td>
+    <td></td>
+  </tr>
+</table>
