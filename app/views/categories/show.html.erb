@@ -1,5 +1,12 @@
 <h1>Category: <%= @category.name %></h1>
 
+<h2>Child categories</h2>
+<ul>
+  <% for c in @child_categories -%>
+    <li><%= link_to c.name, c %></li>
+  <% end %>
+</ul>
+
 <h2>Products</h2>
 <ul>
   <% for p in @products %>

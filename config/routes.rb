@@ -5,7 +5,7 @@ GroovyCart::Application.routes.draw do
 
   resource :cart do
     member do
-      post 'add_product'
+      post 'add_product_to'
     end
   end
 

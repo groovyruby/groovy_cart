@@ -14,7 +14,7 @@ class Product < ActiveRecord::Base
   validates :price_promo, :numericality=>{:greater_than_or_equal_to=>0, :allow_nil=>true}
 
   accepts_nested_attributes_for :photos, :allow_destroy=>true, :reject_if=>proc{|p| p['photo'].blank?}
-  accepts_nested_attributes_for :product_variations, :allow_destroy=>true
+  accepts_nested_attributes_for :product_variations, :allow_destroy=>true, :reject_if=>proc{|pv| pv['price'].blank? }
   accepts_nested_attributes_for :properties
   attr_accessible :name, :description, :brand_id, :category_ids, :price, :price_promo, :product_variations_attributes,
                   :option_group_ids, :properties_attributes, :photos_attributes

@@ -10,6 +10,7 @@ begin;seq = seq;rescue;end;seq = seq==nil ? 'new_product_variation' : seq
       <% sel = sel.id unless sel.blank? %>
       <%= select "product[product_variations_attributes][#{seq}][option_ids]", '', og.options.all.map{|o| [o.name, o.id]}, {:selected=>sel} %>
     <% end %><br/>
+    <%= f.label :_destroy %><%= f.check_box :_destroy %>
     
     
   <% else %>

@@ -3,7 +3,7 @@ class CartsController < GroovyCartController
   def show
   end
 
-  def add_product
+  def add_product_to
     product = Product.find(params[:product_id])
     product_variation = nil
     product_variation = product.product_variations.find(params[:variation_id]) unless params[:variation_id].blank?
