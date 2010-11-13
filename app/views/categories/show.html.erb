@@ -13,3 +13,10 @@
     <li><%= link_to p.name, product_path(p) %></li>
   <% end %>
 </ul>
+
+<h2>Brand</h2>
+<ul>
+  <% for b in @brands %>
+    <li><%= link_to b, b %> <%= link_to "in this category", category_path(@category, :brand=>b.to_param) %></li>
+  <% end %>
+</ul>

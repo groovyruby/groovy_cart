@@ -5,7 +5,7 @@ class ProductsController < GroovyCartController
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product = Product.includes(:properties=>[:property_type]).find(params[:id])
     @option_groups = @product.option_groups
     unless params[:category_id].blank?
       session['last_category_id'] = Category.find(params[:category_id]).id
