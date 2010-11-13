@@ -1,5 +1,6 @@
 GroovyCart::Application.routes.draw do
 
+  resources :pages
 
   resources :banners
 
@@ -68,6 +69,7 @@ GroovyCart::Application.routes.draw do
     resources :product_types
     resources :products
     resource :setting
+    resources :pages
     root :to=>"dashboard#index"
   end
 

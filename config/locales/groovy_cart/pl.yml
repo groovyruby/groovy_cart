@@ -27,5 +27,6 @@ pl:
       categories: Kategorie
       products: Produkty
       brands: Marki
+      pages: Strony
     actions:
       open_in_shop: Otwórz w sklepie
