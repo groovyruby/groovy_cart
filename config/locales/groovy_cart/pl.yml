@@ -28,5 +28,6 @@ pl:
       products: Produkty
       brands: Marki
       pages: Strony
+      shipping_methods: Dostawa
     actions:
       open_in_shop: Otwórz w sklepie

@@ -1,0 +1,34 @@
+<%= form_for [:admin, @shipping_method], :html => { :class => :form } do |f| -%>
+
+  <div class="group">
+    <%= f.label :name, t("activerecord.attributes.shipping_method.name", :default => "Name"), :class => :label %>
+    <%= f.text_field :name, :class => 'text_field' %>
+    <span class="description"><% t("web-app-theme.descriptions.shipping_method.name", :default => "") %></span>
+  </div>
+
+  <div class="group">
+    <%= f.label :pricing_type, t("activerecord.attributes.shipping_method.pricing_type", :default => "Pricing type"), :class => :label %>
+    <%= f.text_field :pricing_type, :class => 'text_field' %>
+    <span class="description"><% t("web-app-theme.descriptions.shipping_method.pricing_type", :default => "") %></span>
+  </div>
+
+  <div class="group">
+    <%= f.label :flat_price, t("activerecord.attributes.shipping_method.flat_price", :default => "Flat price"), :class => :label %>
+    <%= f.text_field :flat_price, :class => 'text_field' %>
+    <span class="description"><% t("web-app-theme.descriptions.shipping_method.flat_price", :default => "") %></span>
+  </div>
+
+  <div class="group">
+    <%= f.label :free_from_cart_value, t("activerecord.attributes.shipping_method.free_from_cart_value", :default => "Free from cart value"), :class => :label %>
+    <%= f.text_field :free_from_cart_value, :class => 'text_field' %>
+    <span class="description"><% t("web-app-theme.descriptions.shipping_method.free_from_cart_value", :default => "") %></span>
+  </div>
+        
+  <div class="group navform wat-cf">
+    <button class="button" type="submit">
+      <%= image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%= t("web-app-theme.save", :default => "Save") %>
+    </button>
+    <span class="text_button_padding"><%= t("web-app-theme.or", :default => "or") %></span>
+    <%= link_to t("web-app-theme.cancel", :default => "Cancel"), admin_shipping_methods_path, :class => "text_button_padding link_button" %>
+  </div>
+<% end -%>

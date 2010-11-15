@@ -1,0 +1,39 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", admin_shipping_methods_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_shipping_method_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_shipping_method_path %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">
+      
+        <p>
+          <b><%= t("activerecord.attributes.admin_shipping_method.name", :default => t("activerecord.labels.name", :default => "Name")) %>:</b>
+          <%= @shipping_method.name %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_shipping_method.pricing_type", :default => t("activerecord.labels.pricing_type", :default => "Pricing type")) %>:</b>
+          <%= @shipping_method.pricing_type %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_shipping_method.flat_price", :default => t("activerecord.labels.flat_price", :default => "Flat price")) %>:</b>
+          <%= @shipping_method.flat_price %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_shipping_method.free_from_cart_value", :default => t("activerecord.labels.free_from_cart_value", :default => "Free from cart value")) %>:</b>
+          <%= @shipping_method.free_from_cart_value %>
+        </p>
+      <div class="wat-cf">
+        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_admin_shipping_method_path(@shipping_method), :class => "button" %> 
+        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), admin_shipping_method_path(@shipping_method), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>      
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>
