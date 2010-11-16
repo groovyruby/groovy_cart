@@ -1,8 +1,12 @@
 class Cart < ActiveRecord::Base
   
-  
+  belongs_to :shipping_method
   has_many :cart_items
   before_save :recalculate
+
+  accepts_nested_attributes_for :cart_items, :allow_destroy=>true
+
+  attr_accessible :cart_items_attributes, :shipping_method_id
   
   def add_product(product, product_variation=nil, quantity=1)
     ci = self.find_cart_item(product, product_variation)
@@ -32,9 +36,16 @@ class Cart < ActiveRecord::Base
   
   def recalculate
     self.total_value = 0
+    self.shipping_method = ShippingMethod.first if self.shipping_method.blank?
+
     for ci in self.cart_items.all
       self.total_value += ci.item_value
     end
+    self.items_value = self.total_value
+    self.shipping_cost = self.shipping_method.calculate_for_cart(self)
+
+    self.total_value += self.shipping_cost
+
     self.discounted_value = self.total_value
   end
   
@@ -50,6 +61,12 @@ class Cart < ActiveRecord::Base
       ci.save
     end
     ci
+  end
+
+  def get_items_count
+    ret = 0
+    self.cart_items.each {|ci| ret += ci.quantity}
+    ret
   end
     
 end

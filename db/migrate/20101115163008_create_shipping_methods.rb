@@ -3,8 +3,8 @@ class CreateShippingMethods < ActiveRecord::Migration
     create_table :shipping_methods do |t|
       t.string :name
       t.string :pricing_type
-      t.decimal :flat_price
-      t.decimal :free_from_cart_value
+      t.decimal :flat_price, :precision => 12, :scale => 2, :default=>0
+      t.decimal :free_from_cart_value, :precision => 12, :scale => 2
 
       t.timestamps
     end

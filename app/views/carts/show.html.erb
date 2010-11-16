@@ -1,6 +1,6 @@
 <h1>Cart</h1>
 
-
+<% form_for @cart do |f|%>
 <table>
   <tr>
     <th>Product name</th>
@@ -9,17 +9,35 @@
     <th>Total value</th>
     <th>delete</th>
   </tr>
-  <% for ci in @cart.cart_items %>
+  <% f.fields_for :cart_items do |fci| %>
     <tr>
-      <td><%= link_to ci.product.name, ci.product %> <%= "(#{ci.product_variation.to_s})" unless ci.product_variation.blank? %></td>
-      <td align="right"><%= ci.quantity %></td>
-      <td align="right"><%= ci.item_price %></td>
-      <td align="right"><%=	ci.item_value %></td>
-      <td align="right">[x]</td>
+      <td><%= link_to fci.object.product.name, fci.object.product %> <%= "(#{fci.object.product_variation.to_s})" unless fci.object.product_variation.blank? %></td>
+      <td align="right"><%= fci.text_field :quantity %></td>
+      <td align="right"><%= fci.object.item_price %></td>
+      <td align="right"><%=	fci.object.item_value %></td>
+      <td align="right"><%= fci.check_box :_destroy %></td>
     </tr>
   <% end %>
+  <tr>
+    <td colspan="4" align="right">Items value: <%= @cart.items_value %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td colspan="4" align="right">Shipping cost: <%= @cart.shipping_cost %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td colspan="4" align="right">Shipping method: <%= f.select :shipping_method_id, ShippingMethod.all.map{|sm| [sm.name, sm.id]} %> </td>
+    <td></td>
+  </tr>
   <tr>
     <td colspan="4" align="right">Total value: <%= @cart.total_value %></td>
     <td></td>
   </tr>
+  <tr>
+    <td colspan="4" align="right"><%= f.submit "update cart" %></td>
+    <td></td>
+  </tr>
 </table>
+
+<% end %>

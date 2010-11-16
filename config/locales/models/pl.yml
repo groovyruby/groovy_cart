@@ -17,6 +17,12 @@ pl:
         name: Nazwa
       product_type:
         name: Nazwa
+      shipping_method:
+        name: Nazwa
+        pricing_type: Model płatności
+        flat_price: Koszt dostawy
+        free_from_cart_value: Dostawa darmowa od
+
         
     labels:
       name: Nazwa

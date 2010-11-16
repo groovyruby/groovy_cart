@@ -1,5 +1,13 @@
-<%= form_for [:admin, @shipping_method], :html => { :class => :form } do |f| -%>
+<% content_for :head do %>
+<script type="text/javascript">
+  $(document).ready(function(){
 
+  });
+</script>
+<% end %>
+
+<%= form_for [:admin, @shipping_method], :html => { :class => :form } do |f| -%>
+  <%= render :partial=>"/admin/shared/form_errors", :locals=>{:f=>f} %>
   <div class="group">
     <%= f.label :name, t("activerecord.attributes.shipping_method.name", :default => "Name"), :class => :label %>
     <%= f.text_field :name, :class => 'text_field' %>
@@ -8,7 +16,7 @@
 
   <div class="group">
     <%= f.label :pricing_type, t("activerecord.attributes.shipping_method.pricing_type", :default => "Pricing type"), :class => :label %>
-    <%= f.text_field :pricing_type, :class => 'text_field' %>
+    <%= f.select :pricing_type, ShippingMethod::PRICING_TYPES, :class => 'text_field' %>
     <span class="description"><% t("web-app-theme.descriptions.shipping_method.pricing_type", :default => "") %></span>
   </div>
 
