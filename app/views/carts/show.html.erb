@@ -1,6 +1,6 @@
 <h1>Cart</h1>
 
-<% form_for @cart do |f|%>
+<%= form_for @cart do |f|%>
 <table>
   <tr>
     <th>Product name</th>
@@ -9,7 +9,7 @@
     <th>Total value</th>
     <th>delete</th>
   </tr>
-  <% f.fields_for :cart_items do |fci| %>
+  <%= f.fields_for :cart_items do |fci| %>
     <tr>
       <td><%= link_to fci.object.product.name, fci.object.product %> <%= "(#{fci.object.product_variation.to_s})" unless fci.object.product_variation.blank? %></td>
       <td align="right"><%= fci.text_field :quantity %></td>
@@ -40,4 +40,6 @@
   </tr>
 </table>
 
+
 <% end %>
+<%= link_to "proceed to checkout", new_order_path %>

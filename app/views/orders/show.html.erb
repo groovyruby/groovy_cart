@@ -1,0 +1,38 @@
+<h1>Orders#show</h1>
+
+<table>
+  <tr>
+    <th>Product name</th>
+    <th>Quantity</th>
+    <th>Unit Price</th>
+    <th>Total value</th>
+    <th>delete</th>
+  </tr>
+  <% for ci in @cart.cart_items %>
+    <tr>
+      <td><%= ci.product.name %> <%= "(#{ci.product_variation.to_s})" unless ci.product_variation.blank? %></td>
+      <td align="right"><%= ci.quantity %></td>
+      <td align="right"><%= ci.item_price %></td>
+      <td align="right"><%=	ci.item_value %></td>
+    </tr>
+  <% end %>
+  <tr>
+    <td colspan="4" align="right">Items value: <%= @cart.items_value %></td>
+  </tr>
+  <tr>
+    <td colspan="4" align="right">Shipping cost: <%= @cart.shipping_cost %></td>
+  </tr>
+  <tr>
+    <td colspan="4" align="right">Shipping method: <%= @cart.shipping_method %> </td>
+  </tr>
+  <tr>
+    <td colspan="4" align="right">Total value: <%= @cart.total_value %></td>
+  </tr>
+</table>
+
+<ul>
+  <li><%= link_to "edit cart", cart_path %></li>
+  <li><%= link_to "edit address", edit_order_path %></li>
+</ul>
+
+<%= button_to "Confirm", confirm_order_path %>

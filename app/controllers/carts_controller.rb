@@ -7,7 +7,7 @@ class CartsController < GroovyCartController
     @cart.update_attributes(params[:cart])
     @cart.recalculate
     @cart.save
-    @cart.destroy if @cart.cart_items.count == 0
+    #@cart.destroy if @cart.cart_items.count == 0
     redirect_to cart_url
   end
 

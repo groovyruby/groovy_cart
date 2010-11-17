@@ -1,0 +1,46 @@
+Give us your address details:
+
+<%= form_for @order, :url=>order_path  do |f| %>
+  <%= render :partial=>"/admin/shared/form_errors", :locals=>{:f=>f}%>
+  <%= f.fields_for :addresses do |fa| %>
+    <%= fa.hidden_field :is_shipping %>
+    <% if fa.object.is_shipping? %><strong>Shipping address</strong><% end %>
+    <div>
+      <%= fa.label :first_name %><br />
+      <%= fa.text_field :first_name %>
+    </div>
+    <div>
+      <%= fa.label :last_name %><br />
+      <%= fa.text_field :last_name %>
+    </div>
+    <% unless fa.object.is_shipping? %>
+    <div>
+      <%= fa.label :email %><br />
+      <%= fa.text_field :email %>
+    </div>
+      <div>
+      <%= fa.label :phone %><br />
+      <%= fa.text_field :phone %>
+    </div>
+    <% end %>
+    <div>
+      <%= fa.label :street %><br />
+      <%= fa.text_field :street %>
+    </div>
+    <div>
+      <%= fa.label :zip_code %><br />
+      <%= fa.text_field :zip_code %>
+    </div>
+    <div>
+      <%= fa.label :city %><br />
+      <%= fa.text_field :city %>
+    </div>
+    <div>
+      <%= fa.label :country %><br />
+      <%= fa.text_field :country %>
+    </div>
+  <% end %>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

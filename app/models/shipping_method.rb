@@ -22,4 +22,8 @@ class ShippingMethod < ActiveRecord::Base
     
     ret
   end
+
+  def to_s
+    self.name
+  end
 end

@@ -1,5 +1,6 @@
 class Cart < ActiveRecord::Base
-  
+
+  belongs_to :order
   belongs_to :shipping_method
   has_many :cart_items
   before_save :recalculate
@@ -47,6 +48,7 @@ class Cart < ActiveRecord::Base
     self.total_value += self.shipping_cost
 
     self.discounted_value = self.total_value
+    self.order.copy_values(true) unless self.order.blank?
   end
   
   def find_cart_item(product, product_variation)

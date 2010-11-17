@@ -1,5 +1,14 @@
 GroovyCart::Application.routes.draw do
 
+
+
+  resource :order, :except=>[:destroy] do
+    member do
+      post 'confirm'
+      get 'confirmed'
+    end
+  end
+
   resources :pages, :only=>[:show]
 
   resources :banners
@@ -66,11 +75,12 @@ GroovyCart::Application.routes.draw do
     resources :brands
     resources :categories
     resources :option_groups
+    resources :orders
+    resources :pages
     resources :product_types
     resources :products
     resource :setting
     resources :shipping_methods
-    resources :pages
     root :to=>"dashboard#index"
   end
 
