@@ -1,0 +1,49 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", admin_payment_gateways_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_payment_gateway_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_payment_gateway_path %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">
+      
+        <p>
+          <b><%= t("activerecord.attributes.admin_payment_gateway.name", :default => t("activerecord.labels.name", :default => "Name")) %>:</b>
+          <%= @payment_gateway.name %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_payment_gateway.class_name", :default => t("activerecord.labels.class_name", :default => "Class name")) %>:</b>
+          <%= @payment_gateway.class_name %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_payment_gateway.is_active", :default => t("activerecord.labels.is_active", :default => "Is active")) %>:</b>
+          <%= @payment_gateway.is_active %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_payment_gateway.additional_flat_fee", :default => t("activerecord.labels.additional_flat_fee", :default => "Additional flat fee")) %>:</b>
+          <%= @payment_gateway.additional_flat_fee %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_payment_gateway.additional_percentage_fee", :default => t("activerecord.labels.additional_percentage_fee", :default => "Additional percentage fee")) %>:</b>
+          <%= @payment_gateway.additional_percentage_fee %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_payment_gateway.free_from_cart_value", :default => t("activerecord.labels.free_from_cart_value", :default => "Free from cart value")) %>:</b>
+          <%= @payment_gateway.free_from_cart_value %>
+        </p>
+      <div class="wat-cf">
+        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_admin_payment_gateway_path(@payment_gateway), :class => "button" %> 
+        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), admin_payment_gateway_path(@payment_gateway), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>      
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

@@ -1,0 +1,2 @@
+module PaymentGatewaysHelper
+end

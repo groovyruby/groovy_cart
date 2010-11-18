@@ -1,10 +1,12 @@
 class Order < ActiveRecord::Base
   include ActiveRecord::Transitions
 
+  belongs_to :payment_gateway
   belongs_to :shipping_method
   has_one :cart
   has_many :addresses
   has_many :order_items
+  has_many :order_transactions
 
   validates :total_value, :numericality=>true
   validates :discount_value, :numericality=>true, :presence=>true
@@ -46,6 +48,10 @@ class Order < ActiveRecord::Base
     self.id.to_s
   end
 
+  def price_in_cents
+    (self.total_value*100).round
+  end
+
   def get_items_count
     ret = 0
     if not self.order_items.empty?
@@ -62,7 +68,12 @@ class Order < ActiveRecord::Base
       self.items_value = self.cart.items_value
 
       self.shipping_method = self.cart.shipping_method
+
       self.calculate_discount
+
+      #self.payment_gateway = self.cart.payment_gateway
+      self.apply_payment_cost if self.payment_gateway
+
       self.save if save_self
     end
   end
@@ -70,8 +81,15 @@ class Order < ActiveRecord::Base
   def copy_shipping_cost
     self.total_value = self.items_value
     self.shipping_cost = self.shipping_method.calculate_for_cart(self) unless self.shipping_method.blank?
-    self.total_value += self.shipping_cost
     self.calculate_discount
+    self.total_value += self.shipping_cost
+
+  end
+
+  def apply_payment_cost
+    self.total_value -= self.payment_cost
+    self.payment_cost = self.payment_gateway.calculate_for_order_value(self)
+    self.total_value += self.payment_cost
   end
 
   def calculate_discount
@@ -85,6 +103,8 @@ class Order < ActiveRecord::Base
         oi = self.order_items.new
         oi.product = ci.product
         oi.product_variation = ci.product_variation
+        oi.name = oi.product_variation.blank? ? oi.product.name : oi.product_variation.name
+        oi.sku = oi.product_variation.blank? ? oi.product.sku : oi.product_variation.sku
         oi.quantity = ci.quantity
         oi.item_price = ci.item_price
         oi.item_value = oi.quantity * oi.item_price

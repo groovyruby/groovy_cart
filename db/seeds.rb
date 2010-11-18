@@ -22,3 +22,35 @@ if Setting.get('product.show_image_dimensions').blank?
   s.save
 end
 
+if Setting.get('product.cart_image_dimensions').blank?
+  s = Setting.create({:value=>"80x80>"})
+  s.identifier = 'product.cart_image_dimensions'
+  s.label = 'product.cart_image_dimensions'
+  s.field_type = 'string'
+  s.save
+end
+
+if PaymentGateway.where('class_name=?', 'cod').blank?
+  pg = PaymentGateway.new
+  pg.name = 'Cash on delivery'
+  pg.class_name = 'cod'
+  pg.is_active = true
+  pg.save
+end
+
+if PaymentGateway.where('class_name=?', 'cod').first.blank?
+  pg = PaymentGateway.new
+  pg.name = 'Cash on delivery'
+  pg.class_name = 'cod'
+  pg.is_active = true
+  pg.save
+end
+
+if PaymentGateway.where('class_name=?', 'paypal_express').first.blank?
+  pg = PaymentGateway.new
+  pg.name = 'Paypal express'
+  pg.class_name = 'paypal_express'
+  pg.is_active = true
+  pg.additional_percentage_fee = '2.3'
+  pg.save
+end

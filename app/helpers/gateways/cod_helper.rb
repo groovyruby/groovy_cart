@@ -1,0 +1,2 @@
+module Gateways::CodHelper
+end

@@ -20,6 +20,11 @@ class CartsController < GroovyCartController
     redirect_to cart_url
   end
 
+  def destroy
+    @cart.destroy
+    redirect_to cart_url
+  end
+
 
 
 end

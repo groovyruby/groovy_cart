@@ -34,5 +34,7 @@
   <li><%= link_to "edit cart", cart_path %></li>
   <li><%= link_to "edit address", edit_order_path %></li>
 </ul>
-
-<%= button_to "Confirm", confirm_order_path %>
+<%= form_for @order, :url=>confirm_order_path, :html=>{:method=>:post} do |f| %>
+  <%= select_tag 'payment_gateway_id', options_for_select(PaymentGateway.active.all.map{|pg| ["#{pg.name} - #{pg.calculate_for_order_value(@cart)}", pg.id]}) %>
+  <%= f.submit "place an order" %>
+<% end %>

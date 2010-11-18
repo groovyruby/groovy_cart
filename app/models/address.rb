@@ -6,4 +6,8 @@ class Address < ActiveRecord::Base
 
   
   attr_accessible :first_name, :last_name, :street, :city, :zip_code, :country, :email, :phone, :is_shipping
+
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
 end

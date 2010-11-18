@@ -39,7 +39,12 @@ class OrdersController < GroovyCartController
 
   def confirm
     @order.confirm!
-    redirect_to confirmed_order_url
+    @order.payment_gateway = PaymentGateway.find(params[:payment_gateway_id])
+    @order.apply_payment_cost
+    @order.client_ip = request.remote_ip
+    @order.save
+    # TODO: redirect to chosen payments gateway
+    redirect_to url_for(:controller=>"/gateways/#{@order.payment_gateway.class_name}", :action=>"new")
   end
 
   def confirmed

@@ -6,7 +6,7 @@ class Photo < ActiveRecord::Base
         :displayable=>"800x600>",
         :list=>Setting.get('product.list_image_dimensions', "150x150"),
         :show=>Setting.get('product.show_image_dimensions', "300x300"),
-        :basket=>Setting.get('product.basket_image_dimensions', "80x80")
+        :cart=>Setting.get('product.cart_image_dimensions', "80x80")
   }
 
   attr_accessible :photo, :product_id, :option_id

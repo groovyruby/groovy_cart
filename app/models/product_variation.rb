@@ -9,4 +9,12 @@ class ProductVariation < ActiveRecord::Base
   def to_s
     self.options.all.map{|o| o.name}.join(', ')
   end
+
+  def name
+    "#{self.product.name} (#{self.to_s})"
+  end
+
+  def sku
+    "#{self.product.sku}-#{self.options.all.map{|o| o.name}.join('-')}"
+  end
 end

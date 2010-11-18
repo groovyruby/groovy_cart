@@ -1,0 +1,11 @@
+<% form_for @order, :url=>url_for(:action=>"success") do |f| %>
+  <%= f.error_messages %>
+  <% if @order.payment_token.blank? %>
+    ...
+  <% else %>
+    <%= f.hidden_field :payment_token %>
+    <p>Name: <%=h @order.addresses.first.full_name %></p>
+    <p>TODO Display order confirmation details</p>
+  <% end %>
+  <p><%= f.submit "Complete Order" %></p>
+<% end %>
