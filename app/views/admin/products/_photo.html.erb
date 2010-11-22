@@ -2,9 +2,10 @@
   <%= image_tag f.object.photo(:thumb) unless f.object.new_record? %>
   <%= f.hidden_field :id, :class=>"partial_id" %>
   <%= f.hidden_field :product_id %>
-  <%= f.hidden_field :option_id %>
   <%= f.label :photo, :class=>"label" %>
   <%= f.file_field :photo %>
+  <%= f.label :option_id %>
+  <%= f.select :option_id, option_groups_from_collection_for_select_with_empty(@product.option_groups, :options, :name, :id, :name, f.object.option_id) %>
   <%= f.label :_destroy %>
   <%= f.check_box :_destroy, :class=>'destroy_nested', 'data-selector'=>'li.photo' %>
 </li>

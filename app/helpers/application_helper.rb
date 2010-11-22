@@ -11,4 +11,8 @@ module ApplicationHelper
   def generate_template(form_builder, method, options = {})
     escape_javascript generate_html(form_builder, method, options)
   end
+
+  def option_groups_from_collection_for_select_with_empty(collection, group_method, group_label_method, option_key_method, option_value_method, selected_key)
+    '<option></option>'+option_groups_from_collection_for_select(collection, group_method, group_label_method, option_key_method, option_value_method, selected_key)
+  end
 end

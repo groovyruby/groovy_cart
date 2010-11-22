@@ -13,13 +13,17 @@ class Product < ActiveRecord::Base
   validates :price, :numericality=>{:greater_than_or_equal_to=>0}, :presence=>true
   validates :price_promo, :numericality=>{:greater_than_or_equal_to=>0, :allow_nil=>true}
 
+
+  validates_associated :product_variations
+  
   accepts_nested_attributes_for :photos, :allow_destroy=>true, :reject_if=>proc{|p| p['photo'].blank?}
   accepts_nested_attributes_for :product_variations, :allow_destroy=>true, :reject_if=>proc{|pv| pv['price'].blank? }
   accepts_nested_attributes_for :properties
   attr_accessible :name, :description, :brand_id, :category_ids, :price, :price_promo, :product_variations_attributes,
-                  :option_group_ids, :properties_attributes, :photos_attributes
+                  :option_group_ids, :properties_attributes, :photos_attributes, :sku
 
   before_save :fill_in_sku
+  after_update :clean_up_options_mess
 
   def get_price
     if not self.price_promo.blank? and self.price_promo>0
@@ -40,5 +44,33 @@ class Product < ActiveRecord::Base
   def get_photo
     self.photos.first || self.photos.build
   end
-  
+
+  def options
+    self.option_groups.map{|og| og.options.all }.flatten
+  end
+
+  def clean_up_options_mess
+    # Delete options (for variations) from non-existing groups
+    for pv in self.product_variations.all
+      for o in pv.options.all
+        pv.options.delete(o) unless self.option_groups.member?(o.option_group)
+      end
+    end
+
+    # delete option from photos for non-existing groups
+    for p in self.photos.all
+      p.option = nil unless self.option_groups.member?(p.option.option_group)
+    end if false
+
+    # create new options for variations (if needed)
+    for pv in self.product_variations.all
+      if pv.options.count != self.option_groups.count
+        og_ids = pv.options.all.map{|o| o.option_group_id}.uniq
+        for og in self.option_groups.where('option_groups.id not in (?)', og_ids)
+          pv.options << og.options.first
+        end
+      end
+    end
+
+  end
 end

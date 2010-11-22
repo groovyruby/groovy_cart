@@ -85,6 +85,7 @@
   </div>
   
   <% unless @product.option_groups.empty? %>
+    <h3>Variations</h3>
     <div class="group">
       <ul id="product_variations_fields" style="clear: both;">
         <% seq = 0 %>
@@ -102,6 +103,10 @@
   <div class="group navform wat-cf">
     <button class="button" type="submit">
       <%= image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%= t("web-app-theme.save", :default => "Save") %>
+    </button>
+    <span class="text_button_padding"><%= t("web-app-theme.or", :default => "or") %></span>
+    <button class="button" type="submit" name="return" value="1">
+      <%= image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save_and_return", :default => "Save and continue")}") %> <%= t("web-app-theme.save_and_return", :default => "Save and continue editing") %>
     </button>
     <span class="text_button_padding"><%= t("web-app-theme.or", :default => "or") %></span>
     <%= link_to t("web-app-theme.cancel", :default => "Cancel"), admin_products_path, :class => "text_button_padding link_button" %>
