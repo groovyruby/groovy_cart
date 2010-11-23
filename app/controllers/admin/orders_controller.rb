@@ -2,7 +2,7 @@ class Admin::OrdersController < AdminController
   # GET /orders
   # GET /orders.xml
   def index
-    @orders = Order.all
+    @orders = Order.ordered.all
 
     respond_to do |format|
       format.html # index.html.erb

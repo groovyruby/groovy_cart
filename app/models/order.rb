@@ -1,6 +1,8 @@
 class Order < ActiveRecord::Base
   include ActiveRecord::Transitions
 
+  scope :ordered, order('created_at DESC')
+
   belongs_to :payment_gateway
   belongs_to :shipping_method
   has_one :cart

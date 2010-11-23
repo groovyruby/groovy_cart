@@ -1,0 +1,74 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", admin_orders_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_order_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_order_path %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">
+      
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.total_value", :default => t("activerecord.labels.total_value", :default => "Total value")) %>:</b>
+          <%= @order.total_value %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.state", :default => t("activerecord.labels.state", :default => "State")) %>:</b>
+          <%= @order.state %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.discount_value", :default => t("activerecord.labels.discount_value", :default => "Discount value")) %>:</b>
+          <%= @order.discount_value %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.shipping_cost", :default => t("activerecord.labels.shipping_cost", :default => "Shipping cost")) %>:</b>
+          <%= @order.shipping_cost %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.discounted_value", :default => t("activerecord.labels.discounted_value", :default => "Discounted value")) %>:</b>
+          <%= @order.discounted_value %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.items_value", :default => t("activerecord.labels.items_value", :default => "Items value")) %>:</b>
+          <%= @order.items_value %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.shipping_method_id", :default => t("activerecord.labels.shipping_method_id", :default => "Shipping method")) %>:</b>
+          <%= @order.shipping_method_id %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.payment_gateway_id", :default => t("activerecord.labels.payment_gateway_id", :default => "Payment gateway")) %>:</b>
+          <%= @order.payment_gateway_id %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.payment_cost", :default => t("activerecord.labels.payment_cost", :default => "Payment cost")) %>:</b>
+          <%= @order.payment_cost %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.payment_token", :default => t("activerecord.labels.payment_token", :default => "Payment token")) %>:</b>
+          <%= @order.payment_token %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_order.client_ip", :default => t("activerecord.labels.client_ip", :default => "Client ip")) %>:</b>
+          <%= @order.client_ip %>
+        </p>
+      <div class="wat-cf">
+        <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_admin_order_path(@order), :class => "button" %> 
+        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), admin_order_path(@order), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>      
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>
