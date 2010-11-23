@@ -1,4 +1,7 @@
 class ProductVariation < ActiveRecord::Base
+
+  scope :available, where('product_variations.price > ?', 0)
+
   belongs_to :product
   has_and_belongs_to_many :options
 

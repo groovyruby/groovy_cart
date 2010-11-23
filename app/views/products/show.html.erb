@@ -1,112 +1,4 @@
-<% content_for :head do %>
-  <script type="text/javascript">
-    var options_in_groups = new Array();
-    var options = new Array();
-    <% for og in @option_groups -%>
-      <% for o in og.options.available_for_product(@product) -%>
-        options_in_groups['<%= o.id %>'] = '<%=og.slug%>';
-        options['<%= o.id %>'] = '<%=o.name%>';
-      <%- end %>
-    <% end %>
-    var variations = new Array(); var i = 0;
-    var variations_prices = new Array();
-    <% for pv in @product.product_variations -%>
-      variations['<%=pv.id%>'] = new Array(); i=0;
-      variations_prices['<%=pv.id%>'] = '<%= pv.price %>';
-      <% for o in pv.options -%>
-        variations['<%=pv.id%>'][i++] = '<%= o.id %>';
-      <% end %>
-    <% end %>
-    var submit_blocker = function(){ return false };
-    function recalculate_prices(){
-      var required_options = new Array();
-      var success = false;
-      var elements = 0;
-      var variation_id = '';
-      var price = '<%= @product.price %>';
-      $('.variation_select').each(function(idx, elem){
-        required_options[required_options.length] = $(elem).val();
-      });
-      var required_elements = required_options.length;
-      for(i in variations){
-        elements = 0;
-        if(!success){
-          for(j in required_options){
-            if(jQuery.inArray(required_options[j], variations[i])==-1){
-              break;
-            }else{
-              price = variations_prices[i];
-
-              elements += 1;
-              if(elements==required_elements){
-                success = true
-                variation_id = i;
-              }
-            }
-          }
-        }
-      }
-      if(!success){
-        $('form#add_to_cart').bind('submit', submit_blocker);
-        $('#product_price').text('<%= t '.variation_not_available' %>');
-      }else{
-        $('form#add_to_cart').unbind('submit', submit_blocker);
-        $('#product_price').text(price);
-      }
-      $('#variation_id').val(variation_id);
-    }
-
-    function apply_variations(event){
-      $('form#add_to_cart').unbind('submit', submit_blocker);
-      
-      var v = $(this).val();
-      var selects = new Array();
-      var previously_selected = new Array();
-
-      <% for og in @option_groups -%>
-        selects['<%= og.slug %>-select'] = new Array();
-        previously_selected['<%= og.slug %>-select'] = $('#'+'<%= og.slug %>-select').val();
-        $('#'+'<%= og.slug %>-select').unbind('change');
-      <% end %>
-      for(pvo in variations){
-        var arr = variations[pvo];
-        if(typeof(arr) != 'function' && arr.inArray(v)){
-          for(oi in arr){
-            var o = arr[oi];
-            if(o!=v && typeof(o)=='string'){
-              var s = selects[options_in_groups[o]+'-select'];
-              var l = s.length;
-              var sel = $('#'+options_in_groups[o]+'-select')[0];
-              if(l==0){
-                sel.options = [];
-                sel.options.length = 0;
-              }
-              if(!jQuery.inArray(o,s)){
-                s[l] = o;
-                sel.add(new Option(options[o], o), null)
-              }
-            }
-          }
-        }
-      }
-      for(i in previously_selected)
-      {
-        if(typeof(i)=='string'){
-          if(i!=$(this).attr('id')){
-            $('#'+i).val(previously_selected[i]);
-          }
-          $('#'+i).bind('change', apply_variations);
-        }
-      }
-    }
-    $(document).ready(function(){
-      //$('select.variation_select').bind('change', apply_variations);
-      $('select.variation_select').bind('change', recalculate_prices);
-      //$('select.variation_select:first').change();
-      recalculate_prices();
-    });
-  </script>
-<% end if @product.product_variations.count > 0 %>
+<%= render :partial=>"variation_javascript" %>
 
 
 <h1>Product <%= @product.name %></h1>
@@ -120,9 +12,11 @@
     <label for="<%= og.slug %>-select"><%= og.name %>:</label>
     <select id="<%= og.slug %>-select" class="variation_select">
       <% for o in og.options.ordered.available_for_product(@product) %>
-        <option value="<%= o.id %>">
-          <%= o.name %>
-        </option>
+        <% if @product.option_groups.count > 1 or @product.variation_available_for_option(o) %>
+          <option value="<%= o.id %>">
+            <%= o.name %>
+          </option>
+        <% end %>
       <% end %>
     </select>
   <% end %>

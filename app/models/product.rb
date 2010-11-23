@@ -49,6 +49,10 @@ class Product < ActiveRecord::Base
     self.option_groups.map{|og| og.options.all }.flatten
   end
 
+  def variation_available_for_option(option)
+    not self.product_variations.joins(:options).where('product_variations.price > ?', 0).where('options.id=?', option.id).first.blank?
+  end
+
   def clean_up_options_mess
     # Delete options (for variations) from non-existing groups
     for pv in self.product_variations.all
@@ -71,6 +75,5 @@ class Product < ActiveRecord::Base
         end
       end
     end
-
   end
 end
