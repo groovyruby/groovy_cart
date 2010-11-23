@@ -98,9 +98,6 @@
           $('#'+i).bind('change', apply_variations);
         }
       }
-
-
-
     }
     $(document).ready(function(){
       //$('select.variation_select').bind('change', apply_variations);
@@ -109,7 +106,7 @@
       recalculate_prices();
     });
   </script>
-<% end %>
+<% end if @product.product_variations.count > 0 %>
 
 
 <h1>Product <%= @product.name %></h1>
