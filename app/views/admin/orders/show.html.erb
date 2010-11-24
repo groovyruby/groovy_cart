@@ -20,39 +20,60 @@
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.admin_order.discount_value", :default => t("activerecord.labels.discount_value", :default => "Discount value")) %>:</b>
-          <%= @order.discount_value %>
-        </p>
-
-        <p>
-          <b><%= t("activerecord.attributes.admin_order.shipping_cost", :default => t("activerecord.labels.shipping_cost", :default => "Shipping cost")) %>:</b>
-          <%= @order.shipping_cost %>
-        </p>
-
-        <p>
-          <b><%= t("activerecord.attributes.admin_order.discounted_value", :default => t("activerecord.labels.discounted_value", :default => "Discounted value")) %>:</b>
-          <%= @order.discounted_value %>
-        </p>
-
-        <p>
           <b><%= t("activerecord.attributes.admin_order.items_value", :default => t("activerecord.labels.items_value", :default => "Items value")) %>:</b>
           <%= @order.items_value %>
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.admin_order.shipping_method_id", :default => t("activerecord.labels.shipping_method_id", :default => "Shipping method")) %>:</b>
-          <%= @order.shipping_method_id %>
+          <b><%= t(".shipping", :default => "Shipping") %>:</b>
+          <%= @order.shipping_method %> (<%= @order.shipping_cost %>)
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.admin_order.payment_gateway_id", :default => t("activerecord.labels.payment_gateway_id", :default => "Payment gateway")) %>:</b>
-          <%= @order.payment_gateway_id %>
+          <b><%= t(".payment_gateway", :default => "Payment gateway") %>:</b>
+          <%= @order.payment_gateway %> (<%= @order.payment_cost %>)
         </p>
 
-        <p>
-          <b><%= t("activerecord.attributes.admin_order.payment_cost", :default => t("activerecord.labels.payment_cost", :default => "Payment cost")) %>:</b>
-          <%= @order.payment_cost %>
-        </p>
+        <table class="table">
+        <tr>
+          <th>
+            <%= t("activerecord.attributes.order_item.name", :default => t("activerecord.labels.name", :default => "Name")) %>
+          </th>
+          <th>
+            <%= t("activerecord.attributes.order_item.sku", :default => "SKU") %>
+          </th>
+          <th>
+            <%= t("activerecord.attributes.order_item.item_price", :default => "Item price") %>
+          </th>
+          <th>
+            <%= t("activerecord.attributes.order_item.quantity", :default => "Quantity") %>
+          </th>
+
+          <th>
+            <%= t("activerecord.attributes.order_item.item_value", :default => "Item value") %>
+          </th>
+        </tr>
+        <% @order.order_items.each do |oi| -%>
+        <tr class="<%= cycle("odd", "even") %>">
+          <td>
+            <%= oi.product.blank? ? oi.name : link_to(oi.name, admin_product_path(oi.product)) %>
+          </td>
+          <td>
+            <%= oi.sku %>
+          </td>
+          <td>
+            <%= oi.item_price %>
+          </td>
+          <td>
+            <%= oi.quantity %>
+          </td>
+          <td>
+            <%= oi.item_value %>
+          </td>
+
+        </tr>
+        <% end -%>
+      </table>
 
         <p>
           <b><%= t("activerecord.attributes.admin_order.payment_token", :default => t("activerecord.labels.payment_token", :default => "Payment token")) %>:</b>

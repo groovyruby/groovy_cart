@@ -14,7 +14,8 @@ class Admin::OrdersController < AdminController
   # GET /orders/1.xml
   def show
     @order = Order.find(params[:id])
-
+    @billing_address = @order.billing_address
+    @shipping_address = @order.shipping_address
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @order }

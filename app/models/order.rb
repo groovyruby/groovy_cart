@@ -18,16 +18,19 @@ class Order < ActiveRecord::Base
 
   accepts_nested_attributes_for :addresses
 
-  before_save :copy_shipping_cost
+  #before_save :copy_shipping_cost
 
   attr_accessible :discount_value, :addresses_attributes
 
   state_machine do
     state :new
-    state :confirmed, :enter=>:clone_cart_items
+    state :confirmed
     state :payment_started
     state :payment_finished
     state :paid
+    state :sent
+    state :completed
+    state :canceled
 
     event :confirm do
       transitions :to => :confirmed, :from => [:new]
@@ -43,6 +46,18 @@ class Order < ActiveRecord::Base
 
     event :paid do
       transitions :to => :paid, :from=>[:payment_started, :payment_finished]
+    end
+
+    event :send_order do
+      transitions :to => :sent, :from=>[:new, :confirmed, :paid]
+    end
+
+    event :close do
+      transitions :to => :completed, :from=>[:new, :confirmed, :payment_started, :payment_finished, :paid, :sent]
+    end
+
+    event :cancel do
+      transitions :to => :canceled, :from=>[:new, :confirmed, :payment_started, :payment_finished, :paid, :sent]
     end
   end
 
@@ -68,35 +83,40 @@ class Order < ActiveRecord::Base
     unless self.cart.blank?
       self.total_value = self.cart.total_value
       self.items_value = self.cart.items_value
-
       self.shipping_method = self.cart.shipping_method
-
       self.calculate_discount
-
-      #self.payment_gateway = self.cart.payment_gateway
-      self.apply_payment_cost if self.payment_gateway
-
       self.save if save_self
     end
   end
 
-  def copy_shipping_cost
+  def apply_all_payments
     self.total_value = self.items_value
-    self.shipping_cost = self.shipping_method.calculate_for_cart(self) unless self.shipping_method.blank?
+    self.shipping_cost = 0.0
+    self.payment_cost = 0.0
+    self.discount_value = 0.0
+    self.copy_shipping_cost
+    self.apply_payment_cost
     self.calculate_discount
+  end
+
+  def copy_shipping_cost
+    self.total_value -= self.shipping_cost
+    self.shipping_cost = self.shipping_method.calculate_for_cart(self) unless self.shipping_method.blank?
     self.total_value += self.shipping_cost
 
   end
 
-  def apply_payment_cost
+  def apply_payment_cost(save_self=true)
     self.total_value -= self.payment_cost
-    self.payment_cost = self.payment_gateway.calculate_for_order_value(self)
+    self.payment_cost = self.payment_gateway.calculate_for_order_value(self) unless self.payment_gateway.blank?
     self.total_value += self.payment_cost
+    self.save if save_self
   end
 
   def calculate_discount
     self.discounted_value = self.total_value - self.discount_value
   end
+
 
   def clone_cart_items
     unless self.cart.blank?
@@ -114,6 +134,14 @@ class Order < ActiveRecord::Base
       end
 
     end
+  end
+
+  def billing_address
+    self.addresses.where('is_shipping=?', false).first
+  end
+
+  def shipping_address
+    self.addresses.where('is_shipping=?', true).first
   end
 
 end

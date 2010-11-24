@@ -5,6 +5,10 @@ class PaymentGateway < ActiveRecord::Base
   validates :name, :class_name, :presence=>true
   validates :additional_flat_fee, :additional_percentage_fee, :free_from_cart_value, :numericality=>true, :presence=>true
 
+  def to_s
+    self.name
+  end
+
   def calculate_for_order_value(order)
     ret = 0
     unless order.total_value < self.free_from_cart_value
