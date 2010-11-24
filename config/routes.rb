@@ -79,7 +79,11 @@ GroovyCart::Application.routes.draw do
     resources :brands
     resources :categories
     resources :option_groups
-    resources :orders
+    resources :orders do
+      member do
+        get :change_state
+      end
+    end
     resources :pages
     resources :payment_gateways
     resources :product_types

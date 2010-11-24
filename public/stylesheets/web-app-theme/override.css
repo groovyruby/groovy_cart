@@ -29,3 +29,7 @@
 .price_field{
   
 }
+.current_state{
+  font-weight: bold;
+  background-image: none !important;
+}

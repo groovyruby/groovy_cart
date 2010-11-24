@@ -1,8 +1,11 @@
 <div class="block notice">
-  <h3>Order state</h3>
+  <h3><%= t('.order_state') %></h3>
   <ul class="navigation">
-    <li class="current_state"><a href="#"><%= @order.state %></a></li>
-    <li><a href="#">Link 2</a></li>
+    <li class="current_state"><a href="#"><%= t('.current_state') %>: <%= t('order.states.'+@order.state.to_s) %></a></li>
+    <% for e in Order.state_machines[:default].events_for(@order.state.to_sym).reverse %>
+      <li><%= link_to t('order.events.'+e.to_s), change_state_admin_order_path(@order, :new_state=>e) %></li>  
+    <% end %>
+
   </ul>
 </div>
 

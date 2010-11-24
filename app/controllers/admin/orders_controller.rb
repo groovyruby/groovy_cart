@@ -81,4 +81,10 @@ class Admin::OrdersController < AdminController
       format.xml  { head :ok }
     end
   end
+
+  def change_state
+    @order = Order.find(params[:id])
+    @order.send(params[:new_state]+'!')
+    redirect_to([:admin, @order])
+  end
 end

@@ -52,7 +52,7 @@ class Order < ActiveRecord::Base
       transitions :to => :sent, :from=>[:new, :confirmed, :paid]
     end
 
-    event :close do
+    event :mark_completed do
       transitions :to => :completed, :from=>[:new, :confirmed, :payment_started, :payment_finished, :paid, :sent]
     end
 

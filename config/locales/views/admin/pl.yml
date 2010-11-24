@@ -21,3 +21,7 @@ pl:
     products:
       sidebar:
         create_new_from_template: Utwórz nowy produkt z szablonu
+    orders:
+      sidebar:
+        order_state: Status zamówienia
+        current_state: Obecny status

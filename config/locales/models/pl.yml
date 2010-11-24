@@ -30,3 +30,21 @@ pl:
     labels:
       name: Nazwa
       created_at: Data utworzenia
+  order:
+    states:
+      new: Nowe
+      confirmed: Potwierdzone
+      payment_started: Płatnośc rozpoczęta
+      payment_finished: Płatnośc zakończona
+      paid: Opłacone
+      sent: Wysłane
+      completed: Zakończone
+      canceled: Anulowane
+    events:
+      confirm: Potwierdź
+      start_payment: Rozpocznij proces płatności
+      finish_payment: Zakończ proces płatności
+      paid: Ozznacz jako opłacone
+      send_order: Wyślij
+      mark_completed: Zakończ
+      cancel: Anuluj
