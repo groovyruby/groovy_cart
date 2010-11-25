@@ -76,4 +76,8 @@ class Product < ActiveRecord::Base
       end
     end
   end
+
+  def get_property(identifier)
+    self.properties.joins(:property_type).where('property_types.identifier=?', identifier).first
+  end
 end
