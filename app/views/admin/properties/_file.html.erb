@@ -1,0 +1,4 @@
+<%= f.file_field :attachment %>
+<% unless (f.object.attachment_file_name.blank? and f.object.new_record?) %>
+  <br><small><%= f.object.attachment_file_name %></small> 
+<% end %>
