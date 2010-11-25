@@ -12,6 +12,7 @@ class PropertyType < ActiveRecord::Base
 
   before_save :fill_in_identifier
 
+  attr_accessible :name, :field_type, :field_options, :identifier
 
   def fill_in_identifier
     self.identifier = self.name.parameterize if self.identifier.blank?
