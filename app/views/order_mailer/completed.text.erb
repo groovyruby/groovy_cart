@@ -1,0 +1,14 @@
+Hello <%= @order.billing_address.first_name %>,
+
+thank you for ordering stuff in our shop.
+
+Your order ID: <%= @order.id %>
+
+Just as a reminder - you have ordered following products - we will pack them and send to you ASAP.
+Ordered products:
+<% for oi in @order.order_items -%>
+- <%= oi.name %> (x<%= oi.quantity %>)
+<% end -%>
+
+Regards,
+Shop Team

@@ -33,7 +33,7 @@ class Order < ActiveRecord::Base
     state :canceled
 
     event :confirm do
-      transitions :to => :confirmed, :from => [:new]
+      transitions :to => :confirmed, :from => [:new], :on_transition => :mail_confirmed
     end
 
     event :start_payment do
@@ -45,7 +45,7 @@ class Order < ActiveRecord::Base
     end
 
     event :paid do
-      transitions :to => :paid, :from=>[:payment_started, :payment_finished]
+      transitions :to => :paid, :from=>[:payment_started, :payment_finished], :on_transition => :mail_paid
     end
 
     event :send_order do
@@ -142,6 +142,14 @@ class Order < ActiveRecord::Base
 
   def shipping_address
     self.addresses.where('is_shipping=?', true).first
+  end
+
+  def mail_confirmed
+    OrderMailer.completed(self).deliver
+  end
+
+  def mail_paid
+    OrderMailer.paid(self).deliver
   end
 
 end

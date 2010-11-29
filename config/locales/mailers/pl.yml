@@ -1,0 +1,6 @@
+pl:
+  order_mailer:
+    paid:
+      subject: Przyjęto płatnośc za zamówienie
+    completed:
+      subject: Potwierdzenie otrzymania zamówienia

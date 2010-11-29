@@ -30,6 +30,14 @@ if Setting.get('product.cart_image_dimensions').blank?
   s.save
 end
 
+if Setting.get('general.default_from_address').blank?
+  s = Setting.create({:value=>"groovycart@groovyru.by"})
+  s.identifier = 'general.default_from_address'
+  s.label = 'general.default_from_address'
+  s.field_type = 'string'
+  s.save
+end
+
 if PaymentGateway.where('class_name=?', 'cod').blank?
   pg = PaymentGateway.new
   pg.name = 'Cash on delivery'
