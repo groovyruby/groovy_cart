@@ -10,3 +10,4 @@ config/database.yml
 .project
 public/system
 **.DS_Store
+.redcar/
