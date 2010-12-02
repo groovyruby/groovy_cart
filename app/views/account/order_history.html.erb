@@ -1,0 +1,6 @@
+Orders history
+<ul>
+<% for order in @orders %>
+   <li><%= link_to "Order ##{order.id} created at #{order.created_at}", order_details_path(order.id) %></li>
+<% end %>
+ </ul>

@@ -1,4 +1,6 @@
 class Address < ActiveRecord::Base
+  
+  belongs_to :customer
   belongs_to :order
 
   validates :first_name, :last_name, :street, :city, :zip_code, :country, :presence => true, :if=>proc{|o| not o.is_shipping? }
@@ -8,6 +10,7 @@ class Address < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :street, :city, :zip_code, :country, :email, :phone, :is_shipping
 
   after_create :clone_address_data
+  before_create :assign_to_customer
 
   def full_name
     "#{self.first_name} #{self.last_name}"
@@ -15,7 +18,7 @@ class Address < ActiveRecord::Base
 
   private
     def clone_address_data
-      if self.is_shipping?
+      if self.is_shipping? and not self.order.blank?
         billing = self.order.billing_address
         self.first_name = billing.first_name if self.first_name.blank?
         self.last_name = billing.last_name if self.last_name.blank?
@@ -26,4 +29,10 @@ class Address < ActiveRecord::Base
         self.save
       end
     end
+
+  def assign_to_customer
+    unless self.order.blank?
+      self.customer_id = self.order.customer_id
+    end
+  end
 end

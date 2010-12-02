@@ -25,6 +25,11 @@ class CartsController < GroovyCartController
     redirect_to cart_url
   end
 
+  def create_order
+    session[:customer_return_to] = new_order_path
+    redirect_to(new_order_url) if customer_signed_in? or not @cart.order.blank?
+  end
+
 
 
 end

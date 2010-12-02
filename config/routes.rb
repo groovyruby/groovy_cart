@@ -1,6 +1,10 @@
 GroovyCart::Application.routes.draw do
 
-  
+  get 'account', :as=>:my_account, :controller=>"account", :action=>"index"
+  get 'account/order_history', :as=>:order_history
+  get 'account/order_details/:id', :as=>:order_details, :to=>"account#order_details"
+
+  devise_for :customers
 
   get "payment_gateway/success"
 
@@ -10,6 +14,7 @@ GroovyCart::Application.routes.draw do
     member do
       post 'confirm'
       get 'confirmed'
+
     end
   end
 
@@ -20,6 +25,7 @@ GroovyCart::Application.routes.draw do
   resource :cart do
     member do
       post 'add_product_to'
+      get 'create_order'
     end
   end
 

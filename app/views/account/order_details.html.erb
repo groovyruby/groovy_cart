@@ -1,0 +1,11 @@
+<h1>Order details</h1>
+
+Order #<%= @order.id %>
+<br />
+<br/>
+Ordered products:
+<ul>
+  <% for oi in @order.order_items %>
+  <li><%= oi.name %></li>
+  <% end %>
+</ul>

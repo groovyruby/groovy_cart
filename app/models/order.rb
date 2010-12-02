@@ -5,6 +5,7 @@ class Order < ActiveRecord::Base
 
   belongs_to :payment_gateway
   belongs_to :shipping_method
+  belongs_to :customer
   has_one :cart
   has_many :addresses
   has_many :order_items
