@@ -1,6 +1,7 @@
 class OrdersController < GroovyCartController
   before_filter :check_cart_order, :only=>[:new, :create]
   before_filter :find_order, :except=>[:new, :create]
+  before_filter :redirect_if_order, :only=>[:new, :create]
   def new
     session.delete :customer_return_to
     
@@ -76,6 +77,10 @@ class OrdersController < GroovyCartController
     def find_order
       @order = @cart.order
       redirect_to cart_url(:warning=>'Cart was empty, please contact us') if @order.blank?
+
+    end
+
+    def redirect_if_order
       redirect_to order_url if not @order.blank? and not @order.new_record?
     end
 
