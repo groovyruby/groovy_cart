@@ -1,0 +1,53 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <% resource.addresses.build({:is_personal_address=>true}) if resource.addresses.empty?%>
+  <%= devise_error_messages! %>
+
+  <p><%= f.label :email %><br />
+  <%= f.text_field :email %></p>
+
+  <p><%= f.label :password %><br />
+  <%= f.password_field :password %></p>
+
+  <p><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></p>
+
+
+
+  <%= f.fields_for :addresses do |fa| %>
+    <%= fa.hidden_field :is_personal_address %>
+    <div>
+      <%= fa.label :first_name %><br />
+      <%= fa.text_field :first_name %>
+    </div>
+    <div>
+      <%= fa.label :last_name %><br />
+      <%= fa.text_field :last_name %>
+    </div>
+    <div>
+      <%= fa.label :phone %><br />
+      <%= fa.text_field :phone %>
+    </div>
+    <div>
+      <%= fa.label :street %><br />
+      <%= fa.text_field :street %>
+    </div>
+    <div>
+      <%= fa.label :zip_code %><br />
+      <%= fa.text_field :zip_code %>
+    </div>
+    <div>
+      <%= fa.label :city %><br />
+      <%= fa.text_field :city %>
+    </div>
+    <div>
+      <%= fa.label :country %><br />
+      <%= fa.text_field :country %>
+    </div>
+  <% end %>
+
+  <p><%= f.submit "Sign up" %></p>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>

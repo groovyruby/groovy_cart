@@ -4,13 +4,17 @@ class Address < ActiveRecord::Base
   belongs_to :order
 
   validates :first_name, :last_name, :street, :city, :zip_code, :country, :presence => true, :if=>proc{|o| not o.is_shipping? }
-  validates :email, :phone, :presence=>true, :if=>proc{|o| not o.is_shipping? }
+  validates :phone, :presence=>true, :if=>proc{|o| not o.is_shipping? }
+  validates :email, :presence=>true, :if=>proc{|o|
+    not o.is_shipping? and not o.is_personal_address? 
+  }
 
   
-  attr_accessible :first_name, :last_name, :street, :city, :zip_code, :country, :email, :phone, :is_shipping
+  attr_accessible :first_name, :last_name, :street, :city, :zip_code, :country, :email, :phone, :is_shipping, :is_personal_address
 
   after_create :clone_address_data
   before_create :assign_to_customer
+  before_save :fill_in_email
 
   def full_name
     "#{self.first_name} #{self.last_name}"
@@ -34,5 +38,9 @@ class Address < ActiveRecord::Base
     unless self.order.blank?
       self.customer_id = self.order.customer_id
     end
+  end
+
+  def fill_in_email
+    self.email = self.customer.email unless self.customer.blank?
   end
 end
