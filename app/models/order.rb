@@ -34,7 +34,7 @@ class Order < ActiveRecord::Base
     state :canceled
 
     event :confirm do
-      transitions :to => :confirmed, :from => [:new], :on_transition => :mail_confirmed
+      transitions :to => :confirmed, :from => [:new], :on_transition => :make_confirmed
     end
 
     event :start_payment do
@@ -153,4 +153,12 @@ class Order < ActiveRecord::Base
     OrderMailer.paid(self).deliver
   end
 
+  def make_confirmed
+    mail_confirmed
+    clone_address_data
+  end
+
+  def clone_address_data
+    self.addresses.each {|a| a.clone_address_data }
+  end
 end
