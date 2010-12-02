@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :find_cart_for_devise
+
   helper :products
 
   protected
@@ -16,6 +18,12 @@ class ApplicationController < ActionController::Base
     helper_method :last_visited_category
 
   private
+    def find_cart_for_devise
+      if devise_controller?
+        self.find_cart
+      end
+    end
+
     def create_cart
       c = Cart.create!
       session['cart_id'] = c.id
