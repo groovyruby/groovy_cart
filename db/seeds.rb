@@ -38,6 +38,33 @@ if Setting.get('general.default_from_address').blank?
   s.save
 end
 
+if Setting.get('integrations.use_mailchimp').blank?
+  s = Setting.create({:value=>"f"})
+  s.identifier = 'integrations.use_mailchimp'
+  s.label = 'Use mailchimp.com?'
+  s.description = 'System can automagically add all new customer to mailchimp list'
+  s.field_type = 'boolean'
+  s.save
+end
+
+if Setting.get('integrations.mailchimp_api_key').blank?
+  s = Setting.create({:value=>""})
+  s.identifier = 'integrations.mailchimp_api_key'
+  s.label = 'Mailchimp.com API key'
+  s.description = 'Can be found through Maichimp -> account -> API Keys And Info'
+  s.field_type = 'string'
+  s.save
+end
+
+if Setting.get('integrations.mailchimp_unique_id').blank?
+  s = Setting.create({:value=>""})
+  s.identifier = 'integrations.mailchimp_unique_id'
+  s.label = 'Mailchimp.com list unique_id'
+  s.description = 'Unique_id can be found on list settings page'
+  s.field_type = 'string'
+  s.save
+end
+
 if PaymentGateway.where('class_name=?', 'cod').blank?
   pg = PaymentGateway.new
   pg.name = 'Cash on delivery'

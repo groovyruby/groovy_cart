@@ -46,7 +46,13 @@
       <%= fa.text_field :country %>
     </div>
   <% end %>
-
+  <p>
+    <%= f.label :has_accepted_terms_of_use%><br />
+    <%= f.check_box :has_accepted_terms_of_use%>
+  </p>
+  <p>
+    <%= f.label :has_accepted_newsletter %><br />
+    <%= f.check_box :has_accepted_newsletter%>
   <p><%= f.submit "Sign up" %></p>
 <% end %>
 
