@@ -53,6 +53,8 @@ Factory.define :customer do |f|
   f.sequence(:email) {|n| "person#{n}@example.com" }
   f.password "zxcvbnm"
   f.password_confirmation "zxcvbnm"
+  f.has_accepted_terms_of_use true
+  f.has_accepted_newsletter false
 end
 
 Factory.define :survey_model do |f|
