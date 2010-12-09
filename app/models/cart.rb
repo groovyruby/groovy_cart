@@ -43,8 +43,8 @@ class Cart < ActiveRecord::Base
       self.total_value += ci.item_value
     end
     self.items_value = self.total_value
-    self.shipping_cost = self.shipping_method.calculate_for_cart(self)
-
+    self.shipping_cost = self.shipping_method.calculate_for_cart(self) if self.shipping_method
+    
     self.total_value += self.shipping_cost
 
     self.discounted_value = self.total_value

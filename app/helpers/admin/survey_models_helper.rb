@@ -1,0 +1,2 @@
+module Admin::SurveyModelsHelper
+end

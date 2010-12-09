@@ -1,0 +1,45 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to t(".list_survey_models", :default => "List survey models"), admin_survey_models_path  %></li>
+    </ul>
+  </div>          
+  <div class="content">          
+    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> Surveys</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>             
+          <th class="first">ID</th>
+                    <th>
+            <%= t(".customer", :default => "Customer") %>
+          </th>
+          <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @surveys.each do |survey| -%>
+        <tr class="<%= cycle("odd", "even") %>">
+          <td>
+            <%= survey.id %>
+          </td>
+          <td>
+            <%= link_to survey.customer.full_name, admin_survey_model_survey_path(@survey_model, survey) %>
+          </td>
+                    <td>
+            <%= survey.created_at %>
+          </td>
+          <td class="last">
+            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_survey_model_survey_path(@survey_model, survey) %> |
+            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", admin_survey_model_survey_path(@survey_model, survey), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+          </td>
+        </tr>          
+        <% end -%>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,30 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", admin_survey_models_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_survey_model_path %></li>
+      <li><%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_survey_model_path %></li>
+      <li class="active"><%= link_to t('.statistics', :default=>"Statistics"), statistics_admin_survey_model_path(@survey_model) %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">
+      <h2><%= @survey_model.name %></h2>
+        <p>
+          <b><%= t(".filled_in_number", :default => "Filled in surveys") %>:</b>
+          <%= @survey_model.surveys.count %>
+        </p>
+        <hr />
+        <% for question in @survey_model.survey_questions %>
+          <% unless %w( text string ).member?(question.field_type) %>
+            <p>
+              <b><%= question.question%>:</b>
+              <%= survey_question_stats(question) %>
+            </p>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

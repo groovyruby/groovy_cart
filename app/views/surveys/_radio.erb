@@ -1,0 +1,8 @@
+<% options = f.object.survey_question.field_options.split('|') %>
+<% if !options.blank? %>
+  <% for item in options %>
+    <%= f.radio_button :answer, item %> <%= item%> <br />
+  <% end %>
+<% else %>
+  
+<% end %>

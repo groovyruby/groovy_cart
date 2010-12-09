@@ -25,12 +25,16 @@ gem "will_paginate", "~> 3.0.pre2"
 
 gem "activemerchant", :require => "active_merchant"
 
+gem 'inherited_resources', '1.1.2'
+
+gem "default_value_for"
+
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
-	gem "rspec", ">= 2.0.0"
-  gem "rspec-rails", ">= 2.0.0"
+	gem "rspec", ">= 2.2.0"
+  gem "rspec-rails", ">= 2.2.0"
 	gem "remarkable_activerecord", '>=4.0.0.alpha4'
   gem "autotest"
   gem 'factory_girl_rails'

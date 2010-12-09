@@ -1,0 +1,8 @@
+<% options = f.object.survey_question.field_options.split('|') %>
+<% if !options.blank? %>
+  <% for item in options %>
+    <%= check_box_tag "survey[survey_answers_attributes][#{counter}][answer][]",item, (f.object.answer.blank? ? false : f.object.answer.member?(item)) %> <%= item%><br/>
+  <% end %>
+<% else %>
+  
+<% end %>

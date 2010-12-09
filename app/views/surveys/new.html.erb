@@ -1,0 +1,16 @@
+<h1>Surveys - <%= @survey.survey_model.name %></h1>
+
+<%= form_for @survey do |f|%>
+<%= f.hidden_field :survey_model_id %>
+<ul>
+  <% counter = 0%>
+  <%= f.fields_for :survey_answers do |fa| %>
+  <%= fa.hidden_field :survey_question_id%>
+  <label><%= fa.object.survey_question.question %></label>
+  <%= render :partial=>fa.object.survey_question.field_type, :locals=>{:f=>fa, :counter=>counter}%>
+  <% counter += 1%>
+  <br />
+  <% end %>
+</ul>
+<%= f.submit %>
+<% end %>

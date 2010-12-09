@@ -22,5 +22,5 @@ describe ProductsController do
       assigns(:product).should be(mock_product)
     end
   end
-
+  
 end

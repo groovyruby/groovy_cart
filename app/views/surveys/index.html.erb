@@ -1,0 +1,20 @@
+<h1>Surveys</h1>
+<h2>Already filled in</h2>
+<% if !@filled_in.blank? %>
+  <% for survey in @filled_in %>
+    <%= link_to survey.survey_model.name, survey_path(survey)%>
+  <% end %>
+<% else %>
+  
+<% end %>
+
+<h2>To be filled</h2>
+<% if !@to_be_filled.blank? %>
+<ul>
+  <% for survey in @to_be_filled %>
+    <li><%= link_to survey.name, new_survey_path(:model=>survey.id) %></li>
+  <% end %>
+</ul>
+<% else %>
+  no survey waiting to be filled.
+<% end %>

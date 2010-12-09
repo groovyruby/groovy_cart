@@ -13,7 +13,15 @@
   </script>
 </head>
 <body>
-<%= debug(session) %>
+<strong>Session: </strong><%= debug(session) %>
+<Br /><br />
+
+<% if customer_signed_in? %>
+<%= link_to "my account", my_account_path %> | <%= link_to "sign out", destroy_customer_session_path %>
+<% else %>
+<%= link_to "sign up", new_customer_registration_path %> | <%= link_to "sign in", new_customer_session_path %>
+<% end %>
+<br /><br />
 <%= yield %>
 
 </body>

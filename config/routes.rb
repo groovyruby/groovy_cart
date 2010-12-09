@@ -1,5 +1,7 @@
 GroovyCart::Application.routes.draw do
 
+  resources :surveys, :except=>[:edit, :update, :destroy]
+
   get 'account', :as=>:my_account, :controller=>"account", :action=>"index"
   get 'account/order_history', :as=>:order_history
   get 'account/order_details/:id', :as=>:order_details, :to=>"account#order_details"
@@ -37,47 +39,7 @@ GroovyCart::Application.routes.draw do
 
   get "home/index"
 
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
-
-  # Sample resource route within a namespace:
+ 
   namespace :admin do
     resources :banner_types
     resources :banner_placements
@@ -96,6 +58,12 @@ GroovyCart::Application.routes.draw do
     resources :products
     resource :setting
     resources :shipping_methods
+    resources :survey_models do
+      resources :surveys, :only=>[:show, :index, :destroy]
+      member do
+        get 'statistics'
+      end
+    end
     root :to=>"dashboard#index"
   end
 

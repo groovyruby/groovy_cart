@@ -1,0 +1,42 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", admin_survey_models_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_survey_model_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_survey_model_path %></li>
+      <li><%= link_to t('.statistics', :default=>"Statistics"), statistics_admin_survey_model_path(@survey_model) %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <div class="inner">
+      
+        <p>
+          <b><%= t("activerecord.attributes.admin_survey_model.name", :default => t("activerecord.labels.name", :default => "Name")) %>:</b>
+          <%= @survey_model.name %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_survey_model.is_active", :default => t("activerecord.labels.is_active", :default => "Is active")) %>:</b>
+          <%= @survey_model.is_active %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_survey_model.active_from_date", :default => t("activerecord.labels.active_from_date", :default => "Active from date")) %>:</b>
+          <%= @survey_model.active_from_date %>
+        </p>
+
+        <p>
+          <b><%= t("activerecord.attributes.admin_survey_model.active_until_date", :default => t("activerecord.labels.active_until_date", :default => "Active until date")) %>:</b>
+          <%= @survey_model.active_until_date %>
+        </p>
+      <div class="wat-cf">
+        <% if @survey_model.surveys.empty? %>
+          <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_admin_survey_model_path(@survey_model), :class => "button" %> 
+        <% end %>
+        <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), admin_survey_model_path(@survey_model), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+      </div>      
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>
