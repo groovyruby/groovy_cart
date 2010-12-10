@@ -21,7 +21,24 @@ pl:
     products:
       sidebar:
         create_new_from_template: Utwórz nowy produkt z szablonu
+        products_properties: Dodatkowe parametry
     orders:
       sidebar:
         order_state: Status zamówienia
         current_state: Obecny status
+    settings:
+      sidebar:
+        additional_settings: Dodatkowe ustawienia
+    survey_models:
+      index:
+        surveys: Wypełnione ankiety
+        statistics: Statystyka
+      statistics:
+        statistics: Statystyka
+      show:
+        statistics: Statystyka
+    surveys:
+      index:
+        list_survey_models: Lista ankiet
+      show:
+        list_survey_models: Lista ankiet

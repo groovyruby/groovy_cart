@@ -1,0 +1,6 @@
+en:
+  order_mailer:
+    paid:
+      subject: Payment accepted
+    completed:
+      subject: Order completed

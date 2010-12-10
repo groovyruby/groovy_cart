@@ -8,3 +8,5 @@ pl:
     new: Nowy rekord
     show: Pokaż
     created_at: Data utworzenia
+    settings: Ustawienia
+    profile: Profil

@@ -1,0 +1,28 @@
+en:
+  admin:
+    banners:
+      sidebar:
+        banners_options: Banner options
+    banner_types:
+      sidebar:
+        description: "Banenr types are predefined banner sizes, that will be used in system."
+    banner_placements:
+      sidebar:
+        description: "Banner places are predefined markers, that can be used in shop layout for inserting appropriate banner"
+    option_groups:
+      sidebar:
+        description: "Option groups allows creating groups of attributes, that can be used in product variations. Example: Group size with options: S,M,L,XL"
+    product_types:
+      sidebar:
+        description: "Product templates are predefined 'templates' of product with attached attributes. Product templates are currently only possibility to add attributes to product"
+    products:
+      sidebar:
+        create_new_from_template: Create new product from template
+        products_properties: Additional attributes
+    orders:
+      sidebar:
+        order_state: Order status
+        current_state: Current status
+    settings:
+      sidebar:
+        additional_settings: Additional settings

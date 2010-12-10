@@ -30,5 +30,6 @@ pl:
       pages: Strony
       shipping_methods: Dostawa
       orders: Zamówienia
+      survey_models: Ankiety
     actions:
       open_in_shop: Otwórz w sklepie

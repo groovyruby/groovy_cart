@@ -1,0 +1,35 @@
+en:
+  groovy_cart:
+    descriptions:
+      product:
+        name: Full product name
+        sku: Product identifier. Warning - variations SKU will be generated automagically (basing on main products SKU).
+        description: ""
+        brand: ""
+        price: ""
+        price_promo: Promo price - shown instead of main product price
+      category:
+        name: ""
+        parent: ""
+        extra_params: Additional category parameters, can be used ie. for setting extra classes in layout
+        is_visible: Is category shown in shop / in menus? (can be used for creating ie. promo categories)
+      option_group:
+        name: ""
+        slug: Option group identifier. We recommend not to change this value.
+    messages:
+      empty_cart: Cart is empty
+    modules:
+      banner_types: Banner types
+      banner_placements: Banner placement identifiers
+      option_groups: Option groups
+      product_types: Product templates
+      banners: Banners
+      categories: Categories
+      products: Products
+      brands: Brands
+      pages: Static pages
+      shipping_methods: Shipping methods
+      orders: Orders
+      survey_models: Surveys
+    actions:
+      open_in_shop: Open in shop
