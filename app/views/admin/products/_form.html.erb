@@ -10,6 +10,7 @@
   </script>
   <% end %>
   <%= render :partial=>"/admin/shared/form_errors", :locals=>{:f=>f} %>
+  <%= f.hidden_field :product_type_id %>
   <div class="group">
     <%= f.label :name, t("activerecord.attributes.product.name", :default => "Name"), :class => :label %>
     <%= f.text_field :name, :class => 'text_field' %>

@@ -29,11 +29,8 @@ class Admin::ProductsController < AdminController
     @product = Product.new
     unless params[:product_type].blank?
       @product_type = ProductType.find(params[:product_type])
-      for pt in @product_type.property_types.all
-        p = pt.properties.new
-        p.property_type = pt
-        @product.properties << p
-      end
+      @product.product_type = @product_type
+      @product.assign_properties
     end
     @product.photos.build
     respond_to do |format|

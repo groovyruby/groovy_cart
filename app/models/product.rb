@@ -2,13 +2,15 @@ class Product < ActiveRecord::Base
   has_friendly_id :name, :use_slug => true
 
   belongs_to :brand
+  belongs_to :product_type
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :option_groups
   has_many :cart_items
   has_many :photos
   has_many :product_variations
   has_many :properties
-  
+  has_many :property_types, :through=>:properties
+
   validates :name, :presence=>true
   validates :price, :numericality=>{:greater_than_or_equal_to=>0}, :presence=>true
   validates :price_promo, :numericality=>{:greater_than_or_equal_to=>0, :allow_nil=>true}
@@ -20,7 +22,7 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :product_variations, :allow_destroy=>true, :reject_if=>proc{|pv| pv['price'].blank? }
   accepts_nested_attributes_for :properties
   attr_accessible :name, :description, :brand_id, :category_ids, :price, :price_promo, :product_variations_attributes,
-                  :option_group_ids, :properties_attributes, :photos_attributes, :sku
+                  :option_group_ids, :properties_attributes, :photos_attributes, :sku, :product_type_id
 
   before_save :fill_in_sku
   after_update :clean_up_options_mess
@@ -79,5 +81,20 @@ class Product < ActiveRecord::Base
 
   def get_property(identifier)
     self.properties.joins(:property_type).where('property_types.identifier=?', identifier).first
+  end
+
+  def assign_properties
+    unless self.product_type.blank?
+      for pt in (self.product_type.property_types - self.property_types)
+        p = pt.properties.new
+        p.property_type = pt
+        self.properties << p
+      end
+
+      for pt in (self.property_types - self.product_type.property_types)
+        self.properties.where('property_type_id=?', pt.id).first.destroy
+      end
+      
+    end
   end
 end

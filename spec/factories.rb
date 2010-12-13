@@ -17,10 +17,19 @@ Factory.define :complex_product, :parent=>:product do |cp|
   cp.option_groups{|og| [og.association(:option_group)]}
 end
 
+Factory.define :option do |f|
+  f.name "blue"
+  f.association :option_group, :factory=>:option_group
+end
 
-Factory.define :option do |o|
+Factory.define :red, :class=>"option" do |o|
   o.name "red"
   o.association :option_group, :factory=>:option_group
+end
+
+Factory.define :green, :class=>"option" do |f|
+  f.name "green"
+  f.association :option_group, :factory=>:option_group
 end
 
 Factory.define :product_variation do |pv|
@@ -73,3 +82,27 @@ Factory.define :survey_question_2, :class=>"survey_question" do |f|
   f.question "question"
   f.field_type "string"
 end
+
+
+Factory.define :product_type do |f|
+  f.name "product_type_sample"
+end
+
+Factory.define :size, :class=>"property_type" do |f|
+  f.name "size"
+  f.field_type "string"
+  f.association :product_type, :factory=>:product_type
+end
+
+Factory.define :weight, :class=>"property_type" do |f|
+  f.name "weight"
+  f.field_type "string"
+  f.association :product_type, :factory=>:product_type
+end
+
+Factory.define :color, :class=>"property_type" do |f|
+  f.name "color"
+  f.field_type "string"
+  f.association :product_type, :factory=>:product_type
+end
+

@@ -19,6 +19,8 @@ en:
       sidebar:
         create_new_from_template: Create new product from template
         products_properties: Additional attributes
+      edit:
+        product_type: template
     orders:
       sidebar:
         order_state: Order status

@@ -22,6 +22,8 @@ pl:
       sidebar:
         create_new_from_template: Utwórz nowy produkt z szablonu
         products_properties: Dodatkowe parametry
+      edit:
+        product_type: szablon
     orders:
       sidebar:
         order_state: Status zamówienia
