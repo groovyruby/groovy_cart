@@ -21,6 +21,8 @@ en:
         products_properties: Additional attributes
       edit:
         product_type: template
+      form_sidebar:
+        upload_multiple: Upload multiple photos
     orders:
       sidebar:
         order_state: Order status
@@ -28,3 +30,16 @@ en:
     settings:
       sidebar:
         additional_settings: Additional settings
+    survey_models:
+      index:
+        surveys: Filled-in surveys
+        statistics: Statistics
+      statistics:
+        statistics: Statistics
+      show:
+        statistics: Statistics
+    surveys:
+      index:
+        list_survey_models: Surveys list
+      show:
+        list_survey_models: Surveys list

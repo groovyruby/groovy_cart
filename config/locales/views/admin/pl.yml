@@ -31,6 +31,8 @@ pl:
         products_properties: Dodatkowe parametry
       edit:
         product_type: szablon
+      form_sidebar:
+        upload_multiple: Dołącz wiele zdjęć na raz
     orders:
       sidebar:
         order_state: Status zamówienia
