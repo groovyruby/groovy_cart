@@ -1,3 +1,5 @@
+require 'mime/types'
+
 class Admin::ProductsController < AdminController
   # GET /products
   # GET /products.xml
@@ -26,6 +28,7 @@ class Admin::ProductsController < AdminController
   # GET /products/new
   # GET /products/new.xml
   def new
+    session[:plupload_product_temp_id] = Base64.encode64(Digest::SHA1.digest("#{rand(1<<64)}/#{Time.now.to_f}/#{Process.pid}/"))[0..7]
     @product = Product.new
     unless params[:product_type].blank?
       @product_type = ProductType.find(params[:product_type])
@@ -48,9 +51,10 @@ class Admin::ProductsController < AdminController
   # POST /products.xml
   def create
     @product = Product.new(params[:product])
-
     respond_to do |format|
       if @product.save
+        Photo.update_all(['product_id=?, temp_product_id=?', @product.id, nil], ['temp_product_id=?', session[:plupload_product_temp_id] || '-1'])
+        session[:plupload_product_temp_id] = nil
         format.html { redirect_to(params[:return].blank? ? [:admin, @product] : edit_admin_product_path(@product), :notice => 'Product was successfully created.') }
         format.xml  { render :xml => @product, :status => :created, :location => @product }
       else
@@ -74,6 +78,18 @@ class Admin::ProductsController < AdminController
         format.xml  { render :xml => @product.errors, :status => :unprocessable_entity }
       end
     end
+  end
+  
+  def create_photo
+    @photo = Photo.new(params[:photo])
+    @photo.photo = params[:file] if params.has_key?(:file)
+    # detect Mime-Type (mime-type detection doesn't work in flash)
+    @photo.photo_content_type = MIME::Types.type_for(params[:name]).to_s if params.has_key?(:name)
+    @photo.temp_product_id = session[:plupload_product_temp_id] unless session[:plupload_product_temp_id].blank?
+    @photo.product = Product.find(params[:product_id]) unless params[:product_id].blank?
+    @photo.save!
+
+    render :layout => false
   end
 
   # DELETE /products/1

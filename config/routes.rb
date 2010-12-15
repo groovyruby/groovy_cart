@@ -55,7 +55,11 @@ GroovyCart::Application.routes.draw do
     resources :pages
     resources :payment_gateways
     resources :product_types
-    resources :products
+    resources :products do
+      collection do
+        post :create_photo
+      end
+    end
     resource :setting
     resources :shipping_methods
     resources :survey_models do

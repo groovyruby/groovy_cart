@@ -1,3 +1,11 @@
+<% content_for :head do %>
+  <%= stylesheet_link_tag "plupload.queue" %>
+  <%= javascript_include_tag "plupload/plupload.full.min", "plupload/jquery.plupload.queue.min", "plupload/plupload.lang.pl" %>
+  <%= javascript_tag do %>
+    <%= render("plupload.js") %>
+  <% end %>
+<% end %>
+
 <%= form_for [:admin, @product], :html => { :class => :form, :multipart=>true } do |f| -%>
   <% content_for :head do %>
   <script type="text/javascript" charset="utf-8">

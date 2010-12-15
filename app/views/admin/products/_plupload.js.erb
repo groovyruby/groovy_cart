@@ -1,0 +1,25 @@
+<% session_key_name = Rails.application.config.session_options[:key] %>
+jQuery(document).ready(function() {
+  $("#uploader").pluploadQueue({
+    runtimes: 'html5,flash,silverlight',
+    url: '<%= create_photo_admin_products_path(:product_id=>@product.id) %>',
+    max_file_size: '10mb',
+    multiple_queues: true,
+    flash_swf_url: "/javascripts/plupload/plupload.flash.swf",  
+    silverlight_xap_url: "/javascripts/plupload/plupload.silverlight.xap",
+    multipart: true,
+    multipart_params: {
+      '_http_accept': 'text/html',
+      'authenticity_token' : '<%= form_authenticity_token %>',
+      '<%= session_key_name %>' : encodeURIComponent('<%= u cookies[session_key_name] %>')
+    },
+    filters: [
+      {title: "Zdjęcia", extensions: "jpg,jpeg,png"}
+    ],
+    init: {
+      FileUploaded: function(up, file, info) {
+        // $(info["response"]).appendTo('#photos_container ol').hide().slideDown('1000');
+      }
+    }
+  });
+});
