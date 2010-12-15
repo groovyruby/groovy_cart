@@ -1,6 +1,11 @@
 en:
   groovy_cart:
     descriptions:
+      brand:
+        name: Brand name, that will be visible in system
+      shipping_method:
+        pricing_type: "flat_per_item - fixed cost, per item; flat_per_order - fixed cost, per order"
+        free_from_cart_value: "Cart value, above which order will be free"
       product:
         name: Full product name
         sku: Product identifier. Warning - variations SKU will be generated automagically (basing on main products SKU).

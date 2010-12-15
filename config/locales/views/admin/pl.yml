@@ -1,20 +1,27 @@
 pl:
   admin:
+    brands:
+      new:
+        creating_brand: Tworzenie nowej marki
+      edit:
+        editing_brand: Edycja marki
     banners:
       sidebar:
         banners_options: Opcje bannerów
     banner_types:
       sidebar:
-        description: "Typy bannerów to predefiniowane rozmiary, które będą używane w systemie. Po zdefiniowaniu wysokości
-        i wysokości system automatycznie pomniejszy banner do zadanego rozmiaru (o ile będzie to obrazek)."
+        description: "Typy bannerów to predefiniowane rozmiary, które będą używane w systemie. Po zdefiniowaniu wysokości i wysokości system automatycznie pomniejszy banner do zadanego rozmiaru (o ile będzie to obrazek)."
     banner_placements:
       sidebar:
-        description: "Położenia bannerów to predefioniowane identyfikotory, które mogą zostac użyte w systemie (widokach)
-        by umiejscowic banner w zadanym miejscu"
+        description: "Położenia bannerów to predefioniowane identyfikotory, które mogą zostac użyte w systemie (widokach) by umiejscowic banner w zadanym miejscu"
+    categories:
+      new:
+        creating_category: Tworzenie kategorii
+      edit:
+        editing: Edycja kategorii
     option_groups:
       sidebar:
-        description: "Grupy opcji pozwalają na definiowanie grup atrybutów, w ramach których mogą byc tworzone wariacje
-        produktów"
+        description: "Grupy opcji pozwalają na definiowanie grup atrybutów, w ramach których mogą byc tworzone wariacje produktów"
     product_types:
       sidebar:
         description: "Typy produktów pozwalają na tworzenie predefiniowanych produktów wraz z atrybutami"
@@ -28,6 +35,11 @@ pl:
       sidebar:
         order_state: Status zamówienia
         current_state: Obecny status
+    shipping_methods:
+      new:
+        creating: Tworzenie nowego sposobu dostawy
+      edit:
+        editing: Edycja sposobu dostawy
     settings:
       sidebar:
         additional_settings: Dodatkowe ustawienia

@@ -23,12 +23,17 @@
           <b><%= t("activerecord.attributes.category.parent", :default => t("activerecord.labels.parent", :default => "Parent")) %>:</b>
           <%= link_to(@category.parent.name, [:admin, @category.parent]) unless @category.parent.blank? %>
         </p>
-
+        
+        <p>
+          <b><%= t("activerecord.attributes.category.parents_path", :default => t("activerecord.labels.parents_path", :default => "parents_path")) %>:</b>
+          <%= @category.ancestors.join(' > ') %>
+        </p>
         <p>
           <b><%= t("activerecord.attributes.category.extra_params", :default => "Extra params") %>:</b>
           <%= @category.extra_params %>
         </p>
-
+        <p>&nbsp;
+        </p>
         <p>
           <b><%= t("groovy_cart.actions.open_in_shop", :default => "Open in shop") %>:</b>
           <%= link_to(@category, @category) unless @category.parent.blank? %>

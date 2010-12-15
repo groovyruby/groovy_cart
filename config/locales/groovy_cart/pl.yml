@@ -1,6 +1,11 @@
 pl:
   groovy_cart:
     descriptions:
+      brand:
+        name: Nazwa marki, która będzie widoczna w sklepie
+      shipping_method:
+        pricing_type: "Model płatności: flat_per_item - stała, za każdy element; flat_per_order - stała, za całe zamówienie"
+        free_from_cart_value: "Wartość koszyka, powyżej której dostawa jest darmowa"
       product:
         name: Pełna nazwa produktu
         sku: Wewnętrzny identyfikator produktu. Uwaga - SKU wariacji produktów będą generowane automatycznie na podstawie SKU produktu głównego.

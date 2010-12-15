@@ -12,7 +12,7 @@ pl:
         name: Nazwa
         parent: Kategoria nadrzędna
         extra_params: Dodatkowe parametry
-        is_visible: Widoczność
+        is_visible: Widocznośc
         parents_path: Kategorie nadrzędne
       brand:
         name: Nazwa
