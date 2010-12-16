@@ -31,6 +31,13 @@ pl:
       order:
         billing_address: Adres zamawiającego
         shipping_address: Adres dostawy
+      option_group:
+        name: Nazwa
+        option_group_type: Typ opcji
+        slug: Identyfikator
+      option:
+        name: Nazwa
+        parameter_value: Własność opcji
 
         
     labels:

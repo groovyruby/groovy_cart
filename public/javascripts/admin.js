@@ -14,10 +14,13 @@ function fire_select_with_options(elem)
         elem = this;
     }
     var target = eval($(this).attr('data-options-selector'));
-    if($(this).val() in oc($(target).attr('data-options-visible').split(';'))){
-        $(target).fadeIn();
-    }else{
-        $(target).fadeOut();
+    if($(target).attr('data-options-visible'))
+    {
+        if($(this).val() in oc($(target).attr('data-options-visible').split(';'))){
+            $(target).fadeIn();
+        }else{
+            $(target).fadeOut();
+        }
     }
 }
 function attach_select_with_options()
@@ -28,4 +31,8 @@ function attach_select_with_options()
 $(document).ready(function(){
     attach_select_with_options();
     $('.select_with_options').each(fire_select_with_options);
+    $('.add_nested_item').click(function(){
+        $('.select_with_options').each(fire_select_with_options);
+        return true;
+    });
 });

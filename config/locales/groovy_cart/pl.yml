@@ -28,6 +28,13 @@ pl:
         field_type: Typ określający jak atrybut zostanie pokazany w panelu administracyjnym
         field_options: 'Dodatkowe parametry typu, opcje select i checkbox powinny być rozdzielone znakiem ";" (np: benzyna;diesel)'
         identifier: Identyfikator pozwalający odwołać się do parametru (np. typ-paliwa)
+      option_group:
+        name: ""
+        option_group_type: 'Typ "color" pozwala na zdefiniowanie kodu koloru dla kolejnych opcji (np. #ff0000)'
+        slug: ""
+      option:
+        name: "Nazwa opcji, dla rozmiarów będzie to np. S, M lub L"
+        parameter_value: 'Dodatkowy parametr opcji, np. #ff0000'
     messages:
       empty_cart: Koszyk jest pusty
     modules:
@@ -45,3 +52,5 @@ pl:
       survey_models: Ankiety
     actions:
       open_in_shop: Otwórz w sklepie
+    common:
+      destroy: Usuń

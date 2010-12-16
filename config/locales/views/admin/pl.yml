@@ -22,6 +22,12 @@ pl:
     option_groups:
       sidebar:
         description: "Grupy opcji pozwalają na definiowanie grup atrybutów, w ramach których mogą byc tworzone wariacje produktów"
+      form:
+        add_option: Dodaj opcję
+      edit:
+        editing: Edycja grupy opcji
+      new:
+        creating: Tworzenie grupy opcji
     product_types:
       new:
         creating: Tworzenie szablonu produktu

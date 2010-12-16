@@ -28,6 +28,13 @@ en:
         field_type: How field will be reprezented in administrative area? 
         field_options: 'Extra attributes for this property. Options for select and checkbox field should be splitted with ";" char (ie: pertol;diesel)'
         identifier: "Identifier, that will allow getting this property from layout (ie. engine-type)"
+      option_group:
+        name: ""
+        option_group_type: 'Type "color" allows to defina sample color for options (ie. #ff0000)'
+        slug: ""
+      option:
+        name: "Option name, for sizes it could be S, M or L"
+        parameter_value: ''
     messages:
       empty_cart: Cart is empty
     modules:
@@ -45,3 +52,5 @@ en:
       survey_models: Surveys
     actions:
       open_in_shop: Open in shop
+    common:
+      destroy: Delete

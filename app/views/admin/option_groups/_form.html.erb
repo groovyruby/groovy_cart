@@ -10,25 +10,26 @@
   <div class="group">
     <%= f.label :name, t("activerecord.attributes.option_group.name", :default => "Name"), :class => :label %>
     <%= f.text_field :name, :class => 'text_field' %>
-    <span class="description">Ex: a simple text</span>
+    <span class="description"><%= t("groovy_cart.descriptions.option_group.name") %></span>
   </div>
   <div class="group">
     <%= f.label :option_group_type, t("activerecord.attributes.option_group.option_group_type", :default => "Option Group Type"), :class=>"label" %>
-    <%= f.select :option_group_type, OptionGroup::OPTION_GROUP_TYPES %><Br />
+    <%= f.select :option_group_type, OptionGroup::OPTION_GROUP_TYPES, {}, {:class=>"select_with_options", :'data-options-selector'=>'$(".show_for_options")'} %>
+     <span class="description visible_description"><%= t("groovy_cart.descriptions.option_group.option_group_type") %></span>
   </div>
   <div class="group">
-    <%= f.label :slug, t("activerecord.attributes.option_group.slug", :default => "Slug"), :class => :label %>
+    <%= f.label :slug, t("activerecord.attributes.option_group.slug", :default => "Identyfier"), :class => :label %>
     <%= f.text_field :slug, :class => 'text_field' %>
     <span class="description"><%= t("groovy_cart.descriptions.option_group.slug") %></span>
   </div>
-  <div class="group">
-  	<ul id="options_fields" style="clear: both;">
+  <div class="group nested_group">
+  	<div id="options_fields" style="clear: both;">
       <%= f.fields_for :options do |fo| %>
         <%= render :partial=>"option", :locals=>{:f=>fo}%>
       <% end %>
-    </ul>
+    </div>
     <a name="option"></a>
-    <%= link_to '+ Add option', '#option', :class => "add_nested_item", :rel => "option" %><br />
+    <%= link_to t('.add_option', :default=>'Add option'), '#option', :class => "add_nested_item", :rel => "option" %><br />
   </div>
         
 <div class="group navform wat-cf">

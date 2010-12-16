@@ -1,12 +1,21 @@
-<li style="clear: both;">
-  <div class="small_field inline_field">
-    <%= f.label :name, :class=>"label" %>
-    <%= f.text_field :name, :class=>"text_field" %>
-  </div>
-  <div class="small_field inline_field">
-    <%= f.label :parameter_value, :class=>"label" %>
-    <%= f.text_field :parameter_value, :class=>"text_field" %>
-  </div>
-  <br style="clear:both;"/>
-</li>
+<table class="nested_table">
+  <tr>
+    <td class="width_50">
+      <%= f.label :name, t("activerecord.attributes.option.name", :default => "Name"), :class=>"label" %>
+      <%= f.text_field :name, :class=>"text_field " %>
+      <span class="description"><%= t("groovy_cart.descriptions.option.name") %></span>
+    </td>
+    <td class="show_for_options" data-options-visible="color">
+      <%= f.label :parameter_value, t("activerecord.attributes.option.parameter_value", :default => "Parameter value"), :class=>"label" %>
+      <%= f.text_field :parameter_value, :class=>"text_field" %>
+      <span class="description"><%= t("groovy_cart.descriptions.option.parameter_value") %></span>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="destroy_row">
+      <%= f.label :_destroy, t('groovy_cart.common.destroy') %>
+      <%= f.check_box :_destroy%>
+    </td>
+  </tr>
+</table>
 
