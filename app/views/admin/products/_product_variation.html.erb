@@ -1,19 +1,29 @@
 <%
 begin;seq = seq;rescue;end;seq = seq==nil ? 'new_product_variation' : seq
 %>
-<li class="product_variation">
-  <% if f.object.product and f.object.product.option_groups and f.object.product.option_groups.count > 0 %>
-    <%= f.label :price, :class=>"price" %>
-    <%= f.text_field :price, :class=>"text_field price_field" %>
-    <% for og in f.object.product.option_groups %>
-      <% sel = f.object.options.where(:option_group_id=>og.id).first %>
-      <% sel = sel.id unless sel.blank? %>
-      <%= select "product[product_variations_attributes][#{seq}][option_ids]", '', og.options.all.map{|o| [o.name, o.id]}, {:selected=>sel} %>
-    <% end %><br/>
-    <%= f.label :_destroy %><%= f.check_box :_destroy %>
-    
-    
-  <% else %>
+<% if f.object.product and f.object.product.option_groups and f.object.product.option_groups.count > 0 %>
+
+  <table class="product_variation nested_table">
+    <tr>
+      <td class="width_50">
+        <%= f.label :price, :class=>"price" %>
+        <%= f.text_field :price, :class=>"text_field price_field" %>
+      </td>
+      <td>
+        <% for og in f.object.product.option_groups %>
+          <% sel = f.object.options.where(:option_group_id=>og.id).first %>
+          <% sel = sel.id unless sel.blank? %>
+          <%= select "product[product_variations_attributes][#{seq}][option_ids]", '', og.options.all.map{|o| [o.name, o.id]}, {:selected=>sel} %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" class="destroy_row">
+        <%= f.label :_destroy, t('groovy_cart.common.destroy') %>
+        <%= f.check_box :_destroy%>
+      </td>
+    </tr>
+  </table>
+<% else %>
     Brak grup opcji, nie można utworzyc wariantu produktu
-  <% end %>
-</li>
+<% end %>

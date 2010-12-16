@@ -61,11 +61,18 @@ table.nested_table{
     margin: 5px 0 10px 0;
     background-color: #f6f6f6;
 }
+table.form_table{
+    width: 100%;
+    padding: 5px;
+}
 table.nested_table td{
     padding: 0 4px 0 4px;
 }
 .width_50{
     width: 50%;
+}
+.width_70px{
+    width: 70px;
 }
 .show_for_options{
     display: none;
