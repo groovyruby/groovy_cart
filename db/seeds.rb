@@ -65,6 +65,24 @@ if Setting.get('integrations.mailchimp_unique_id').blank?
   s.save
 end
 
+if Setting.get('integrations.use_google_analytics').blank?
+  s = Setting.create({:value=>"f"})
+  s.identifier = 'integrations.use_google_analytics'
+  s.label = 'Use Google Analytics(tm)?'
+  s.description = 'System will automatically install tracking code'
+  s.field_type = 'boolean'
+  s.save
+end
+
+if Setting.get('integrations.google_analytics_tracking_id').blank?
+  s = Setting.create({:value=>""})
+  s.identifier = 'integrations.google_analytics_tracking_id'
+  s.label = 'Google Analytics(tm) tracking ID'
+  s.description = 'ID of site to be tracked using google analytics'
+  s.field_type = 'string'
+  s.save
+end
+
 if PaymentGateway.where('class_name=?', 'cod').blank?
   pg = PaymentGateway.new
   pg.name = 'Cash on delivery'

@@ -18,6 +18,11 @@ pl:
         name: Nazwa
       product_type:
         name: Nazwa
+      property_type:
+        name: Nazwa
+        field_type: Typ pola
+        field_options: Opcje
+        identifier: Identyfikator
       shipping_method:
         name: Nazwa
         pricing_type: Model płatności

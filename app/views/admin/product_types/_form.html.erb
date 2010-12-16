@@ -11,18 +11,18 @@
   <div class="group">
     <%= f.label :name, t("activerecord.attributes.product_type.name", :default => "Name"), :class => :label %>
     <%= f.text_field :name, :class => 'text_field' %>
-    <span class="description">Ex: a simple text</span>
+    <span class="description"><%= t("groovy_cart.descriptions.product_type.name") %></span>
   </div>
 
-  <div class="group">
-  	<ul id="property_types_fields" style="clear: both;">
+  <div class="group nested_group">
+  	<div id="property_types_fields" style="clear: both;">
       <%= f.fields_for :property_types do |fpt| %>
         <%= render :partial=>"property_type", :locals=>{:f=>fpt}%>
       <% end %>
-    </ul>
+    </div>
     <br style="clear: both;"/>
     <a name="property_type" style="clear: both;"></a>
-    <%= link_to '+ Add property type', '#property_type', :class => "add_nested_item", :rel => "property_type" %><br />
+    <%= link_to t('.add_property_type', :default=>"Add property type"), '#property_type', :class => "add_nested_item", :rel => "property_type" %><br />
   </div>
 <br />
         

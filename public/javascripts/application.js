@@ -30,10 +30,10 @@ $(document).ready(function(){
 				}
 			}
 		});
-    $('.group input').focus(function(){
+    $('.group input').live('focus', function(){
       $(this).next('.description').show();
     });
-    $('.group input').blur(function(){
+    $('.group input').live('blur', function(){
       $(this).next('.description').hide();
     });
 });

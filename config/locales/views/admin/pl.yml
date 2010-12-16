@@ -23,8 +23,16 @@ pl:
       sidebar:
         description: "Grupy opcji pozwalają na definiowanie grup atrybutów, w ramach których mogą byc tworzone wariacje produktów"
     product_types:
+      new:
+        creating: Tworzenie szablonu produktu
+      edit:
+        editing: Edycja szablonu produktu
+      form:
+        add_property_type: Dodaj atrybut
+      index:
+        new_product: Dodaj nowy produkt używając tego szablonu
       sidebar:
-        description: "Typy produktów pozwalają na tworzenie predefiniowanych produktów wraz z atrybutami"
+        description: "Szablony produktów pozwalają na tworzenie predefiniowanych produktów wraz z atrybutami"
     products:
       sidebar:
         create_new_from_template: Utwórz nowy produkt z szablonu

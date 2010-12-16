@@ -1,11 +1,29 @@
-<li>
-  <%= f.label :name, :class=>"label" %>
-  <%= f.text_field :name, :class=>"text_field" %><br>
-  <%= f.label :field_type, :class=>"label" %>
-  <%= f.select :field_type, PropertyType::FIELD_TYPES %><Br />
-  <%= f.label :field_options, :class=>"label" %>
-  <%= f.text_field :field_options, :class=>"text_field" %><br />
-  <%= f.label :identifier, :class=>"label" %>
-  <%= f.text_field :identifier, :class=>"text_field" %>
-</li>
+<table class="nested_table">
+  <tr>
+    <td class="width_50" valign="top">
+      <%= f.label :name, t("activerecord.attributes.property_type.name", :default => "Name"), :class=>"label" %>
+      <%= f.text_field :name, :class=>"text_field" %>
+      <span class="description"><%= t("groovy_cart.descriptions.property_type.name") %></span>
+    </td>
+    <td >
+      <%= f.label :field_type, t("activerecord.attributes.property_type.field_type", :default => "Field type"), :class=>"label" %>
+      <%= f.select :field_type, PropertyType::FIELD_TYPES, {}, {:class=>"select_with_options", :'data-options-selector'=>'$(this).parents("table.nested_table").find("td.show_for_options")'} %>
+      <span class="description visible_description"><%= t("groovy_cart.descriptions.property_type.field_type") %></span>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="show_for_options" data-options-visible="image;select;checkbox">
+      <%= f.label :field_options, t("activerecord.attributes.property_type.field_options", :default => "Field options"), :class=>"label" %>
+      <%= f.text_field :field_options, :class=>"text_field" %>
+      <span class="description"><%= t("groovy_cart.descriptions.property_type.field_options") %></span>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <%= f.label :identifier, t("activerecord.attributes.property_type.identifier", :default => "Identifier"), :class=>"label" %>
+      <%= f.text_field :identifier, :class=>"text_field" %>
+      <span class="description"><%= t("groovy_cart.descriptions.property_type.identifier") %></span>
+    </td>
+  </tr>
+</table>
 

@@ -21,6 +21,13 @@ pl:
       option_group:
         name: ""
         slug: Identyfikator grupy opcji, może byc przydatny np. designerom odpowiedzialnym za twój sklep. Raz wpisanego lepiej nie zmieniac.
+      product_type:
+        name: "Nazwa identyfikująca ten szablon produktu, do użytku wewnętrznego"
+      property_type:
+        name: "Nazwa atrybutu, do użytku wewnętrznego i zewnętrznego (np. Typ paliwa)"
+        field_type: Typ określający jak atrybut zostanie pokazany w panelu administracyjnym
+        field_options: 'Dodatkowe parametry typu, opcje select i checkbox powinny być rozdzielone znakiem ";" (np: benzyna;diesel)'
+        identifier: Identyfikator pozwalający odwołać się do parametru (np. typ-paliwa)
     messages:
       empty_cart: Koszyk jest pusty
     modules:

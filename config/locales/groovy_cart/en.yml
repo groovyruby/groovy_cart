@@ -21,6 +21,13 @@ en:
       option_group:
         name: ""
         slug: Option group identifier. We recommend not to change this value.
+      product_type:
+        name: "Internal identifier for this product template"
+      property_type:
+        name: 'Name of property, for external and internal use. (ie: Fuel type)'
+        field_type: How field will be reprezented in administrative area? 
+        field_options: 'Extra attributes for this property. Options for select and checkbox field should be splitted with ";" char (ie: pertol;diesel)'
+        identifier: "Identifier, that will allow getting this property from layout (ie. engine-type)"
     messages:
       empty_cart: Cart is empty
     modules:

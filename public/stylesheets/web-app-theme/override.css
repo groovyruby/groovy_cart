@@ -1,7 +1,7 @@
 /* Override here any style defined by web-app-theme */
 
 .small_field{
-  width: 30%;
+  width: 30% !important;
 }
 .small_field text_field{
 }
@@ -26,9 +26,6 @@
 .description{
   display: none;
 }
-.price_field{
-  
-}
 .current_state{
   font-weight: bold;
   background-image: none !important;
@@ -40,4 +37,36 @@
 .price_field{
     width: 120px !important;
     text-align: right;
+}
+.add_nested_item{
+    font-weight: bold;
+    background-image: url("../../images/icons/add.png");
+    background-repeat: no-repeat;
+    background-position: left top;
+    padding-left: 20px;
+    line-height: 20px;
+    height: 20px;
+}
+.nested_group{
+    margin-left: 25px;
+    padding-left: 5px;
+    border: 1px solid #eee;
+}
+.nested_group ul{
+    list-style: none;
+}
+table.nested_table{
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0 10px 0;
+    background-color: #f6f6f6;
+}
+table.nested_table td{
+    padding: 0 4px 0 4px;
+}
+.width_50{
+    width: 50%;
+}
+.show_for_options{
+    display: none;
 }
