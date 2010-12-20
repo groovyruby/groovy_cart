@@ -1,8 +1,50 @@
 <%= render :partial=>"variation_javascript" %>
 
-
+<%= content_for :head do %>
+<script type="text/javascript" charset="utf-8">
+  function replace_main_photo()
+  {
+    $('#product_photo img').attr('src', $(this).attr('href'));
+    return false;
+  }
+  function show_product_option()
+  {
+    var option_id = $(this).attr('id').split('_')[1];
+    var p = $(".image_photo img[data_option_id='"+option_id+"']");
+    if(p && p.length){
+      $('#product_photo img').attr('src', $(p).parent().attr('href'));
+    }
+  }
+</script>
+<% end %>
+<%= content_for :body_onload do %>
+  $('a.image_photo').live('click', replace_main_photo);
+  $('ul.option_links li').live('click', show_product_option);
+<% end %>
 <h1>Product <%= @product.name %></h1>
-
+<% if @product.get_photo %>
+  <div id="product_photo">
+    <%= image_tag @product.get_photo.photo.url(:show)%>
+  </div>
+<% end %>
+<h2>Photos:</h2>
+<% for p in @product.photos %>
+  <%= link_to image_tag(p.photo.url(:cart), :'data_option_id'=>p.option_id), p.photo.url(:show), :class=>'image_photo' %>
+<% end %>
+<br style="clear: both;">
+<h3>Option groups</h3>
+<ul>
+<% for og in @option_groups %>
+  <li>
+    <%= og.name%>
+    <ul class="option_links">
+    <% for o in og.options %>
+      <li id="option_<%= o.id %>"><%= o.name %> <%= "(#{o.parameter_value})" unless o.parameter_value.blank? %></li>
+    <% end %>
+    </ul>
+  </li>
+<% end %>
+</ul>
 
 <h2>Add to cart</h2>
 <%= form_tag add_product_to_cart_path, :id=>"add_to_cart" do -%>
