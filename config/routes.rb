@@ -1,5 +1,7 @@
 GroovyCart::Application.routes.draw do
 
+  devise_for :admins
+
   resources :surveys, :except=>[:edit, :update, :destroy]
 
   get 'account', :as=>:my_account, :controller=>"account", :action=>"index"
@@ -41,6 +43,7 @@ GroovyCart::Application.routes.draw do
 
  
   namespace :admin do
+    resources :admins
     resources :banner_types
     resources :banner_placements
     resources :banners

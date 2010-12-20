@@ -1,0 +1,52 @@
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first active"><%= link_to "#{t("web-app-theme.list", :default => "List")}", admin_admins_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_admin_path %></li>
+    </ul>
+  </div>          
+  <div class="content">          
+    <h2 class="title"><%= t("web-app-theme.all", :default => "All")  %> Admins</h2>
+    <div class="inner">
+      <table class="table">
+        <tr>             
+          <th>
+            <%= t("activerecord.attributes.admin.email", :default => t("activerecord.labels.email", :default => "Email")) %>
+          </th>
+          <th>
+            <%= t("activerecord.attributes.admin.current_sign_in_at", :default => "Last sign in at") %>
+          </th>
+          <th>
+            <%= t("activerecord.attributes.admin.current_sign_in_ip", :default => "Current sign in IP") %>
+          </th>
+          <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th class="last">&nbsp;</th>
+        </tr>
+        <% @admins.each do |admin| -%>
+        <tr class="<%= cycle("odd", "even") %>">
+          <td>
+            <%= link_to admin.email, admin_admin_path(admin) %>
+          </td>
+          <td><%= admin.current_sign_in_at %></td>
+          <td><%= admin.current_sign_in_ip%></td>
+          <td>
+            <%= admin.created_at %>
+          </td>
+          <td class="last">
+            <%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_admin_path(admin) %> |
+            <%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_admin_admin_path(admin) %> |
+            <%= link_to "#{t("web-app-theme.delete", :default => "Delete")}", admin_admin_path(admin), :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+          </td>
+        </tr>          
+        <% end -%>
+      </table>
+      <div class="actions-bar wat-cf">
+        <div class="actions">
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

@@ -50,6 +50,7 @@ en:
       shipping_methods: Shipping methods
       orders: Orders
       survey_models: Surveys
+      admin: Administrators
     actions:
       open_in_shop: Open in shop
     common:

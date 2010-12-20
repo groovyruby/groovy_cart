@@ -1,0 +1,28 @@
+<%= form_for [:admin, @admin], :html => { :class => :form } do |f| -%>
+
+  <div class="group">
+    <%= f.label :email, t("activerecord.attributes.admin.email", :default => "Email"), :class => :label %>
+    <%= f.text_field :email, :class => 'text_field' %>
+    <span class="description"><% t("web-app-theme.descriptions.admin.email", :default => "") %></span>
+  </div>
+
+  <div class="group">
+    <%= f.label :password, t("activerecord.attributes.admin.password", :default => "Password"), :class => :label %>
+    <%= f.text_field :password, :class => 'text_field' %>
+    <span class="description"><% t("web-app-theme.descriptions.admin.password", :default => "") %></span>
+  </div>
+
+  <div class="group">
+    <%= f.label :password_confirmation, t("activerecord.attributes.admin.password_confirmation", :default => "Password confirmation"), :class => :label %>
+    <%= f.text_field :password_confirmation, :class => 'text_field' %>
+    <span class="description"><% t("web-app-theme.descriptions.admin.password_confirmation", :default => "") %></span>
+  </div>
+
+  <div class="group navform wat-cf">
+    <button class="button" type="submit">
+      <%= image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%= t("web-app-theme.save", :default => "Save") %>
+    </button>
+    <span class="text_button_padding"><%= t("web-app-theme.or", :default => "or") %></span>
+    <%= link_to t("web-app-theme.cancel", :default => "Cancel"), admin_admins_path, :class => "text_button_padding link_button" %>
+  </div>
+<% end -%>

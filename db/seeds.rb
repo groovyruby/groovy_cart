@@ -107,3 +107,11 @@ if PaymentGateway.where('class_name=?', 'paypal_express').first.blank?
   pg.additional_percentage_fee = '2.3'
   pg.save
 end
+
+if Admin.find_by_email('admin@groovyru.by').blank?
+  a = Admin.new
+  a.email = 'admin@groovyru.by'
+  a.password = 'q1w2e3'
+  a.password_confirmation = 'q1w2e3'
+  a.save
+end

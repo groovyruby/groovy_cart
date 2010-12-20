@@ -2,6 +2,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :find_cart_for_devise
+  layout :layout_by_resource
+
+  def layout_by_resource
+    if devise_controller? and resource_name.to_sym == :admin
+      "admin_sign_in"
+    else
+      "application"
+    end
+  end
 
   helper :products
 

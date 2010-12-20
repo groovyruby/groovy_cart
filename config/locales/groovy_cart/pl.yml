@@ -50,6 +50,7 @@ pl:
       shipping_methods: Dostawa
       orders: Zamówienia
       survey_models: Ankiety
+      admins: Administratorzy
     actions:
       open_in_shop: Otwórz w sklepie
     common:
