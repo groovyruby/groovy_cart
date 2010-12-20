@@ -51,6 +51,11 @@ pl:
       sidebar:
         order_state: Status zamówienia
         current_state: Obecny status
+      index:
+        all_orders: Wszystkie zamówienia
+      show:
+        shipping: Sposób dostawy
+        payment_gateway: Sposób płatności
     shipping_methods:
       new:
         creating: Tworzenie nowego sposobu dostawy
@@ -67,6 +72,13 @@ pl:
         statistics: Statystyka
       show:
         statistics: Statystyka
+        questions: Pytania
+      form:
+        add_new_question: Dodaj pytanie
+      new:
+        creating: Tworzenie nowego formularza ankiety
+      edit:
+        editing: Edycja formularza ankiety
     surveys:
       index:
         list_survey_models: Lista ankiet

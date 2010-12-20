@@ -33,6 +33,16 @@ pl:
         shipping_address: Adres dostawy
         first_name: Imię
         last_name: Nazwisko
+        total_value: Całkowita wartość
+        state: Status
+        items_value: Wartość towarów
+        shipping_id: Dostawa
+        payment_gateway: Sposób płatności
+        client_ip: IP klienta
+      order_item:
+        item_price: Cena jednostkowa
+        quantity: Ilość
+        item_value: Całkowita wartość
       option_group:
         name: Nazwa
         option_group_type: Typ opcji
@@ -40,6 +50,15 @@ pl:
       option:
         name: Nazwa
         parameter_value: Własność opcji
+      survey_model:
+        name: Nazwa
+        is_active: Aktywna?
+        active_from_date: Aktywna od dnia
+        active_until_date: Aktywna do daty
+      survey_question:
+        question: Pytanie
+        field_type: Typ pola
+        field_options: Dodatkowe parametry
 
         
     labels:

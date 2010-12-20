@@ -11,23 +11,40 @@
     <div class="inner">
       
         <p>
-          <b><%= t("activerecord.attributes.admin_survey_model.name", :default => t("activerecord.labels.name", :default => "Name")) %>:</b>
+          <b><%= t("activerecord.attributes.survey_model.name", :default => t("activerecord.labels.name", :default => "Name")) %>:</b>
           <%= @survey_model.name %>
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.admin_survey_model.is_active", :default => t("activerecord.labels.is_active", :default => "Is active")) %>:</b>
+          <b><%= t("activerecord.attributes.survey_model.is_active", :default => t("activerecord.labels.is_active", :default => "Is active")) %>:</b>
           <%= @survey_model.is_active %>
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.admin_survey_model.active_from_date", :default => t("activerecord.labels.active_from_date", :default => "Active from date")) %>:</b>
+          <b><%= t("activerecord.attributes.survey_model.active_from_date", :default => t("activerecord.labels.active_from_date", :default => "Active from date")) %>:</b>
           <%= @survey_model.active_from_date %>
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.admin_survey_model.active_until_date", :default => t("activerecord.labels.active_until_date", :default => "Active until date")) %>:</b>
+          <b><%= t("activerecord.attributes.survey_model.active_until_date", :default => t("activerecord.labels.active_until_date", :default => "Active until date")) %>:</b>
           <%= @survey_model.active_until_date %>
+        </p>
+        <p>
+        <strong><%= t('.questions', :default=>"Questions") %></strong>
+        <ul style="padding-left: 15px">
+        <% for sq in @survey_model.survey_questions %>
+          <li>
+            <%= sq.question %> (<%= sq.field_type%>)
+            <% if %w(radio checkbox select).member? sq.field_type%>
+            <ul style="padding-left: 15px">
+              <% for o in sq.field_options.split('|')%>
+              <li><%= o %></li>
+              <% end %>
+            </ul>
+            <% end %>
+          </li>
+        <% end %>
+        </ul>
         </p>
       <div class="wat-cf">
         <% if @survey_model.surveys.empty? %>

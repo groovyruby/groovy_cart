@@ -10,17 +10,17 @@
     <div class="inner">
       
         <p>
-          <b><%= t("activerecord.attributes.admin_order.total_value", :default => t("activerecord.labels.total_value", :default => "Total value")) %>:</b>
+          <b><%= t("activerecord.attributes.order.total_value", :default => t("activerecord.labels.total_value", :default => "Total value")) %>:</b>
           <%= @order.total_value %>
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.admin_order.state", :default => t("activerecord.labels.state", :default => "State")) %>:</b>
+          <b><%= t("activerecord.attributes.order.state", :default => t("activerecord.labels.state", :default => "State")) %>:</b>
           <%= @order.state %>
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.admin_order.items_value", :default => t("activerecord.labels.items_value", :default => "Items value")) %>:</b>
+          <b><%= t("activerecord.attributes.order.items_value", :default => t("activerecord.labels.items_value", :default => "Items value")) %>:</b>
           <%= @order.items_value %>
         </p>
 
@@ -76,12 +76,7 @@
       </table>
 
         <p>
-          <b><%= t("activerecord.attributes.admin_order.payment_token", :default => t("activerecord.labels.payment_token", :default => "Payment token")) %>:</b>
-          <%= @order.payment_token %>
-        </p>
-
-        <p>
-          <b><%= t("activerecord.attributes.admin_order.client_ip", :default => t("activerecord.labels.client_ip", :default => "Client ip")) %>:</b>
+          <b><%= t("activerecord.attributes.order.client_ip", :default => t("activerecord.labels.client_ip", :default => "Client ip")) %>:</b>
           <%= @order.client_ip %>
         </p>
       <div class="wat-cf">

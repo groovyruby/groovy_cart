@@ -32,15 +32,15 @@
     <span class="description"><% t("web-app-theme.descriptions.survey_model.active_until_date", :default => "") %></span>
   </div>
   
-  <div class="group">
-  	<ul id="survey_questions_fields" style="clear: both;">
+  <div class="group nested_group">
+  	<div id="survey_questions_fields" style="clear: both;">
       <%= f.fields_for :survey_questions do |fsq| %>
         <%= render :partial=>"survey_question", :locals=>{:f=>fsq}%>
       <% end %>
-    </ul>
+    </div>
     <br style="clear: both;"/>
     <a name="survey_question" style="clear: both;"></a>
-    <%= link_to '+ Add new question', '#survey_question', :class => "add_nested_item", :rel => "survey_question" %><br />
+    <%= link_to t('.add_new_question', :default=>"Add new question"), '#survey_question', :class => "add_nested_item", :rel => "survey_question" %><br />
   </div>
         
   <div class="group navform wat-cf">
