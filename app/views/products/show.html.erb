@@ -46,6 +46,13 @@
 <% end %>
 </ul>
 
+<h3>Available options</h3>
+<ul class="option_links">
+<% for o in @product.available_options%>
+<li id="option_<%= o.id %>"><%= o.name %> <%= "(#{o.parameter_value})" unless o.parameter_value.blank? %></li>
+<% end %>
+</ul>
+
 <h2>Add to cart</h2>
 <%= form_tag add_product_to_cart_path, :id=>"add_to_cart" do -%>
   <%= hidden_field_tag :variation_id, ''%>

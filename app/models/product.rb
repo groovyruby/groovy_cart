@@ -50,6 +50,10 @@ class Product < ActiveRecord::Base
   def options
     self.option_groups.map{|og| og.options.all }.flatten
   end
+  
+  def available_options
+    self.product_variations.map{ |pv| pv.options.all }.flatten.uniq
+  end
 
   def variation_available_for_option(option)
     not self.product_variations.joins(:options).where('product_variations.price > ?', 0).where('options.id=?', option.id).first.blank?
