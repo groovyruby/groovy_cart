@@ -21,7 +21,7 @@ class Order < ActiveRecord::Base
 
   #before_save :copy_shipping_cost
 
-  attr_accessible :discount_value, :addresses_attributes
+  attr_accessible :discount_value, :addresses_attributes, :first_name, :last_name
 
   state_machine do
     state :new
@@ -144,8 +144,15 @@ class Order < ActiveRecord::Base
   def shipping_address
     self.addresses.where('is_shipping=?', true).first
   end
+  
+  def cache_address_data
+    self.first_name = self.billing_address.first_name
+    self.last_name = self.billing_address.last_name
+    self.save
+  end
 
   def mail_confirmed
+    self.cache_address_data
     OrderMailer.completed(self).deliver
   end
 

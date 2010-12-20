@@ -2,7 +2,11 @@ class Admin::OrdersController < AdminController
   # GET /orders
   # GET /orders.xml
   def index
-    @orders = Order.ordered.all
+    params[:search] ||= {}
+    params[:search][:meta_sort] ||= 'created_at.desc'
+    @search = Order.search(params[:search])
+    @orders = @search.paginate(:page => params[:page]) # Who doesn't love will_paginate
+    
 
     respond_to do |format|
       format.html # index.html.erb

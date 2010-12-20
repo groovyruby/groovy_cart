@@ -31,6 +31,8 @@ pl:
       order:
         billing_address: Adres zamawiającego
         shipping_address: Adres dostawy
+        first_name: Imię
+        last_name: Nazwisko
       option_group:
         name: Nazwa
         option_group_type: Typ opcji

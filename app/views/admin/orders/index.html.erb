@@ -10,14 +10,20 @@
     <div class="inner">
       <table class="table">
         <tr>             
-          <th class="first">ID</th>
+          <th class="first"><%= sort_link @search, :id, 'ID' %></th>
           <th>
-            <%= t("activerecord.attributes.order.total_value", :default => t("activerecord.labels.total_value", :default => "Total_value")) %>
+            <%= sort_link @search, :total_value, t("activerecord.attributes.order.total_value", :default => t("activerecord.labels.total_value", :default => "Total value")) %>
           </th>
           <th>
-            <%= t("activerecord.attributes.order.state", :default => t("activerecord.labels.state", :default => "State")) %>
+            <%= sort_link @search, :state, t("activerecord.attributes.order.state", :default => t("activerecord.labels.state", :default => "State")) %>
           </th>
-                    <th><%= t("web-app-theme.created_at", :default => "Created at")  %></th>
+          <th>
+            <%= sort_link @search, :first_name, t("activerecord.attributes.order.first_name", :default => t("activerecord.labels.first_name", :default => "First name")) %>
+          </th>
+          <th>
+            <%= sort_link @search, :last_name, t("activerecord.attributes.order.last_name", :default => t("activerecord.labels.last_name", :default => "Last name")) %>
+          </th>
+          <th><%= sort_link @search, :created_at, t("web-app-theme.created_at", :default => "Created at")  %></th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @orders.each do |order| -%>
@@ -31,7 +37,9 @@
           <td>
             <%= order.state %>
           </td>
-                    <td>
+          <td><%= order.first_name %></td>
+          <td><%= order.last_name %></td>
+          <td>
             <%= order.created_at %>
           </td>
           <td class="last">
