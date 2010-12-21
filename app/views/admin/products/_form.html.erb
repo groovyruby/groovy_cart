@@ -4,6 +4,27 @@
   <%= javascript_tag do %>
     <%= render("plupload.js") %>
   <% end %>
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+      $("a[rel='product_variation']").click(function(){
+        var new_row = $('#product_variations_fields table.product_variation:last');
+        if(new_row.length>0){
+          var prev_row = $(new_row).prev();
+          if(prev_row.length>0){
+            // HACK: dirty, nasty hack
+            if(prev_row[0].localName!='table')
+            {
+              prev_row = prev_row.prev();
+            }
+            new_row.find('input.price_field').val(prev_row.find("input.price_field").val());
+            prev_row.find('select.option_group').each(function(i,elem){
+              new_row.find("select[data-option-group-id='"+$(elem).attr('data-option-group-id')+"']").val($(elem).val());
+            });
+          }
+        }
+      });
+    })
+  </script>
 <% end %>
 
 <%= form_for [:admin, @product], :html => { :class => :form, :multipart=>true } do |f| -%>

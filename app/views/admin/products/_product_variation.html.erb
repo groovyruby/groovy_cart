@@ -7,13 +7,13 @@ begin;seq = seq;rescue;end;seq = seq==nil ? 'new_product_variation' : seq
     <tr>
       <td class="width_50">
         <%= f.label :price, :class=>"price" %>
-        <%= f.text_field :price, :class=>"text_field price_field" %>
+        <%= f.text_field :price, :class=>"price_field text_field" %>
       </td>
       <td>
         <% for og in f.object.product.option_groups %>
           <% sel = f.object.options.where(:option_group_id=>og.id).first %>
           <% sel = sel.id unless sel.blank? %>
-          <%= select "product[product_variations_attributes][#{seq}][option_ids]", '', og.options.all.map{|o| [o.name, o.id]}, {:selected=>sel} %>
+          <%= select "product[product_variations_attributes][#{seq}][option_ids]", '', og.options.all.map{|o| [o.name, o.id]}, {:selected=>sel}, {:class=>"option_group", :'data-option-group-id'=>og.id} %>
         <% end %>
       </td>
     </tr>
