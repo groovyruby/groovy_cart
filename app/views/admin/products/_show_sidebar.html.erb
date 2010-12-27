@@ -1,0 +1,9 @@
+<div class="block">
+  <h3><%= t('.photos') %></h3>
+  <div>
+    <% for p in @product.photos %>
+    <%= link_to image_tag(p.photo.url(:thumb)), p.photo.url, :rel=>"fancybox"%>
+    <% end%>
+  </div>
+</div>
+

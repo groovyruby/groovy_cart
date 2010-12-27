@@ -10,29 +10,60 @@
     <div class="inner">
       
         <p>
-          <b><%= t("activerecord.attributes.admin_product.name", :default => t("activerecord.labels.name", :default => "Name")) %>:</b>
-          <%= @product.name %>
+          <b><%= t("activerecord.attributes.product.name", :default => t("activerecord.labels.name", :default => "Name")) %>:</b>
+          <%= @product.name %> <%= "(#{@product.product_type.name})" unless @product.product_type.blank? %>
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.admin_product.description", :default => t("activerecord.labels.description", :default => "Description")) %>:</b>
-          <%= @product.description %>
+          <b><%= t("activerecord.attributes.product.description", :default => t("activerecord.labels.description", :default => "Description")) %>:</b><br />
+          <%= simple_format @product.description %>
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.admin_product.brand_id", :default => t("activerecord.labels.brand_id", :default => "Brand")) %>:</b>
-          <%= @product.brand_id %>
+          <b><%= t("activerecord.attributes.product.brand_id", :default => t("activerecord.labels.brand_id", :default => "Brand")) %>:</b>
+          <%= @product.brand.name unless @product.brand.name %>
         </p>
 
         <p>
-          <b><%= t("activerecord.attributes.admin_product.price", :default => t("activerecord.labels.price", :default => "Price")) %>:</b>
+          <b><%= t("activerecord.attributes.product.price", :default => t("activerecord.labels.price", :default => "Price")) %>:</b>
           <%= @product.price %>
         </p>
-
+        
         <p>
-          <b><%= t("activerecord.attributes.admin_product.price_promo", :default => t("activerecord.labels.price_promo", :default => "Price promo")) %>:</b>
-          <%= @product.price_promo %>
+          <b><%= t("activerecord.attributes.product.categories", :default => "Categories") %>:</b>
+          <%= raw @product.categories.all.map{|c| link_to(c.name, [:admin,c])}.join(", ") %>
         </p>
+        
+        <p>
+          <b><%= t("activerecord.attributes.product.availability", :default => "Availability") %>:</b>
+          <%= @product.availability %>
+        </p>
+        
+        <% unless @product.properties.blank? %>
+        <p>
+          <b><%= t("activerecord.attributes.product.properties", :default => "Properties") %>:</b>
+          <ul>
+            <% for p in @product.properties %>
+            <li><%= p.property_type.name %>: <%= p.property_value %> <%= p.attachment_file_name%></li>
+            <% end %>
+          </ul>
+        </p>
+        <% end %>
+        
+        <% unless @product.product_variations.blank? %>
+        <p>
+          <b><%= t("activerecord.attributes.product.product_variations", :default => "Product variations") %>:</b>
+          <ul>
+            <% for pv in @product.product_variations %>
+            <li><%= pv.options.map{|o| o.name }.join(", ") %>, price: <%= pv.price %>, available: <%= pv.availability %></li>
+            <% end %>
+          </ul>
+        </p>
+        <% end %>
+        
+          
+        
+        
       <div class="wat-cf">
         <%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_admin_product_path(@product), :class => "button" %> 
         <%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), admin_product_path(@product), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
@@ -41,4 +72,4 @@
   </div>
 </div>
 
-<% content_for :sidebar, render(:partial => 'sidebar') -%>
+<% content_for :sidebar, render(:partial => 'show_sidebar') -%>
