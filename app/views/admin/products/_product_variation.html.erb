@@ -7,7 +7,7 @@ begin;seq = seq;rescue;end;seq = seq==nil ? 'new_product_variation' : seq
     <tr>
       <td class="width_50">
         <%= f.label :price, :class=>"price" %>
-        <%= f.text_field :price, :class=>"price_field text_field" %>
+        <%= f.text_field :price, :class=>"price_field text_field", :'data-validate'=>'validate(required, number)' %>
       </td>
       <td>
         <% for og in f.object.product.option_groups %>

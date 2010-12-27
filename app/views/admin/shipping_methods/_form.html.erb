@@ -10,7 +10,7 @@
   <%= render :partial=>"/admin/shared/form_errors", :locals=>{:f=>f} %>
   <div class="group">
     <%= f.label :name, t("activerecord.attributes.shipping_method.name", :default => "Name"), :class => :label %>
-    <%= f.text_field :name, :class => 'text_field' %>
+    <%= f.text_field :name, :class => 'text_field', :'data-validate'=>'validate(required)' %>
     <span class="description"><%= t("groovy_cart.descriptions.shipping_method.name", :default => "") %></span>
   </div>
 
