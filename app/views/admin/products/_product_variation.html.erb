@@ -5,9 +5,13 @@ begin;seq = seq;rescue;end;seq = seq==nil ? 'new_product_variation' : seq
 
   <table class="product_variation nested_table">
     <tr>
-      <td class="width_50">
+      <td class="width_30">
         <%= f.label :price, :class=>"price" %>
         <%= f.text_field :price, :class=>"price_field text_field", :'data-validate'=>'validate(required, number)' %>
+      </td>
+      <td class="width_30">
+        <%= f.label :availability, :class=>"availability" %>
+        <%= f.text_field :availability, :class=>"availability_field price_field text_field", :'data-validate'=>'validate(required, digits)' %>
       </td>
       <td>
         <% for og in f.object.product.option_groups %>
@@ -18,7 +22,7 @@ begin;seq = seq;rescue;end;seq = seq==nil ? 'new_product_variation' : seq
       </td>
     </tr>
     <tr>
-      <td colspan="2" class="destroy_row">
+      <td colspan="3" class="destroy_row">
         <%= f.label :_destroy, t('groovy_cart.common.destroy') %>
         <%= f.check_box :_destroy%>
       </td>

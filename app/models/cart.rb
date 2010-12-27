@@ -11,6 +11,8 @@ class Cart < ActiveRecord::Base
   
   def add_product(product, product_variation=nil, quantity=1)
     ci = self.find_cart_item(product, product_variation)
+    availability = product.get_availability(product_variation)
+    quantity = availability if quantity > availability
     ci.quantity += quantity
     ci.save
     self.save
@@ -21,7 +23,9 @@ class Cart < ActiveRecord::Base
     unless new_quantity
       ci.destroy
     else
-      ci.quantity = quantity
+      availability = product.get_availability(product_variation)
+      new_quantity = availability if new_quantity > availability
+      ci.quantity = new_quantity
       ci.save
     end
     self.save

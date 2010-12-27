@@ -1,6 +1,8 @@
 class Product < ActiveRecord::Base
   has_friendly_id :name, :use_slug => true
-
+  
+  scope :available, where('availability>?', 0)
+  
   belongs_to :brand
   belongs_to :product_type
   has_and_belongs_to_many :categories
@@ -22,10 +24,11 @@ class Product < ActiveRecord::Base
   accepts_nested_attributes_for :product_variations, :allow_destroy=>true, :reject_if=>proc{|pv| pv['price'].blank? }
   accepts_nested_attributes_for :properties
   attr_accessible :name, :description, :brand_id, :category_ids, :price, :price_promo, :product_variations_attributes,
-                  :option_group_ids, :properties_attributes, :photos_attributes, :sku, :product_type_id
+                  :option_group_ids, :properties_attributes, :photos_attributes, :sku, :product_type_id, :availability
 
   before_save :fill_in_sku
   after_update :clean_up_options_mess
+  before_update :recalculate_availability
 
   def get_price
     if not self.price_promo.blank? and self.price_promo>0
@@ -99,6 +102,50 @@ class Product < ActiveRecord::Base
         self.properties.where('property_type_id=?', pt.id).first.destroy
       end
       
+    end
+  end
+  
+  def recalculate_availability
+    unless self.product_variations.empty?
+      self.availability = 0
+      self.product_variations.each do |pv|
+        self.availability += pv.availability || 0
+      end
+    end
+  end
+  
+  def recalculate_availability!
+    self.recalculate_availability
+    self.save
+  end
+  
+  def decrease_availability(quantity=1, variation=nil)
+    if not self.product_variations.empty? and self.product_variations.member?(variation)
+      v = self.product_variations.find(variation.id)
+      v.availability -= quantity
+      v.save
+    else
+      self.availability -= quantity
+    end
+    self.save
+  end
+  
+  def increase_availability(quantity=1, variation=nil)
+    if not self.product_variations.empty? and self.product_variations.member?(variation)
+      v = self.product_variations.find(variation.id)
+      v.availability += quantity
+      v.save
+    else
+      self.availability += quantity
+    end
+    self.save
+  end
+  
+  def get_availability(variation=nil)
+    if not self.product_variations.empty? and self.product_variations.member?(variation)
+      self.product_variations.find(variation.id).availability
+    else
+      self.availability
     end
   end
 end

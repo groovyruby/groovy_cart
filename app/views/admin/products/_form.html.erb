@@ -17,11 +17,13 @@
               prev_row = prev_row.prev();
             }
             new_row.find('input.price_field').val(prev_row.find("input.price_field").val());
+            new_row.find('input.availability_field').val(prev_row.find("input.availability_field").val());
             prev_row.find('select.option_group').each(function(i,elem){
               new_row.find("select[data-option-group-id='"+$(elem).attr('data-option-group-id')+"']").val($(elem).val());
             });
           }else{
             new_row.find('input.price_field').val($("input.#product_price").val());
+            new_row.find('input.availability_field').val($("input.#product_availability").val());
           }
         }
         $('form').ketchup();
@@ -62,13 +64,24 @@
   </div>
 
   
-
-  <div class="group">
-    <%= f.label :price, t("activerecord.attributes.product.price", :default => "Price"), :class => :label %>
-    <%= f.text_field :price, :class => 'text_field price_field', :'data-validate'=>'validate(required,number)' %>
-    <span class="description"><%= t("groovy_cart.descriptions.product.price") %></span>
-  </div>
-
+  <table class="form_table">
+    <tr>
+      <td class="width_50" valign="top">
+        <div class="group">
+          <%= f.label :price, t("activerecord.attributes.product.price", :default => "Price"), :class => :label %>
+          <%= f.text_field :price, :class => 'text_field price_field', :'data-validate'=>'validate(required,number)' %>
+          <span class="description"><%= t("groovy_cart.descriptions.product.price") %></span>
+        </div>
+      </td>
+      <td valign="top">
+        <div class="group">
+          <%= f.label :availability, t("activerecord.attributes.product.availability", :default => "Availability"), :class => :label %>
+          <%= f.text_field :availability, :class => 'text_field price_field', :'data-validate'=>'validate(required,digits)', :readonly=>@product.product_variations.empty? ? false : true %>
+          <span class="description"><%= t("groovy_cart.descriptions.product.availability") %></span>
+        </div>
+      </td>
+    </tr>
+  </table>
   <!--div class="group">
     <%= f.label :price_promo, t("activerecord.attributes.product.price_promo", :default => "Price promo"), :class => :label %>
     <%= f.text_field :price_promo, :class => 'text_field', :'data-validate'=>'validate(number)' %>

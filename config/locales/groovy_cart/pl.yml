@@ -13,6 +13,7 @@ pl:
         brand: Marka produktu
         price: Cena produktu
         price_promo: Cena "promocyjna" - pole cena zostanie przekreślone i pokazywana będzie cena promocyjna
+        availability: Liczba dostępnych sztuk. W przypadku wariacji pole będzie automatycznie aktualizowane na podstawie dostępnej liczby wariacji produktów
       category:
         name: ""
         parent: Kategoria nadrzędna względnie obecnej

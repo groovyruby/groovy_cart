@@ -58,7 +58,7 @@ class Order < ActiveRecord::Base
     end
 
     event :cancel do
-      transitions :to => :canceled, :from=>[:new, :confirmed, :payment_started, :payment_finished, :paid, :sent]
+      transitions :to => :canceled, :from=>[:new, :confirmed, :payment_started, :payment_finished, :paid, :sent], :on_transition => :make_canceled
     end
   end
 
@@ -150,9 +150,22 @@ class Order < ActiveRecord::Base
     self.last_name = self.billing_address.last_name
     self.save
   end
+  
+  def update_products_availability
+    for oi in self.order_items
+      oi.product.decrease_availability(oi.quantity, oi.product_variation) if oi.product
+    end
+  end
+  
+  def restore_products_availability
+    for oi in self.order_items
+      oi.product.increase_availability(oi.quantity, oi.product_variation) if oi.product
+    end
+  end
 
   def mail_confirmed
     self.cache_address_data
+    self.update_products_availability
     OrderMailer.completed(self).deliver
   end
 
@@ -163,6 +176,10 @@ class Order < ActiveRecord::Base
   def make_confirmed
     mail_confirmed
     clone_address_data
+  end
+  
+  def make_canceled
+    self.restore_products_availability
   end
 
   def clone_address_data

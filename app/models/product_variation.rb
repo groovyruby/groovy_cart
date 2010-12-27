@@ -1,13 +1,13 @@
 class ProductVariation < ActiveRecord::Base
 
-  scope :available, where('product_variations.price > ?', 0)
+  scope :available, where('product_variations.price > ?', 0).where('availability>?',0)
 
   belongs_to :product
   has_and_belongs_to_many :options
 
-  validates :price, :presence=>true, :numericality=>true
+  validates :price, :availability, :presence=>true, :numericality=>true
 
-  attr_accessible :price, :option_ids
+  attr_accessible :price, :option_ids, :availability
 
 
   def to_s

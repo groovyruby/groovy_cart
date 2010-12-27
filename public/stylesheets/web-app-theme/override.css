@@ -68,6 +68,9 @@ table.form_table{
 table.nested_table td{
     padding: 0 4px 0 4px;
 }
+.width_30{
+    width: 30%;
+}
 .width_50{
     width: 50%;
 }

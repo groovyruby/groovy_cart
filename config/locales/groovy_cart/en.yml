@@ -13,10 +13,12 @@ en:
         brand: ""
         price: ""
         price_promo: Promo price - shown instead of main product price
+        availability: "Number of available items. If variations are present, this field will be automatically updated (sum of availabilities of variations)"
+        
       category:
         name: ""
         parent: ""
-        extra_params: Additional category parameters, can be used ie. for setting extra classes in layout
+        extra_params: "Additional category parameters, can be used ie. for setting extra classes in layout"
         is_visible: Is category shown in shop / in menus? (can be used for creating ie. promo categories)
       option_group:
         name: ""

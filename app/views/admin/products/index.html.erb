@@ -19,6 +19,9 @@
           <th>
             <%= sort_link @search, :sku, t("activerecord.attributes.product.sku", :default => t("activerecord.labels.sku", :default => "SKU")) %>
           </th>
+          <th>
+            <%= sort_link @search, :availability, t("activerecord.attributes.product.availability", :default=>"Available count") %>
+          </th>
           <th class="last">&nbsp;</th>
         </tr>
         <% @products.each do |product| -%>
@@ -31,6 +34,9 @@
           </td>
           <td>
             <%= product.sku %>
+          </td>
+          <td>
+            <%= product.availability %>
           </td>
           <td class="last">
             <%= link_to "#{t("web-app-theme.show", :default => "Show")}", admin_product_path(product) %> |
