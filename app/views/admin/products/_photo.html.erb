@@ -6,15 +6,20 @@
       <%= f.hidden_field :product_id %>
     </td>
     <td class="width_50">
-      <%= f.label :photo, :class=>"label" %>
+      <%= f.label :photo,  t("activerecord.attributes.photo.photo", :default => 'Photo'), :class=>"label"%>
       <%= f.file_field :photo %>
     </td>
-    <td>
-      <% unless @product.options.empty? %>
-        <%= f.label :option_id, :class=>"label" %>
+    
+    <% unless @product.options.empty? %>
+      <td>
+        <%= f.label :option_id, t("activerecord.attributes.photo.option_id", :default => "Option"), :class=>"label"  %>
         <%= f.select :option_id, option_groups_from_collection_for_select_with_empty(@product.option_groups, :options, :name, :id, :name, f.object.option_id) %>
-      <% end %>
-    </td>
+      </td>
+      <td>
+        <%= f.label :is_primary_for_option, t("activerecord.attributes.photo.is_primary_for_option", :default => "Primary for option"), :class=>"label" %>
+        <%= f.check_box :is_primary_for_option %>
+      </td>
+    <% end %>
     <td colspan="2" class="destroy_row">
       <%= f.label :_destroy, t('groovy_cart.common.destroy') %>
       <%= f.check_box :_destroy, :class=>'destroy_nested', 'data-selector'=>'li.photo'%>

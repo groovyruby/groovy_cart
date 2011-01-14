@@ -9,6 +9,6 @@ class Photo < ActiveRecord::Base
         :cart=>Setting.get('product.cart_image_dimensions', "80x80")
   }
 
-  attr_accessible :photo, :product_id, :option_id
+  attr_accessible :photo, :product_id, :option_id, :is_primary_for_option
 
 end

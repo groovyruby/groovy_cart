@@ -59,6 +59,10 @@ pl:
         question: Pytanie
         field_type: Typ pola
         field_options: Dodatkowe parametry
+      photo:
+        photo: "Zdjęcie"
+        option_id: "Obrazuje opcje"
+        is_primary_for_option: "Główne zdjęcie opcji"
 
         
     labels:
