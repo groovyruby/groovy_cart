@@ -21,7 +21,7 @@
 
         <p>
           <b><%= t("activerecord.attributes.product.brand_id", :default => t("activerecord.labels.brand_id", :default => "Brand")) %>:</b>
-          <%= @product.brand.name unless @product.brand.name %>
+          <%= @product.brand.name unless @product.brand.blank? %>
         </p>
 
         <p>
