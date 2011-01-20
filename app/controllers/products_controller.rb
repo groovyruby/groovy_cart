@@ -1,7 +1,10 @@
 class ProductsController < GroovyCartController
   
   def index
-    @products = Product.all
+    params[:search] ||= {}
+    params[:search][:meta_sort] ||= 'created_at.desc'
+    @search = Product.search(params[:search])
+    @products = @search.paginate(:page => params[:page])
   end
 
   def show

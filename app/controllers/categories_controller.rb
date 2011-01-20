@@ -13,10 +13,18 @@ class CategoriesController < GroovyCartController
     session['last_category_id'] = @category.id
     @products = Product.joins(:categories).where('categories.id' => cat_ids)
     @brands = Brand.all
+    
+    params[:search] ||= {}
+    params[:search][:meta_sort] ||= 'products.created_at.desc'
+    
     unless params[:brand].blank?
       @brand = Brand.find(params[:brand])
-      @products = @products.where('brand_id=?', @brand.id)
+      params[:search][:brand_id_eq] = @brand.id
     end
+    
+    
+    @search = @products.search(params[:search])
+    @products = @search.paginate(:page => params[:page])
   end
 
 end
