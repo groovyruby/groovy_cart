@@ -1,0 +1,83 @@
+<%= content_for :head do %>
+  <%= javascript_include_tag 'jquery/jquery.ui.nestedSortable' %>
+  <style type="text/css" media="screen">
+    .ui-nestedSortable-error {
+    			background:#fbe3e4;
+    			color:#8a1f11;
+    		}
+
+    		ol {
+    			margin: 0;
+    			padding: 0;
+    			padding-left: 30px;
+    		}
+
+    		ol.sortable, ol.sortable ol {
+    			margin: 0 0 0 25px;
+    			padding: 0;
+    			list-style-type: none;
+    		}
+
+    		ol.sortable {
+    			margin: 4em 0;
+    		}
+
+    		.sortable li {
+    			margin: 7px 0 0 0;
+    			padding: 0;
+    		}
+
+    		.sortable li div  {
+    			border: 1px solid black;
+    			padding: 3px;
+    			margin: 0;
+    			cursor: move;
+    		}
+  </style>
+<% end %>
+
+<%= content_for :body_onload do %>
+  $('ol.sortable').nestedSortable({
+    disableNesting: 'no-nest',
+    forcePlaceholderSize: true,
+    handle: 'div',
+    items: 'li',
+    opacity: .6,
+    placeholder: 'placeholder',
+    tabSize: 25,
+    tolerance: 'pointer',
+    toleranceElement: '> div'
+  });
+
+  $('#serialize').click(function(){
+    serialized = $('ol.sortable').nestedSortable('serialize');
+    $('#serializeOutput').text(serialized);
+    $.post('<%= sort_admin_categories_path %>', serialized, function(data){
+      alert('Saved');
+    });
+  })
+<% end %>
+
+<div class="block">
+  <div class="secondary-navigation">
+    <ul class="wat-cf">
+      <li class="first"><%= link_to "#{t("web-app-theme.list", :default => "List")}", admin_categories_path  %></li>
+      <li><%= link_to "#{t("web-app-theme.new", :default => "New")}", new_admin_category_path %></li>
+      <li class="active"><%= link_to "#{t("web-app-theme.reorder", :default => "Reorder")}", reorder_admin_categories_path %></li>
+    </ul>
+  </div>          
+  <div class="content">
+    <h2 class="title"><%= t('.reorder', :default=>"Reorder category tree")%></h2>
+    <div class="inner">
+      <!--div id="serializeOutput" style="color: blue; padding: 10px; border: 1px solid black; width: 100%;"></div//-->
+      
+      <%= categories_reorder %>
+      <button class="button" type="submit" id="serialize">
+        <%= image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%= t("web-app-theme.save", :default => "Save") %>
+      </button>
+      <div style="clear: both;" ></div>
+    </div>
+  </div>
+</div>
+
+<% content_for :sidebar, render(:partial => 'sidebar') -%>

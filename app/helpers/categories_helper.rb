@@ -15,4 +15,18 @@ module CategoriesHelper
     end
     ret
   end
+  
+  def categories_reorder
+    content_tag(:ol, categories_li_tree(Category.by_position.roots), :class=>"sortable")
+  end
+  
+  def categories_li_tree(cats)
+    ret = ''
+    for c in cats
+      ret += %Q{<li id="item_#{c.id}"><div>#{c.name}</div>}
+      ret += content_tag(:ol, categories_li_tree(c.children.by_position)) unless c.children.empty?
+      ret += %Q{</li>}
+    end
+    raw(ret)
+  end
 end

@@ -48,7 +48,12 @@ GroovyCart::Application.routes.draw do
     resources :banner_placements
     resources :banners
     resources :brands
-    resources :categories
+    resources :categories do
+      collection do
+        get :reorder
+        post :sort
+      end
+    end
     resources :option_groups
     resources :orders do
       member do

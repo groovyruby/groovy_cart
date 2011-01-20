@@ -82,4 +82,20 @@ class Admin::CategoriesController < AdminController
       format.xml  { head :ok }
     end
   end
+  
+  def reorder
+  end
+  
+  def sort
+    params['item'].each_pair do |key, value|
+      c =Category.find(key)
+      id,pos = value.split('--')
+      c.parent_id = id=="root" ? nil : id
+      c.position = pos
+      c.save
+    end
+
+    render :nothing => true
+  end
+  
 end

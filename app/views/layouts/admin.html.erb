@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Groovy Cart</title>
-  <%= stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/default/style", "web-app-theme/override", 'jquery.ketchup', :cache => true %>
-  <%= javascript_include_tag 'jquery/jquery.min.js', 'jquery/jquery.ketchup', 'jquery/jquery.ketchup.helpers', 'jquery/jquery.ketchup.validations', 'rails', 'application', 'admin', :cache => true %>
+  <%= stylesheet_link_tag "web-app-theme/base", "web-app-theme/themes/default/style", "web-app-theme/override", 'jquery.ketchup', 'jquery-ui-1.8.7.custom', :cache => true %>
+  <%= javascript_include_tag 'jquery/jquery.min.js', 'jquery/jquery.ketchup', 'jquery/jquery.ketchup.helpers', 'jquery/jquery.ketchup.validations', 'jquery/jquery-ui-1.8.7.custom.min', 'rails', 'application', 'admin', :cache => true %>
   <%= csrf_meta_tag %>
   <%= yield(:head) || "" %>
   <script type="text/javascript" charset="utf-8">

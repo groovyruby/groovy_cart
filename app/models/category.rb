@@ -3,6 +3,8 @@ class Category < ActiveRecord::Base
   has_ancestry :cache_depth=>true
 
   scope :visible, where('is_visible=?', true)
+  
+  scope :by_position, order('position ASC')
 
   has_and_belongs_to_many :products
   

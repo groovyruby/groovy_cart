@@ -84,3 +84,6 @@ pl:
         list_survey_models: Lista ankiet
       show:
         list_survey_models: Lista ankiet
+    categories:
+      reorder:
+        reorder: "Zmień kolejność kategorii w drzewie"
