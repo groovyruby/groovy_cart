@@ -5,3 +5,5 @@
     <li><%= link_to p.name, product_path(p) %></li>
   <% end %>
 </ul>
+
+<%= will_paginate @products %>

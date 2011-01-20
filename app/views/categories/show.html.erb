@@ -20,3 +20,5 @@
     <li><%= link_to b, b %> <%= link_to "in this category", category_path(@category, :brand=>b.to_param) %></li>
   <% end %>
 </ul>
+
+<%= will_paginate @products %>
